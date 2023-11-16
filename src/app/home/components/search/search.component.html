@@ -1,0 +1,44 @@
+
+<div id="resirvation" class="flex items-center   h-1/4 min-w-full border-2 absolute  transform -translate-y-40 drop-shadow-lg  bg-[#FFFFFF] rounded-lg bg-opacity-90" >
+    <div id="resirvation" class="flex items-center justify-center  h-200  w-90  p-9  ">
+      <div class="flex flex-col items-center mx-3">
+        <label for="lieu1" class="mb-1 text-black font-inter text-base">Lieu de départ</label>
+        <div class="relative">
+          <input type="text" id="lieu1" name="lieu1" class="p-2 border mt-6  rounded pl-10 bg-white" placeholder="Rechercher Agence">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <img src="../../../../assets/images/Search/Location.svg" alt="icone" class="h-5 w-5 mt-6" />
+          </div>
+        </div>
+      </div>
+    
+      <div class="flex flex-col items-center mx-3">
+        <label for="date1" class="mb-1 text-black font-inter text-base">Date de départ</label>
+        <input type="date" id="date1" name="date1" class="p-2 border mt-6 rounded pl-10 bg-white" placeholder="Rechercher Agence" value="<?= date('Y-m-d'); ?>">
+      </div>
+    
+      <div class="flex flex-col items-center mx-3">
+        <label for="lieu2" class="mb-1 text-black font-inter text-base">Lieu de retour</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 ">
+            <img src="../../../../assets/images/Search/Location.svg" alt="icone" class="h-5 w-5 mt-6" />
+          </div>
+          <input type="text" id="lieu2" name="lieu2" class="p-2 border mt-6 rounded pl-10 bg-white" placeholder="Rechercher Agence">
+        </div>
+      </div>
+    
+      <div class="flex flex-col items-center mx-3">
+        <label for="date2" class="mb-1 text-black font-inter text-base">Date de retour</label>
+        <input type="date" id="date2" name="date2" class="p-2 border mt-6  rounded pl-10 bg-white" placeholder="Rechercher Agence" value="<?= date('Y-m-d'); ?>">
+      </div>
+    
+      <button class="border border-white bg-black text-white p-2 w-60 rounded-3xl text-lg relative mt-12 font-abel  leading-9">
+        Trouver une voiture
+        <img src="../../../../assets/images/Search/arrow-right.svg" alt="icone" class="h-5 w-5 absolute right-3 top-4" />
+      </button>
+    
+      <!-- <button class="border border-white bg-black text-white p-2 rounded-3xl text-lg">Trouver une voiture</button> -->
+    </div>
+    
+    </div>
+    
+    
