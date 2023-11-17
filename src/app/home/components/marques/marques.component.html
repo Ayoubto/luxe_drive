@@ -11,140 +11,21 @@
   
     </div>
   
-    <div class="flex flex-wrap justify-center">
+    <div  class="grid  grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 mx-16">
   
   
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
+      <div *ngFor="let item of mark" class="m-2 w-[14.666667%] ">
+        <div class="w-40 h-24 flex-shrink-0  bg-[#0F0F0F] bg-opacity-10">
           <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Vector.svg" alt="Image 1">
+            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/{{item}}.svg" alt="Image 1">
   
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Toyota</div>
+              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">{{item}} </div>
   
           </div>
         </div>
       </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/layer1.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Ford</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Tesla svg.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Tesla</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Volkswagen USA svg.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">TOYOTA</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Honda.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">TOYOTA</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Nissan.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">TOYOTA</div>
-  
-          </div>
-        </div>
-      </div>
-  
-  
-  
-    </div>
-  
-    <div class="flex flex-wrap justify-center">
-  
-  
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16 filter grayscale" src="assets/images/Marques/Chevrolet.svg" alt="Image 1">
-          
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Chevrolet</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/bmw_logo_icon_145840 1.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">BMW</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/mercedes_benz_logo_icon_145798 1.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Mercedes-Benz</div>
-  
-          </div>
-        </div>
-      </div>
-  
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images//Marques/Hyundai.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Hyundai</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Audi.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">Audi</div>
-  
-          </div>
-        </div>
-      </div>
-      <div class="m-2 w-[14.666667%] ">
-        <div class="w-40 h-24 flex-shrink-0  bg-slate-50 bg-opacity-90">
-          <div class="max-w-xs rounded overflow-hidden  border">
-            <img class="mx-auto my-auto pt-4 h-12 w-16" src="assets/images/Marques/Kia.svg" alt="Image 1">
-  
-              <div class=" mb-2 text-gray-900 text-center font-inter text-base font-medium leading-9 ">KIA</div>
-  
-          </div>
-        </div>
-      </div>
-  
+      
+     
   
   
     </div>
