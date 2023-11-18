@@ -5,16 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
+import { SearchCarsComponent } from './search-cars/search-cars.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchCarsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule
+    HomeModule,
+    
   ],
 
   providers: [],
