@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { SearchCarsComponent } from './search-cars/search-cars.component';
+import { CartCarComponent } from './cart-car/cart-car.component';
+import { CarsComponent } from './cars/cars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchCarsComponent
+    SearchCarsComponent,
+    CartCarComponent,
+    CarsComponent
   ],
   imports: [
     BrowserModule,

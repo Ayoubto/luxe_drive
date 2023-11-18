@@ -1,0 +1,33 @@
+<div class="bg-[#F5F5F5] py-3 mt-28">
+
+    <div class="lg:container lg:mx-auto  space-y-5 mt-24 mb-16">
+        <p class="font-bold  text-4xl">Explorez notre exceptionnelle collection de voitures</p>
+        <p class="text-center lg:ml-32 lg:mr-64 " >Explorez notre incroyable sélection de voitures, toutes choisies soigneusement pour offrir à nos clients une expérience de conduite incomparable.</p>
+
+        <div class="h-50 lg:flex flex-row space-x-2 lg:-ml-28 justify-center hidden mb-12">
+            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Popular Car</button>
+            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Luxury Car</button>
+            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Vintage Car</button>
+            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Family Car</button>
+            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Off-Road Car</button>
+
+        </div>
+    </div>
+
+
+    <div class="grid md:grid-cols-2 grid-cols-1  lg:grid-cols-3 m-5 mx-10 gap-y-4 gap-x-2">
+        <div *ngFor="let car of Cars">
+          <app-cart-car  [Car]="car"></app-cart-car>  
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <div class=" my-12 ">
+            <button class="  justify-center basis-1/2 bg-black rounded-3xl p-4 flex items-center gap-0.5 lg:w-[11.87rm] text-white ">Voir toutes les voitures
+            <img src="../../../../assets/images/Search/arrow-right.svg" class="mt-1" alt="">   
+            </button>                
+        </div>        
+    </div>
+
+
+
+</div>
