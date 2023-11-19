@@ -8,13 +8,15 @@ import { HomeModule } from './home/home.module';
 import { SearchCarsComponent } from './search-cars/search-cars.component';
 import { CartCarComponent } from './cart-car/cart-car.component';
 import { CarsComponent } from './cars/cars.component';
+import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctionne.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchCarsComponent,
     CartCarComponent,
-    CarsComponent
+    CarsComponent,
+    CommentFonctionneComponent
   ],
   imports: [
     BrowserModule,
