@@ -10,6 +10,7 @@ import { CartCarComponent } from './cart-car/cart-car.component';
 import { CarsComponent } from './cars/cars.component';
 import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctionne.component';
 import { NosServicesComponent } from './nos-services/nos-services.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NosServicesComponent } from './nos-services/nos-services.component';
     CartCarComponent,
     CarsComponent,
     CommentFonctionneComponent,
-    NosServicesComponent
+    NosServicesComponent,
+    CommentaireComponent
   ],
   imports: [
     BrowserModule,
