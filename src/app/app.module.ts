@@ -9,6 +9,7 @@ import { SearchCarsComponent } from './search-cars/search-cars.component';
 import { CartCarComponent } from './cart-car/cart-car.component';
 import { CarsComponent } from './cars/cars.component';
 import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctionne.component';
+import { NosServicesComponent } from './nos-services/nos-services.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctio
     SearchCarsComponent,
     CartCarComponent,
     CarsComponent,
-    CommentFonctionneComponent
+    CommentFonctionneComponent,
+    NosServicesComponent
   ],
   imports: [
     BrowserModule,
