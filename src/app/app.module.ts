@@ -11,6 +11,7 @@ import { CarsComponent } from './cars/cars.component';
 import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctionne.component';
 import { NosServicesComponent } from './nos-services/nos-services.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommentaireComponent } from './commentaire/commentaire.component';
     CarsComponent,
     CommentFonctionneComponent,
     NosServicesComponent,
-    CommentaireComponent
+    CommentaireComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
