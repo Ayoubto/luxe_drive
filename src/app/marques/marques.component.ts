@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class MarquesComponent {
   mark:Array<string>=[
     "Toyota","Ford","Tesla","Volkswagen","Honda","Nissan","Chevrolet","BMW","Mercedes-Benz"
-   ,"Hyundai","Audi","KIA" 
+   ,"Hyundai","Audi","KIA"
   ]
 
 }

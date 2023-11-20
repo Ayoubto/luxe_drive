@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
+// import { HomeModule } from './home/home.module';
 import { SearchCarsComponent } from './search-cars/search-cars.component';
 import { CartCarComponent } from './cart-car/cart-car.component';
 import { CarsComponent } from './cars/cars.component';
@@ -12,6 +12,12 @@ import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctio
 import { NosServicesComponent } from './nos-services/nos-services.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { FooterComponent } from './footer/footer.component';
+import { PageContactComponent } from './page-contact/page-contact.component';
+import { PageAgencesComponent } from './page-agences/page-agences.component';
+import { PageReservationComponent } from './page-reservation/page-reservation.component';
+import { PageHomeComponent } from './page-home/page-home.component';
+import { MarquesComponent } from './marques/marques.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +28,20 @@ import { FooterComponent } from './footer/footer.component';
     CommentFonctionneComponent,
     NosServicesComponent,
     CommentaireComponent,
-    FooterComponent
+    FooterComponent,
+    PageContactComponent,
+    PageAgencesComponent,
+    PageReservationComponent,
+    PageHomeComponent,
+    MarquesComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
     
+
   ],
 
   providers: [],
