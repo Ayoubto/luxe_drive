@@ -3,44 +3,49 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-// import { HomeModule } from './home/home.module';
-import { SearchCarsComponent } from './search-cars/search-cars.component';
-import { CartCarComponent } from './cart-car/cart-car.component';
-import { CarsComponent } from './cars/cars.component';
-import { CommentFonctionneComponent } from './comment-fonctionne/comment-fonctionne.component';
-import { NosServicesComponent } from './nos-services/nos-services.component';
-import { CommentaireComponent } from './commentaire/commentaire.component';
-import { FooterComponent } from './footer/footer.component';
-import { PageContactComponent } from './page-contact/page-contact.component';
+import { SearchCarsComponent } from './voitures/search-cars/search-cars.component';
+import { CartCarComponent } from './voitures/cart-car/cart-car.component';
+import { CommentFonctionneComponent } from './accueil/comment-fonctionne/comment-fonctionne.component';
+import { NosServicesComponent } from './accueil/nos-services/nos-services.component';
+import { CommentaireComponent } from './accueil/commentaire/commentaire.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 import { PageAgencesComponent } from './page-agences/page-agences.component';
 import { PageReservationComponent } from './page-reservation/page-reservation.component';
 import { PageHomeComponent } from './page-home/page-home.component';
-import { MarquesComponent } from './marques/marques.component';
-import { SearchComponent } from './search/search.component';
+import { MarquesComponent } from './accueil/marques/marques.component';
+import { HeroSectionComponent } from './accueil/hero-section/hero-section.component';
+import { CollectionsComponent } from './accueil/collections/collections.component';
+import { ContactComponent } from './contact/contact/contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PageContactComponent } from './page-contact/page-contact.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchCarsComponent,
     CartCarComponent,
-    CarsComponent,
     CommentFonctionneComponent,
     NosServicesComponent,
     CommentaireComponent,
     FooterComponent,
-    PageContactComponent,
     PageAgencesComponent,
     PageReservationComponent,
     PageHomeComponent,
     MarquesComponent,
-    SearchComponent
+    HeroSectionComponent,
+    CollectionsComponent,
+    ContactComponent,
+    PageContactComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    
+    ReactiveFormsModule,
+    SharedModule
+   
 
   ],
 
