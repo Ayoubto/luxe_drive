@@ -13,9 +13,10 @@
   </div>
 
   <div>
-    <button class="border-2 border-opacity-50 border-white bg-black text-white py-[8px] rounded-3xl px-[20px] text-lg hidden md:flex ">Se connecter / S’inscrire</button>
+    <button (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-black text-white py-[8px] rounded-3xl px-[20px] text-lg hidden md:flex ">Se connecter / S’inscrire</button>
   </div>
 </div>
+<app-popup-connextion *ngIf="isPopupOpen" (close)="closePopup()"></app-popup-connextion>
 
 <!--
 <ul class="md:flex justify-center space-x-8 font-semibold hidden  ">

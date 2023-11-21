@@ -37,17 +37,18 @@ import { SharedModule } from './shared/shared.module';
     CollectionsComponent,
     ContactComponent,
     PageContactComponent,
+
     
    
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SharedModule
-   
-
   ],
+
 
   providers: [],
   bootstrap: [AppComponent]

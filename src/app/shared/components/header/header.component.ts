@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  isPopupOpen: boolean = true;
+
+  openPopup() {
+    this.isPopupOpen = true;
+  }
+
+  closePopup() {
+    this.isPopupOpen = false;
+  }
 }
