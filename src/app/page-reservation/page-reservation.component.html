@@ -1,1 +1,63 @@
-<p>page-reservation works!</p>
+<div class="flex justify-center">
+ <div class="flex  flex-col py-14 gap-8 text-center ">
+    <h1 class="text-black font-bold text-4xl text-center">Nos Voitures</h1>
+     <p class="text-center lg:w-[30rem]">Sélectionnez la voiture qui correspond parfaitement à vos envies et à vos besoins. et réservez-la en ligne.</p>
+   
+  </div>   
+</div>
+<div class="py-10">
+    <app-search-cars></app-search-cars>   
+</div>
+
+<div class="mt-10 container mx-auto">
+    <form action="">
+        <div class="grid lg:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2">
+            <div class="w-full">
+                <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
+                    <option value="" disabled selected hidden>Collection</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+               </select>
+            </div> 
+            
+        <div class="w-full">
+            <input type="number" name="Price" id="" placeholder="Price"   class="text-black mt-1 placeholder-black w-full pl-3 pr1 py-2 text-base border-2 border-gray-300 sm:text-sm rounded-md">
+        </div>
+        
+        <div class="w-full">
+            <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
+                <option value="" disabled selected hidden>Ville</option>
+                <option value="option1">Option 1</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+            <!-- Add more options as needed -->            </select>
+        </div> 
+
+        <div class="w-full">
+            <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
+                <option value="" disabled selected hidden>Date</option>
+                <option value="option1">Option 1</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option1">Option 1</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+            <!-- Add more options as needed -->            </select>
+        </div>      
+        </div>
+    </form>
+</div>
+
+
+    <div class="grid md:grid-cols-2 grid-cols-1  lg:grid-cols-3 m-5 mx-10 py-10 gap-y-4 gap-x-8">
+        <div *ngFor="let car of Cars">
+          <app-cart-car  [Car]="car"></app-cart-car>  
+        </div>
+        <div *ngFor="let car of Cars">
+            <app-cart-car  [Car]="car"></app-cart-car>  
+          </div>
+    </div>
+
+
+
