@@ -1,9 +1,8 @@
-<div class="flex justify-center">
- <div class="flex  flex-col py-14 gap-8 text-center ">
-    <h1 class="text-black font-bold text-4xl text-center">Nos Voitures</h1>
-     <p class="text-center lg:w-[30rem]">Sélectionnez la voiture qui correspond parfaitement à vos envies et à vos besoins. et réservez-la en ligne.</p>
-   
-  </div>   
+<div class="lg:container lg:mx-auto space-y-5 my-16">
+    <p class="text-center font-bold text-4xl">Nos Voitures</p>
+    <div class="flex justify-center mt-4">
+        <p class="text-center text-lg w-4/5">Sélectionnez la voiture qui correspond parfaitement à vos envies et à vos besoins. et réservez-la en ligne.</p>
+    </div>
 </div>
 <div class="py-10">
     <app-search-cars></app-search-cars>   
@@ -49,15 +48,11 @@
     </form>
 </div>
 
-
-    <div class="grid md:grid-cols-2 grid-cols-1  lg:grid-cols-3 m-5 mx-10 py-10 gap-y-4 gap-x-8">
-        <div *ngFor="let car of Cars">
-          <app-cart-car  [Car]="car"></app-cart-car>  
-        </div>
-        <div *ngFor="let car of Cars">
-            <app-cart-car  [Car]="car"></app-cart-car>  
-          </div>
+<div class="grid md:grid-cols-2 grid-cols-1  lg:grid-cols-3 m-5 mx-10 py-10 gap-y-4 gap-x-8">
+    <div *ngFor="let car of Cars">
+        <app-cart-car  [Car]="car"></app-cart-car>  
     </div>
-
-
-
+    <div *ngFor="let car of Cars">
+        <app-cart-car  [Car]="car"></app-cart-car>  
+    </div>
+</div>
