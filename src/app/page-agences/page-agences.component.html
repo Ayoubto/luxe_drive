@@ -1,3 +1,275 @@
+<div class="block text-center items-center h-28 mt-4">
+  <h1 class="text-4xl  text-black font-poppins font-bold leading-normal">Nos Agences </h1>
+  <h2 class=" text-gray-500 font-poppins text-base font-medium leading-normal ">Nous sommes partout au maroc</h2>
+</div>
+
+
+
+<div class="relative bg-cover bg-center w-full h-full" style="background-image: url('assets/images/Slice 3 (1) 1.png')">
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 pr-8  pl-8 pb-0 pt-7 overflow-hidden">
+  <div class="card-absolute   p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la première carte (élément de gauche) -->
+    <div class="card-absolute bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Première carte</h2>
+        <button (click)="toggleDetailsLeft()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsLeft">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-center p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la deuxième carte (élément au centre) -->
+    <div class="card-center bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Deuxième carte</h2>
+        <button (click)="toggleDetailsCenter()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsCenter">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-right  p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la troisième carte (élément à droite) -->
+    <div class="card-right bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Troisième carte</h2>
+        <button (click)="toggleDetailsRight()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsRight">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 pl-8 pr-8 pt-0 mt-[-80px]">
+  <!-- Les trois premières cartes -->
+  <div class="card-absolute p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la première carte (élément de gauche) -->
+    <div class="card-absolute bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Première carte</h2>
+        <button (click)="toggleDetailsLeft2()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsLeft2">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-center  p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la deuxième carte (élément au centre) -->
+    <div class="card-center bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Deuxième carte</h2>
+        <button (click)="toggleDetailsCenter2()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsCenter2">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-right p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la troisième carte (élément à droite) -->
+    <div class="card-right bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Troisième carte</h2>
+        <button (click)="toggleDetailsRight2()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsRight2">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4 pl-8 pr-8 pt-0 mt-[-80px]">
+  <!-- Les trois premières cartes -->
+  <div class="card-absolute p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la première carte (élément de gauche) -->
+    <div class="card-absolute bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Première carte</h2>
+        <button (click)="toggleDetailsLeft3()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsLeft3">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-center  p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la deuxième carte (élément au centre) -->
+    <div class="card-center bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Deuxième carte</h2>
+        <button (click)="toggleDetailsCenter3()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsCenter3">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card-right p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+    <!-- Contenu de la troisième carte (élément à droite) -->
+    <div class="card-right bg-white rounded-md shadow-lg p-4 overflow-hidden transition-height duration-500 ease-in-out mb-40 w-[calc(33.333% - 32px)]">
+      <div class="flex items-center">
+        <h2 class="mr-auto text-black font-nunito-sans text-3xl font-semibold leading-[180%]">Troisième carte</h2>
+        <button (click)="toggleDetailsRight3()" class="text-white px-3 py-1 rounded">
+          <img src="assets/images/Group 244.svg" alt="Image du bouton" class="w-7 h-7 mr-2">
+        </button>
+      </div>
+      <hr class="my-4 border-black">
+      <div class="details" [class.hidden]="!showDetailsRight3">
+        <div class="flex items-center mb-2">
+          <img src="assets/images/email _address.svg" alt="Image d'adresse" class="w-4 h-4 mr-2">
+          <p>Adresse</p>
+        </div>
+        <div class="flex items-center mb-2">
+          <img src="assets/images/phone.svg" alt="Icône de téléphone" class="w-4 h-4 mr-2">
+          <p>Numéro de téléphone</p>
+        </div>
+        <div class="flex items-center">
+          <img src="assets/images/website.svg" alt="Icône de courriel" class="w-4 h-4 mr-2">
+          <p>Adresse e-mail</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+</div>
+
+
+
 <app-footer></app-footer>
 
-  
