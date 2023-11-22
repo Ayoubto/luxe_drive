@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  isPopupOpen: boolean = true;
+  isPopupOpen: boolean = false;
+  isMenuOpen: boolean = false;
 
   openPopup() {
     this.isPopupOpen = true;
@@ -15,5 +17,8 @@ export class HeaderComponent {
 
   closePopup() {
     this.isPopupOpen = false;
+  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
