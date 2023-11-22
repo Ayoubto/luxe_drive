@@ -36,9 +36,7 @@ import { SharedModule } from './shared/shared.module';
     HeroSectionComponent,
     CollectionsComponent,
     ContactComponent,
-    PageContactComponent,
-
-    
+    PageContactComponent,    
    
   ],
   
