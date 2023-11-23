@@ -7,11 +7,7 @@
         </div>
 
         <div class="h-50 lg:flex flex-row space-x-2 justify-center hidden">
-            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Popular Car</button>
-            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Luxury Car</button>
-            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Vintage Car</button>
-            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Family Car</button>
-            <button class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white ">Off-Road Car</button>
+            <button *ngFor="let collection of Collections" [value]="collection" class=" rounded-full py-3 px-5 bg-white shadow-sm hover:bg-black hover:text-white">{{ collection }}</button>
         </div>
     </div>
 
@@ -20,12 +16,12 @@
           <app-cart-car  [Car]="car"></app-cart-car>  
         </div>
     </div>
+    
     <div class="flex justify-center">
         <div class=" my-12 ">
             <button class="  justify-center basis-1/2 bg-black rounded-3xl p-4 flex items-center gap-0.5 lg:w-[11.87rm] text-white ">Voir toutes les voitures
-            <img src="../../../../assets/images/Search/arrow-right.svg" class="mt-1" alt="">   
+                <img src="../../../../assets/images/Search/arrow-right.svg" class="mt-1" alt="">   
             </button>                
         </div>        
     </div>
-
 </div>

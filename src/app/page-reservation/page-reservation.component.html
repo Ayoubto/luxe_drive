@@ -9,41 +9,29 @@
 </div>
 
 <div class="mt-10 container mx-auto">
-    <form action="">
+    <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
         <div class="grid lg:grid-cols-4 gap-2 md:grid-cols-2 grid-cols-2">
             <div class="w-full">
-                <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
+                <select formControlName="Collection" id="Collection" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
                     <option value="" disabled selected hidden>Collection</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
+                    <option *ngFor="let option of Collections" [value]="option">{{ option }}</option>
                </select>
             </div> 
             
-        <div class="w-full">
-            <input type="number" name="Price" id="" placeholder="Price"   class="text-black mt-1 placeholder-black w-full pl-3 pr1 py-2 text-base border-2 border-gray-300 sm:text-sm rounded-md">
-        </div>
+            <div class="w-full">
+                <input type="number" formControlName="Prix" id="Prix" placeholder="Prix" class="text-black mt-1 placeholder-black w-full pl-3 pr1 py-2 text-base border-2 border-gray-300 sm:text-sm rounded-md">
+            </div>
         
-        <div class="w-full">
-            <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
-                <option value="" disabled selected hidden>Ville</option>
-                <option value="option1">Option 1</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-            <!-- Add more options as needed -->            </select>
-        </div> 
+            <div class="w-full">
+                <select formControlName="Ville" id="Ville" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
+                    <option value="" disabled selected hidden>Ville</option>
+                    <option *ngFor="let option of Villes" [value]="option">{{ option }}</option>
+                </select>
+            </div> 
 
-        <div class="w-full">
-            <select id="mySelect" name="mySelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base  border-2 border-gray-300 sm:text-sm rounded-md">
-                <option value="" disabled selected hidden>Date</option>
-                <option value="option1">Option 1</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option1">Option 1</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-            <!-- Add more options as needed -->            </select>
-        </div>      
+            <div class="w-full">
+                <input type="date" formControlName="Date" id="Date" class="text-black mt-1 placeholder-black w-full pl-3 pr1 py-2 text-base border-2 border-gray-300 sm:text-sm rounded-md">
+            </div>     
         </div>
     </form>
 </div>

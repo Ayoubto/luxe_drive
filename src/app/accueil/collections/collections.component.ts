@@ -15,6 +15,5 @@ export class CollectionsComponent {
     {img:"Porsche Cayenne GTS 2023" , Name:"Porsche Cayenne GTS 2023" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 personne",gas_station:"Electrique",}
 
   ]
-  items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+  Collections = ['Populaire', 'Luxe', 'Sportive', 'Familiale', 'Tout-Terrain'];
 }
-
