@@ -5,8 +5,8 @@
             <p class="text-center text-lg w-4/5">N'hésitez pas à nous contacter pour toute question, préoccupation ou demande d'information.</p>
         </div>
     </div>
-    <div class="flex mb-12 mx-3">
-        <div class="text-white rounded-xl bg-[#0F0F0F] w-1/3">
+    <div class="flex flex-col lg:flex-row mb-12 mx-3">
+        <div class="text-white rounded-xl bg-[#0F0F0F] lg:w-1/3 w-full  ">
             <p class="text-center text-2xl font-bold my-16">Informations de Contact</p>
             <div>
                 <div class="flex ml-10">
@@ -17,16 +17,16 @@
                     <img src="../../assets/images/Contact/ic_sharp-email.svg" alt="E-mail" class="w-6 h-6 mr-5">
                     <span class="text-base mb-10">contact&#64;luxedrive.ma</span>
                 </div>
-                <div class="flex mx-10">
+                <div class="flex mx-10 ">
                     <img src="../../assets/images/Contact/carbon_location-filled.svg" alt="Adresse" class="w-6 h-6 mr-5">
-                    <span class="text-base mb-10">36, Avenue Mohamed V, Tanger, Maroc.</span>
+                    <span class="text-base lg:mb-10 mb-16">36, Avenue Mohamed V, Tanger, Maroc.</span>
                 </div>
             </div>
-            <div class="flex justify-end pt-[70px] pb-2">
+            <div class="lg:flex justify-end pt-[70px] pb-2 hidden" >
                 <img src="../../../assets/images/Contact/Ellipse.svg" class="w-[400px]" alt="">
             </div>
         </div>
-        <div class="w-2/3 ml-10 space-y-2">
+        <div class="lg:w-2/3 w-full lg:ml-10 space-y-2">
             <div class="mt-16 text-base">
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                     <div class="flex justify-between mb-10">
@@ -78,11 +78,11 @@
                     </div>
 
                     <div class="mb-10">
-                        <label for="objet" class="block text-gray font-semibold mb-3">
+                        <label for="objet" class="block text-gray font-semibold mb-3 ">
                             <span>Objet :</span>
                         </label>
-                        <div class="flex">
-                            <label for="reservation" class="inline-flex items-center mr-4">
+                        <div class="lg:flex grid grid-cols-2">
+                            <label for="reservation" class="inline-flex items-center mr-4 ">
                                 <input type="radio" id="reservation" name="objet" formControlName="objet" value="reservation" />
                                 <span class="ml-2">Réservation de Voiture</span>
                             </label>
@@ -112,11 +112,11 @@
                         </label>
                     </div>
 
-                    <div style="display: flex; justify-content: flex-end;">
+                    <div class="flex justify-center lg:justify-end">
                         <button type="submit" class="rounded-2xl border border-1 h-[40px] border-black w-64 font-sans tetx-l text-white bg-black px-4 hover:bg-white hover:text-black">Envoyer</button> 
                     </div>
 
-                    <div style="display: flex; justify-content: flex-end;">
+                    <div class="flex justify-center lg:justify-end">
                         <img src="../../assets/images/Contact/letter_send.svg" alt="Envoyer" class="h-36 mr-24">
                     </div>
                 </form>         
