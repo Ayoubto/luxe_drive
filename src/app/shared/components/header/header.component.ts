@@ -15,7 +15,7 @@ export class HeaderComponent {
     this.isPopupOpen = true;
   }
 
-  closePopup() {
+  closePopupins() {
     this.isPopupOpen = false;
   }
   toggleMenu() {

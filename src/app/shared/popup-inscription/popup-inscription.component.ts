@@ -13,4 +13,9 @@ export class PopupInscriptionComponent {
   closePopup() {
     this.close.emit();
   }
+
+   Va:boolean=false
+   seatch(){
+    this.Va=!this.Va
+   }
 }

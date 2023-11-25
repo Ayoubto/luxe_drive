@@ -10,6 +10,7 @@ export class PopupConnextionComponent {
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
   closePopup() {
+
     this.close.emit();
   }
 
