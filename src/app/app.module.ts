@@ -19,6 +19,9 @@ import { ContactComponent } from './contact/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { SharedModule } from './shared/shared.module';
+import { MenuComponent } from './cote_admin/menu/menu.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { SharedModule } from './shared/shared.module';
     HeroSectionComponent,
     CollectionsComponent,
     ContactComponent,
-    PageContactComponent,    
+    PageContactComponent,
+    MenuComponent,
+    DashboardComponent,    
    
   ],
   
@@ -45,6 +50,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    FontAwesomeModule,
   ],
 
 
