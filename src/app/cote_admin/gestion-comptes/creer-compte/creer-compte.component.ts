@@ -8,6 +8,7 @@ import { faEnvelope, faEye, faEyeDropper, faEyeSlash, faKey, faMapMarkerAlt, faP
   styleUrls: ['./creer-compte.component.css']
 })
 export class CreerCompteComponent {
+  Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
   currentImage: string = this.defaultImage;
 
@@ -42,6 +43,8 @@ export class CreerCompteComponent {
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       tele: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      adresse: ['', Validators.required],
+      type: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPwd: ['', Validators.required],
     }, {
