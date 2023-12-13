@@ -8,6 +8,7 @@ import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@
   styleUrls: ['./creer-compte.component.css']
 })
 export class CreerCompteComponent {
+  Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
   currentImage: string = this.defaultImage;
 

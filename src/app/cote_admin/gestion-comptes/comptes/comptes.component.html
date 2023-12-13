@@ -1,0 +1,39 @@
+<div class="flex-1 h-full overflow-auto bg-gray-100">
+    <app-header-admin [Titre]="Page_Titre"></app-header-admin>
+    <div class="flex flex-col bg-white px-8">
+        <div class="lg:container lg:mx-auto space-y-5 my-8">
+            <p class="text-center font-bold text-3xl">Liste des comptes</p>
+        </div>
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-center rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">Nom Complet</th>
+                        <th scope="col" class="px-6 py-3">Nom d'utilisateur</th>
+                        <th scope="col" class="px-6 py-3">E-mail</th>
+                        <th scope="col" class="px-6 py-3">Téléphone</th>
+                        <th scope="col" class="px-6 py-3">Adresse</th>
+                        <th scope="col" class="px-6 py-3">Opérations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            
+                        </th>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4"></td>
+                        <td class="px-6 py-4 flex justify-around cursor-pointer">
+                            <fa-icon [icon]="modifier"></fa-icon>
+                            <fa-icon [icon]="supprimer"></fa-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

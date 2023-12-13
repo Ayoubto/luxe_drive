@@ -24,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
 import { CreerCompteComponent } from './cote_admin/gestion-comptes/creer-compte/creer-compte.component';
 import { HeaderAdminComponent } from './cote_admin/header-admin/header-admin.component';
+import { ComptesComponent } from './cote_admin/gestion-comptes/comptes/comptes.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HeaderAdminComponent } from './cote_admin/header-admin/header-admin.com
     MenuComponent,
     DashboardComponent,
     CreerCompteComponent,
-    HeaderAdminComponent,    
+    HeaderAdminComponent,
+    ComptesComponent,    
    
   ],
   

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-admin',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-admin.component.css']
 })
 export class HeaderAdminComponent {
-
+  @Input() Titre: any;
 }
