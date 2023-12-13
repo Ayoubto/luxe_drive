@@ -23,6 +23,7 @@ import { MenuComponent } from './cote_admin/menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
 import { CreerCompteComponent } from './cote_admin/gestion-comptes/creer-compte/creer-compte.component';
+import { HeaderAdminComponent } from './cote_admin/header-admin/header-admin.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CreerCompteComponent } from './cote_admin/gestion-comptes/creer-compte/
     PageContactComponent,
     MenuComponent,
     DashboardComponent,
-    CreerCompteComponent,    
+    CreerCompteComponent,
+    HeaderAdminComponent,    
    
   ],
   
