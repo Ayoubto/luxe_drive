@@ -22,6 +22,7 @@ import { SharedModule } from './shared/shared.module';
 import { MenuComponent } from './cote_admin/menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
+import { CreerCompteComponent } from './cote_admin/gestion-comptes/creer-compte/creer-compte.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
     ContactComponent,
     PageContactComponent,
     MenuComponent,
-    DashboardComponent,    
+    DashboardComponent,
+    CreerCompteComponent,    
    
   ],
   
