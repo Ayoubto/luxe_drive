@@ -31,6 +31,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TestComponent } from './test/test.component';
 import { MatTableModule } from '@angular/material/table'; // Import MatTableModule from Angular Material
+import { CustomPaginatorIntl } from './cote_admin/gestion-comptes/comptes/custom-paginator-intl'; // Path to your custom paginator service
+import { MatPaginatorIntl } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,7 @@ import { MatTableModule } from '@angular/material/table'; // Import MatTableModu
   ],
 
 
-  providers: [],
+  providers: [{provide: MatPaginatorIntl, useClass: CustomPaginatorIntl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,6 +25,7 @@ export class TestComponent implements OnInit{
   
   ngOnInit() {
     this.getData();
+   
   }
   getData() {
     this.ClientService.getSomeData().subscribe(

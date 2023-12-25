@@ -1,10 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginator,MatPaginatorIntl , MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {ClientService} from '../../../client.service'
-
-
 
 @Component({
   selector: 'app-comptes',
@@ -13,6 +11,7 @@ import {ClientService} from '../../../client.service'
 
 
 })
+
 export class ComptesComponent implements OnInit{
   Page_Titre="Gestion des Comptes"
   inputValue: string = ''
@@ -27,6 +26,7 @@ export class ComptesComponent implements OnInit{
   responseData: any[]=[];
   ngOnInit() {
     this.getData();
+  
   }
   getData() {
     this.ClientService.getSomeData().subscribe(
