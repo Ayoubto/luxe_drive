@@ -81,8 +81,6 @@ export interface PeriodicElement {
   adress:string;
   phone:string;
   actions:string
- 
-
-  
+   
 }
 
