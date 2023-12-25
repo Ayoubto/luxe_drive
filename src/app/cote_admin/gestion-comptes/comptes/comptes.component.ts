@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {ClientService} from '../../../client.service'
 
@@ -41,7 +41,7 @@ export class ComptesComponent implements OnInit{
     );
   }
 
-  Searsh() {
+  Search() {
     if (this.inputValue === '') {
       this.dataSource.data = this.responseData; // Reset to original data if search input is empty
     } else {
@@ -65,8 +65,7 @@ export class ComptesComponent implements OnInit{
   }
 
   onInputChange() {
-   
-    this.Searsh();
+    this.Search();
   }
 
   //Icons Font Awesome
