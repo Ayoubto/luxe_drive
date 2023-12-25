@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchCarsComponent } from './voitures/search-cars/search-cars.component';
@@ -25,7 +25,12 @@ import { DashboardComponent } from './cote_admin/dashboard/dashboard.component';
 import { CreerCompteComponent } from './cote_admin/gestion-comptes/creer-compte/creer-compte.component';
 import { HeaderAdminComponent } from './cote_admin/header-admin/header-admin.component';
 import { ComptesComponent } from './cote_admin/gestion-comptes/comptes/comptes.component';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TestComponent } from './test/test.component';
+import { MatTableModule } from '@angular/material/table'; // Import MatTableModule from Angular Material
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +52,8 @@ import { ComptesComponent } from './cote_admin/gestion-comptes/comptes/comptes.c
     DashboardComponent,
     CreerCompteComponent,
     HeaderAdminComponent,
-    ComptesComponent,    
+    ComptesComponent,
+    TestComponent,    
    
   ],
   
@@ -57,6 +63,12 @@ import { ComptesComponent } from './cote_admin/gestion-comptes/comptes/comptes.c
     ReactiveFormsModule,
     SharedModule,
     FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatTableModule
   ],
 
 
