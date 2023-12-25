@@ -6,6 +6,7 @@ import { PageReservationComponent } from './page-reservation/page-reservation.co
 import { PageHomeComponent } from './page-home/page-home.component';
 import {ComptesComponent} from './cote_admin/gestion-comptes/comptes/comptes.component'
 import {CreerCompteComponent} from './cote_admin/gestion-comptes/creer-compte/creer-compte.component'
+import { DashboardComponent}  from './cote_admin/dashboard/dashboard.component'
 const routes: Routes = [
   {path:"home",component:PageHomeComponent},
   {path:"contact",component:PageContactComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:"reservation",component:PageReservationComponent},
   {path:"accueil/gestion-des-comptes",component:ComptesComponent},
   {path:"accueil/ajouter-compte",component:CreerCompteComponent},
-  {path:"**",redirectTo:"home",pathMatch:"full"}
+  {path:"accueil",component:DashboardComponent},
+  {path:"**",redirectTo:"accueil",pathMatch:"full"}
 ];
 
 @NgModule({
