@@ -34,6 +34,8 @@ import { MatTableModule } from '@angular/material/table'; // Import MatTableModu
 import { CustomPaginatorIntl } from './cote_admin/gestion-comptes/comptes/custom-paginator-intl'; // Path to your custom paginator service
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
+import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { MatSortModule } from '@angular/material/sort';
     CreerCompteComponent,
     HeaderAdminComponent,
     ComptesComponent,
-    TestComponent, 
+    TestComponent,
+    PreReservationsComponent,
+    ReservationsComponent, 
      
    
   ],

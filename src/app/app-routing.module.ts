@@ -7,15 +7,19 @@ import { PageHomeComponent } from './page-home/page-home.component';
 import {ComptesComponent} from './cote_admin/gestion-comptes/comptes/comptes.component'
 import {CreerCompteComponent} from './cote_admin/gestion-comptes/creer-compte/creer-compte.component'
 import { DashboardComponent}  from './cote_admin/dashboard/dashboard.component'
+import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
+import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
 const routes: Routes = [
   {path:"home",component:PageHomeComponent},
   {path:"contact",component:PageContactComponent},
   {path:"agences",component:PageAgencesComponent},
   {path:"reservation",component:PageReservationComponent},
-  {path:"accueil/gestion-des-comptes",component:ComptesComponent},
-  {path:"accueil/ajouter-compte",component:CreerCompteComponent},
-  {path:"accueil",component:DashboardComponent},
-  {path:"**",redirectTo:"accueil",pathMatch:"full"}
+  {path:"comptes",component:ComptesComponent},
+  {path:"ajouter-compte",component:CreerCompteComponent},
+  {path:"pre-reservations",component:PreReservationsComponent},
+  {path:"reservations",component:ReservationsComponent},
+  {path:"dashboard",component:DashboardComponent},
+  {path:"**",redirectTo:"dashboard",pathMatch:"full"}
 ];
 
 @NgModule({
