@@ -38,6 +38,9 @@ import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-
 import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
 import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
 import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
+import { InboxComponent } from './cote_admin/inbox/inbox.component';
+import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
+import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-age
     PreReservationsComponent,
     ReservationsComponent,
     AgencesComponent,
-    AjouterAgenceComponent, 
+    AjouterAgenceComponent,
+    InboxComponent,
+    VoituresComponent,
+    AjouterVoitureComponent, 
      
    
   ],

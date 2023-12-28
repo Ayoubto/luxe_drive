@@ -11,6 +11,9 @@ import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-
 import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
 import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
 import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
+import { InboxComponent } from './cote_admin/inbox/inbox.component';
+import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
+import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
   {path:"contact",component:PageContactComponent},
@@ -21,8 +24,11 @@ const routes: Routes = [
   {path:"comptes",component:ComptesComponent},
   {path:"ajouter-agence",component:AjouterAgenceComponent},
   {path:"agences",component:AgencesComponent},
+  {path:"ajouter-voiture",component:AjouterVoitureComponent},
+  {path:"voitures",component:VoituresComponent},
   {path:"pre-reservations",component:PreReservationsComponent},
   {path:"reservations",component:ReservationsComponent},
+  {path:"inbox",component:InboxComponent},
   {path:"**",redirectTo:"dashboard",pathMatch:"full"}
 ];
 
