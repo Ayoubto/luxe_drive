@@ -36,6 +36,8 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
 import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
+import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
+import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { ReservationsComponent } from './cote_admin/gestion-reservations/reserva
     ComptesComponent,
     TestComponent,
     PreReservationsComponent,
-    ReservationsComponent, 
+    ReservationsComponent,
+    AgencesComponent,
+    AjouterAgenceComponent, 
      
    
   ],

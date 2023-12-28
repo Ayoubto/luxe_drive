@@ -1,0 +1,84 @@
+<div class="flex-1 h-full overflow-auto bg-gray-100">
+    <app-header-admin [Titre]="Page_Titre"></app-header-admin>
+    <div class="flex flex-col bg-white px-8">
+        <div class="lg:container lg:mx-auto space-y-5 my-8">
+            <p class="text-center font-bold text-3xl">Ajouter une agence</p>
+        </div>
+        <form [formGroup]="ajouterAgence" (ngSubmit)="onSubmit()">
+            <div class="flex justify-between mb-10">
+                <label for="nom" class="w-1/2 mr-6 block font-semibold">
+                    <span>Agence :</span>
+                    <input
+                      type="text"
+                      class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                      id="nom"
+                      formControlName="nom"
+                      required
+                    />
+                </label>
+                <label for="manager" class="w-1/2 block font-semibold">
+                    <span>Manager :</span>
+                    <select
+                        class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                        id="manager"
+                        formControlName="manager"
+                        required
+                    >
+                        <option value="" disabled selected hidden></option>
+                        <option *ngFor="let option of Managers" [value]="option">{{ option }}</option>
+                    </select>
+                </label>
+            </div>
+            <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
+            <div class="flex justify-between mb-10">
+                <label for="email" class="w-1/2 mr-6 block font-semibold">
+                    <span>Adresse E-mail :</span>
+                    <div class="relative">
+                        <input
+                            type="email"
+                            class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                            id="email"
+                            formControlName="email"
+                            required
+                        />
+                        <fa-icon [icon]="email" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
+                    </div>
+                </label>
+
+                <label for="tele" class="w-1/2 block font-semibold">
+                    <span>Téléphone :</span>
+                    <div class="relative">
+                        <input
+                            type="text"
+                            class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                            id="tele"
+                            formControlName="tele"
+                            required
+                        />
+                        <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
+                    </div>
+                </label>
+            </div>
+            <div class="mb-10">
+                <label for="adresse" class="font-semibold">
+                    <span>Adresse :</span>
+                    <div class="relative">
+                        <input
+                            type="text"
+                            class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                            id="adresse"
+                            formControlName="adresse"
+                            required
+                        />
+                        <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
+                    </div>
+                </label>
+            </div>
+            <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
+            <div class="flex justify-end mb-8">
+                <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Annuler</button>
+                <button type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -29,10 +29,24 @@
             </div>
         </div>
 
-        <a routerLink="" class="nav-link block px-8 py-2 my-4 hover:bg-white">
-            <fa-icon [icon]="agences" class="mr-2"></fa-icon>
-            Gestion des agences
-        </a>
+        <div class="relative">
+            <a class="nav-link block px-8 py-2 my-4 hover:bg-white cursor-pointer" (click)="toggleSubMenu('gestionAgences')">
+                <fa-icon [icon]="agences" class="mr-2"></fa-icon>
+                Gestion des agences
+                <fa-icon [icon]="openSubMenus.includes('gestionAgences') ? chevronDown : chevronRight" class="float-right"></fa-icon>
+            </a>
+            <!-- Submenu -->
+            <div *ngIf="openSubMenus.includes('gestionAgences')">
+                <a routerLink="ajouter-agence" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                    <fa-icon [icon]="circle" class="mr-2"></fa-icon>
+                    Ajouter une agence
+                </a>
+                <a routerLink="agences" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                    <fa-icon [icon]="circle" class="mr-2"></fa-icon>
+                    Agences
+                </a>
+            </div>
+        </div>
 
         <a routerLink="" class="nav-link block px-8 py-2 my-4 hover:bg-white">
             <fa-icon [icon]="voitures" class="mr-2"></fa-icon>

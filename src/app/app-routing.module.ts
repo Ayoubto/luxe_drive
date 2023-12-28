@@ -9,16 +9,20 @@ import {CreerCompteComponent} from './cote_admin/gestion-comptes/creer-compte/cr
 import { DashboardComponent}  from './cote_admin/dashboard/dashboard.component'
 import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
 import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
+import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
+import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
 const routes: Routes = [
-  {path:"home",component:PageHomeComponent},
+  {path:"accueil",component:PageHomeComponent},
   {path:"contact",component:PageContactComponent},
-  {path:"agences",component:PageAgencesComponent},
-  {path:"reservation",component:PageReservationComponent},
-  {path:"comptes",component:ComptesComponent},
+  {path:"nos-agences",component:PageAgencesComponent},
+  {path:"nos-voitures",component:PageReservationComponent},
+  {path:"dashboard",component:DashboardComponent},
   {path:"ajouter-compte",component:CreerCompteComponent},
+  {path:"comptes",component:ComptesComponent},
+  {path:"ajouter-agence",component:AjouterAgenceComponent},
+  {path:"agences",component:AgencesComponent},
   {path:"pre-reservations",component:PreReservationsComponent},
   {path:"reservations",component:ReservationsComponent},
-  {path:"dashboard",component:DashboardComponent},
   {path:"**",redirectTo:"dashboard",pathMatch:"full"}
 ];
 
