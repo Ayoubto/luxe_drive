@@ -34,6 +34,13 @@ import { MatTableModule } from '@angular/material/table'; // Import MatTableModu
 import { CustomPaginatorIntl } from './cote_admin/gestion-comptes/comptes/custom-paginator-intl'; // Path to your custom paginator service
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
+import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
+import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
+import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
+import { InboxComponent } from './cote_admin/inbox/inbox.component';
+import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
+import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +64,14 @@ import { MatSortModule } from '@angular/material/sort';
     CreerCompteComponent,
     HeaderAdminComponent,
     ComptesComponent,
-    TestComponent, 
+    TestComponent,
+    PreReservationsComponent,
+    ReservationsComponent,
+    AgencesComponent,
+    AjouterAgenceComponent,
+    InboxComponent,
+    VoituresComponent,
+    AjouterVoitureComponent, 
      
    
   ],

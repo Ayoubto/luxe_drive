@@ -7,15 +7,29 @@ import { PageHomeComponent } from './page-home/page-home.component';
 import {ComptesComponent} from './cote_admin/gestion-comptes/comptes/comptes.component'
 import {CreerCompteComponent} from './cote_admin/gestion-comptes/creer-compte/creer-compte.component'
 import { DashboardComponent}  from './cote_admin/dashboard/dashboard.component'
+import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
+import { ReservationsComponent } from './cote_admin/gestion-reservations/reservations/reservations.component';
+import { AgencesComponent } from './cote_admin/gestion-agences/agences/agences.component';
+import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-agence/ajouter-agence.component';
+import { InboxComponent } from './cote_admin/inbox/inbox.component';
+import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
+import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 const routes: Routes = [
-  {path:"home",component:PageHomeComponent},
+  {path:"accueil",component:PageHomeComponent},
   {path:"contact",component:PageContactComponent},
-  {path:"agences",component:PageAgencesComponent},
-  {path:"reservation",component:PageReservationComponent},
-  {path:"accueil/gestion-des-comptes",component:ComptesComponent},
-  {path:"accueil/ajouter-compte",component:CreerCompteComponent},
-  {path:"accueil",component:DashboardComponent},
-  {path:"**",redirectTo:"accueil",pathMatch:"full"}
+  {path:"nos-agences",component:PageAgencesComponent},
+  {path:"nos-voitures",component:PageReservationComponent},
+  {path:"dashboard",component:DashboardComponent},
+  {path:"ajouter-compte",component:CreerCompteComponent},
+  {path:"comptes",component:ComptesComponent},
+  {path:"ajouter-agence",component:AjouterAgenceComponent},
+  {path:"agences",component:AgencesComponent},
+  {path:"ajouter-voiture",component:AjouterVoitureComponent},
+  {path:"voitures",component:VoituresComponent},
+  {path:"pre-reservations",component:PreReservationsComponent},
+  {path:"reservations",component:ReservationsComponent},
+  {path:"inbox",component:InboxComponent},
+  {path:"**",redirectTo:"dashboard",pathMatch:"full"}
 ];
 
 @NgModule({

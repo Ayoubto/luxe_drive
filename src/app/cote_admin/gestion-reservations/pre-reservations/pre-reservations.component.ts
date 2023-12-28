@@ -1,20 +1,30 @@
-
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator,MatPaginatorIntl , MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
-import {ClientService} from '../../../client.service'
+import { Component, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { ClientService } from '../../../client.service';
+import { faCheckCircle, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-comptes',
-  templateUrl: './comptes.component.html',
-  styleUrls: ['./comptes.component.css'],
-
+  selector: 'app-pre-reservations',
+  templateUrl: './pre-reservations.component.html',
+  styleUrls: ['./pre-reservations.component.css']
 })
+export class PreReservationsComponent {
+  Page_Titre="Gestion des Réservations"
 
-export class ComptesComponent implements AfterViewInit{
-  Page_Titre="Gestion des Comptes"
+  agences = [
+    { value: '', label: 'Toutes les agences' },
+    { value: 'tanger-ville', label: 'Agence de Tanger Ville (Siège)' },
+    { value: 'tanger-aeroport', label: 'Agence de Tanger Aéroport' },
+    { value: 'casablanca-ville', label: 'Agence de Casablanca Ville' },
+    { value: 'casablanca-aeroport', label: 'Agence de Casablanca Aéroport' },
+    { value: 'marrakech-ville', label: 'Agence de Marrakech Ville' },
+    { value: 'marrakech-aeroport', label: 'Agence de Marrakech Aéroport' },
+    { value: 'agadir-ville', label: 'Agence de Agadir Ville' },
+    { value: 'agadir-aeroport', label: 'Agence de Agadir Aéroport' },
+    { value: 'tetouan-ville', label: 'Agence de Tétouan Ville' },
+  ];
 
   // constructor 
   constructor(private ClientService: ClientService) { }
@@ -35,7 +45,7 @@ export class ComptesComponent implements AfterViewInit{
     );
   }
 
-  //Recherecher
+  //Rechercher
   inputValue: string = ''
   Search() {
     if (this.inputValue === '') {
@@ -74,7 +84,7 @@ export class ComptesComponent implements AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   //Afficher les colonnes
-  displayedColumns: string[] = ['id', 'name', 'username', 'email', 'tele', 'adresse', 'actions'];
+  displayedColumns: string[] = ['id', 'client', 'tele', 'voiture','depart','retour','prix','actions'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
   //Pagination 
@@ -93,16 +103,18 @@ export class ComptesComponent implements AfterViewInit{
     this.Search();
   }
 
+  confirmer = faCheckCircle
   modifier = faPencil
   supprimer = faTrash
 }
  
 export interface PeriodicElement {
   id:string;
-  name: string;
-  username: string;
-  email:string;
-  tele:string;
-  adresse:string;
+  client: string;
+  tele: string;
+  voiture:string;
+  depart:string;
+  retour:string;
+  prix:string;
   actions:string
 }

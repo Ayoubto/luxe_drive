@@ -19,15 +19,13 @@ export class PageAgencesComponent {
   showDetailsRight3: boolean = false;
 
   showAlternateImage: boolean = false;
-  // toggleDetailsLeft() {
-  //   this.showDetailsLeft = !this.showDetailsLeft;
-  // }
+  
   toggleDetailsLeft() {
       this.showAlternateImage = !this.showAlternateImage;
       const imgElement = document.getElementById('toggleImgLeft') as HTMLImageElement;
     
       if (this.showAlternateImage) {
-        imgElement.src = 'assets/images/Agences/Group 245.svg'; // Remplacez 'chemin_vers_autre_image.png' par le chemin de votre autre image
+        imgElement.src = 'assets/images/Agences/Group 245.svg';
         imgElement.style.transition = 'transform 0.5s ease-in-out';
         imgElement.style.transform = 'rotate(180deg)';
         this.showDetailsLeft = !this.showDetailsLeft;
