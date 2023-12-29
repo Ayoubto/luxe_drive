@@ -81,7 +81,7 @@ export class ComptesComponent implements AfterViewInit{
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit() {
-    this.getData();  
+    this.getData()
   }
 
   ngAfterViewInit() {

@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:"nos-voitures",component:PageReservationComponent},
   {path:"dashboard",component:DashboardComponent},
   {path:"ajouter-compte",component:CreerCompteComponent},
+  {path:"modifier-compte/:id",component:CreerCompteComponent},
   {path:"comptes",component:ComptesComponent},
   {path:"ajouter-agence",component:AjouterAgenceComponent},
   {path:"agences",component:AgencesComponent},

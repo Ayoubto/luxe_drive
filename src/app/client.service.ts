@@ -14,4 +14,8 @@ export class ClientService {
   getSomeData(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/users`);
   }
+
+  getDataById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/users/${id}`);
+  }
 }

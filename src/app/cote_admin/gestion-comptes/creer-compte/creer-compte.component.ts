@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { ActivatedRoute } from '@angular/router';
+import {ClientService} from '../../../client.service'
 
 
 @Component({
@@ -9,6 +11,12 @@ import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@
   styleUrls: ['./creer-compte.component.css']
 })
 export class CreerCompteComponent {
+    // lire Id 
+    hasIdParam: boolean=false;
+  
+    id: number | null=null;
+    responseData: any={};
+
   Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
   currentImage: string = this.defaultImage;
@@ -37,7 +45,7 @@ export class CreerCompteComponent {
 
   creerCompte: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
     this.creerCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -51,6 +59,7 @@ export class CreerCompteComponent {
     }, {
       validators: this.passwordMatchValidator
     });
+   
   }
 
   passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
@@ -60,11 +69,43 @@ export class CreerCompteComponent {
     return password === confirmPwd ? null : { 'passwordMismatch': true };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.id = id ? Number(id) : null;
+      
+      if (this.id !== null) {
+        this.fetchDataById(this.id);
+      } else {
+        this.responseData = null;
+   
+      }
+
+    });
+    
+  }
+  fetchDataById(id: number): void {
+    this.ClientService.getDataById(id).subscribe(
+      (data) => {
+        this.responseData = data; // Assign fetched data to formData
+        
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+        this.responseData = {ERROR:"jfjfjf"}; // Set formData as empty in case of an error
+      
+      }
+    );
+    console.log(this.responseData)
+  }
 
   onSubmit() {
     // Handle form submission logic here
     console.log('Form submitted:', this.creerCompte.value);
+  }
+  onSubmitNotEmpty(){
+    console.log('Form update:', this.creerCompte.value);
+
   }
 
   //Font Awesome icons

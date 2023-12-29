@@ -10,7 +10,7 @@
             <button (click)="onRemoveImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Supprimer</button>
         </div>
         <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
-        <form [formGroup]="creerCompte" (ngSubmit)="onSubmit()">
+        <form [formGroup]="creerCompte" (ngSubmit)="responseData ? onSubmitNotEmpty() : onSubmit()">
             <div class="flex justify-between mb-10">
                 <label for="nom" class="w-1/3 mr-6 block font-semibold">
                     <span>Nom :</span>
@@ -19,6 +19,7 @@
                       class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                       id="nom"
                       formControlName="nom"
+                      [value]="responseData && responseData.name ? responseData.name : ''"
                       required
                     />
                 </label>
@@ -30,6 +31,7 @@
                       class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                       id="prenom"
                       formControlName="prenom"
+                      [value]="responseData && responseData.name ? responseData.name : ''"
                       required
                     />
                 </label>
@@ -41,6 +43,7 @@
                       class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                       id="username"
                       formControlName="username"
+                      [value]="responseData && responseData.username ? responseData.username : ''"
                       required
                     />
                 </label>
@@ -55,6 +58,7 @@
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="email"
                             formControlName="email"
+                            [value]="responseData && responseData.email ? responseData.email : ''"
                             required
                         />
                         <fa-icon [icon]="email" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
@@ -69,6 +73,7 @@
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="tele"
                             formControlName="tele"
+                            [value]="responseData && responseData.phone ? responseData.phone : ''"
                             required
                         />
                         <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
@@ -84,6 +89,7 @@
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="adresse"
                             formControlName="adresse"
+                            [value]="responseData && responseData.name ? responseData.name : ''"
                             required
                         />
                         <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
@@ -143,7 +149,8 @@
             </div>
             <div class="flex justify-end mb-8">
                 <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Annuler</button>
-                <button type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
+                <button *ngIf="!responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
+                <button *ngIf="responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modifier</button>
             </div>
         </form>
     </div>
