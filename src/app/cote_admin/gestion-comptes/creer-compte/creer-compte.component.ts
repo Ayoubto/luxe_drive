@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,AbstractControl } from '@angular/forms';
 import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import {ClientService} from '../../../client.service'
@@ -42,6 +42,10 @@ export class CreerCompteComponent {
   onRemoveImage() {
     this.currentImage = this.defaultImage;
   }
+  getControlErrors(controlName: string, errorType: string): boolean {
+    const control = this.creerCompte.get(controlName);
+    return control?.hasError(errorType) || false;
+  }
 
   creerCompte: FormGroup;
 
@@ -51,22 +55,25 @@ export class CreerCompteComponent {
       prenom: ['', Validators.required],
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       adresse: ['', Validators.required],
       type: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPwd: ['', Validators.required],
-    }, {
-      validators: this.passwordMatchValidator
-    });
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
+      confirmPwd: ['', [Validators.required]],
+    },{Validators:this.passwordMatchValidator }
+    );
    
   }
 
-  passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
-    const password = group.get('password')?.value;
-    const confirmPwd = group.get('confirmPwd')?.value;
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPwd')?.value;
 
-    return password === confirmPwd ? null : { 'passwordMismatch': true };
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPwd')?.setErrors({ mismatch: true });
+    } else {
+      formGroup.get('confirmPwd')?.setErrors(null);
+    }
   }
 
   ngOnInit() {
@@ -98,10 +105,11 @@ export class CreerCompteComponent {
     );
     console.log(this.responseData)
   }
-
+  formSubmitted = false;
   onSubmit() {
     // Handle form submission logic here
-    console.log('Form submitted:', this.creerCompte.value);
+    console.log('Form submitted eroors :', this.creerCompte.get("confirmPwd"));
+    this.formSubmitted=true
   }
   onSubmitNotEmpty(){
     console.log('Form update:', this.creerCompte.value);
