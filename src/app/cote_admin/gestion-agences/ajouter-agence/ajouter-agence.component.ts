@@ -11,7 +11,7 @@ import { faEnvelope, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg
 export class AjouterAgenceComponent {
   Page_Titre="Gestion des Agences"
 
-  Managers = []
+  Managers = ["Firdaous","Abdo","Adnan","ayoub"]
 
   ajouterAgence: FormGroup;
 
@@ -20,16 +20,17 @@ export class AjouterAgenceComponent {
       nom: ['', Validators.required],
       manager: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       adresse: ['', Validators.required],
     });
   }
 
   ngOnInit() {}
-
+  formSubmitted = false;
   onSubmit() {
     // Handle form submission logic here
     console.log('Form submitted:', this.ajouterAgence.value);
+    this.formSubmitted = true;
   }
 
   //Font Awesome icons

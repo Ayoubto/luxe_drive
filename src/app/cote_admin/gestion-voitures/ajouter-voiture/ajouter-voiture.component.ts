@@ -46,10 +46,10 @@ onRemoveImage() {
  this.currentImage = this.defaultImage;
 }
 
-creerCompte: FormGroup;
+creervoiture: FormGroup;
 
 constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
- this.creerCompte = this.formBuilder.group({
+ this.creervoiture = this.formBuilder.group({
    marque: ['', Validators.required],
    modele: ['', Validators.required],
    quantite : ['', [Validators.required]],
@@ -58,9 +58,8 @@ constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,priva
    boite: ['', Validators.required],
    consommation: ['', Validators.required],
    prix: ['', Validators.required],
- }, {
-   validators: this.passwordMatchValidator
- });
+ }
+ );
 
 }
 
@@ -100,13 +99,20 @@ fetchDataById(id: number): void {
  );
  console.log(this.responseData)
 }
-
+formSubmitted = false;
 onSubmit() {
  // Handle form submission logic here
- console.log('Form submitted:', this.creerCompte.value);
+ console.log('Form submitted:', this.creervoiture.value);
+ this.formSubmitted = true;
 }
+
+clearForm() {
+  this.creervoiture.reset(); // Reset the entire form
+  this.formSubmitted = false;
+}
+
 onSubmitNotEmpty(){
- console.log('Form update:', this.creerCompte.value);
+ console.log('Form update:', this.creervoiture.value);
 
 }
 

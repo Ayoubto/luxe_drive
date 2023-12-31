@@ -150,15 +150,15 @@
                         </label>
                     </div>
                 </label>
-                <div class="w-2/3 ml-12">
-                    <label for="password" class="font-semibold">
+                <div class="w-2/3 ml-12 ">
+                    <label for="password" class="font-semibold ">
                         <span>Mot de passe :</span>
                         <div>
                       <div class="relative">
                             <fa-icon [icon]="password" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                             <input
                                 type="{{ hidePassword ? 'password' : 'text' }}"
-                                class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                                class="w-full block p-4 pl-12 mt-4 mb-2 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                                 id="password"
                                 formControlName="password"
                                 required

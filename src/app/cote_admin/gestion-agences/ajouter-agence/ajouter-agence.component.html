@@ -15,11 +15,14 @@
                       formControlName="nom"
                       required
                     />
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['nom'].touched) && ajouterAgence.controls['nom'].errors?.['required']">
+                        Nom d'agence est obligatoire
+                    </div> 
                 </label>
                 <label for="manager" class="w-1/2 block font-semibold">
                     <span>Manager :</span>
                     <select
-                        class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                        class="w-full block pl-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="manager"
                         formControlName="manager"
                         required
@@ -27,6 +30,9 @@
                         <option value="" disabled selected hidden></option>
                         <option *ngFor="let option of Managers" [value]="option">{{ option }}</option>
                     </select>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['manager'].touched) && ajouterAgence.controls['manager'].errors?.['required']">
+                        Manager d'agence est obligatoire
+                    </div> 
                 </label>
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
@@ -43,6 +49,12 @@
                         />
                         <fa-icon [icon]="email" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email'].touched) && ajouterAgence.controls['email'].errors?.['required']">
+                        email d'agence est obligatoire
+                    </div> 
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email'].touched) && ajouterAgence.controls['email'].errors?.['email']">
+                        ecrire correct email
+                    </div> 
                 </label>
 
                 <label for="tele" class="w-1/2 block font-semibold">
@@ -57,6 +69,12 @@
                         />
                         <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['tele'].touched) && ajouterAgence.controls['tele'].errors?.['patter']">
+                        ecrire correct numero telephone
+                    </div> 
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['tele'].touched) && ajouterAgence.controls['tele'].errors?.['required']">
+                        numero telephone est obligatiore
+                    </div> 
                 </label>
             </div>
             <div class="mb-10">
@@ -72,6 +90,9 @@
                         />
                         <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['adresse'].touched) && ajouterAgence.controls['adresse'].errors?.['required']">
+                        adresse d'agence est obligatiore
+                    </div> 
                 </label>
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>

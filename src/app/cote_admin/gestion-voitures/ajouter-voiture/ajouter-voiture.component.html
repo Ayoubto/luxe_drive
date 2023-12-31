@@ -11,7 +11,7 @@
             <button (click)="onRemoveImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Supprimer</button>
         </div>
         <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
-        <form [formGroup]="creerCompte" (ngSubmit)="responseData ? onSubmitNotEmpty() : onSubmit()">
+        <form [formGroup]="creervoiture" (ngSubmit)="responseData ? onSubmitNotEmpty() : onSubmit()">
             <div class="flex justify-between mb-10">
                 <label for="marque" class="w-1/3 mr-6 block font-semibold">
                     <span>Marque</span>
@@ -26,6 +26,9 @@
                         />
                         <fa-icon [icon]="marque" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>                        
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['marque'].touched) && creervoiture.controls['marque'].errors?.['required']">
+                        Marque de voiture obligatoire 
+                    </div> 
 
                 </label>
 
@@ -42,6 +45,9 @@
                         /> 
                        <fa-icon [icon]="modele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>                        
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['modele'].touched) && creervoiture.controls['modele'].errors?.['required']">
+                        modele de voiture obligatoire 
+                    </div> 
                     
                 </label>
 
@@ -58,7 +64,9 @@
                         />
                         <fa-icon [icon]="Quantity" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>                        
                     </div>
- 
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['quantite'].touched) && creervoiture.controls['quantite'].errors?.['required']">
+                        quantite de voiture obligatoire 
+                    </div> 
                 </label>
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
@@ -67,7 +75,7 @@
                     <span>Portes Energie</span>
                     <div class="relative">
                         <select
-                            class="w-full block pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                            class="w-full block pl-12  mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="Portes_Energie"
                             formControlName="Portes_Energie"
                             required
@@ -78,6 +86,9 @@
                         </select>
                         <fa-icon [icon]="energy" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['Portes_Energie'].touched) && creervoiture.controls['Portes_Energie'].errors?.['required']">
+                        portes energie de voiture obligatoire 
+                    </div> 
                 </label>
 
                 <label for="boite" class="w-1/4 block font-semibold mx-3">
@@ -95,6 +106,9 @@
 
                         <fa-icon [icon]="boite" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['boite'].touched) && creervoiture.controls['boite'].errors?.['required']">
+                        boite de voiture obligatoire 
+                    </div> 
                 </label>
 
                 <label for="capacity" class="w-1/4 block font-semibold mx-3">
@@ -111,6 +125,9 @@
 
                         <fa-icon [icon]="modele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['capacity'].touched) && creervoiture.controls['capacity'].errors?.['required']">
+                        capacite de voiture obligatoire 
+                    </div> 
                 </label>
 
                 <label for="consommation" class="w-1/4 block font-semibold mx-3">
@@ -127,6 +144,9 @@
 
                         <fa-icon [icon]="concommation" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['consommation'].touched) && creervoiture.controls['consommation'].errors?.['required']">
+                        consommation de voiture obligatoire 
+                    </div> 
                 </label>
 
 
@@ -144,13 +164,16 @@
                             required
                         />
                         <fa-icon [icon]="price" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
-                        
-                    </div>
+
+                    </div>                        
+                        <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['prix'].touched) && creervoiture.controls['prix'].errors?.['required']">
+                            prix  de voiture obligatoire 
+                        </div> 
                 </label>
             </div>
 
             <div class="flex justify-end mb-8">
-                <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Annuler</button>
+                <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4" onclick="clearForm()">Annuler</button>
                 <button *ngIf="!responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
                 <button *ngIf="responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modifier</button>
             </div>
