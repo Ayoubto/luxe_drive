@@ -11,6 +11,10 @@ import {ClientService} from '../../../client.service'
   styleUrls: ['./creer-compte.component.css']
 })
 export class CreerCompteComponent {
+ 
+
+
+
     // lire Id 
     hasIdParam: boolean=false;
   

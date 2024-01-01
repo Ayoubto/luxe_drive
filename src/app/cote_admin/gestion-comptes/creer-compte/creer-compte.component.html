@@ -22,7 +22,7 @@
                       [value]="responseData && responseData.name ? responseData.name : ''"
                       required
                     />
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creerCompte.controls['nom'].touched) && creerCompte.controls['nom'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal " *ngIf="(formSubmitted || creerCompte.controls['nom'].touched) && creerCompte.controls['nom'].errors?.['required']">
                         Nom est obligatoire
                       </div>
                     

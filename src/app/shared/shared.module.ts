@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { PopupInscriptionComponent } from './popup-inscription/popup-inscription.component';
 import { PopupConnextionComponent } from './popup-connextion/popup-connextion.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     AppRoutingModule,
+    ReactiveFormsModule
 
   ],
   exports:[

@@ -1,4 +1,4 @@
-<div class="  w-full py-4 lg:px-10 px-4 mx-auto  flex items-center justify-between bg-black">
+<div class="  w-full py-2 lg:px-10 px-4 mx-auto  flex items-center justify-between bg-black">
 
   <div>
     <img src="assets/images/Heading.svg" alt="" class="w-[10rem] flex-shrink-0 ">
@@ -10,12 +10,20 @@
     <a routerLink="nos-agences" class="text-white hover:text-gray-300">Agences</a>
     <a routerLink="contact" class="text-white hover:text-gray-300">Contact</a>
 
+
   </div>
 
 
-  <div>
-    <button (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-black text-white font-semibold py-[8px] rounded-3xl px-[20px] hidden md:flex ">Se connecter / S’inscrire</button>
-  </div>
+  
+    <button  *ngIf="!isLoggedIn" (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-black text-white font-semibold py-[8px] rounded-3xl px-[20px] hidden md:flex ">Se connecter / S’inscrire</button>
+  
+
+    <div *ngIf="isLoggedIn" class="flex items-center space-x-2">
+      <img src="../../../../assets/images/users/Frame 85.svg" alt="" class=" rounded-full">
+      <p class="text-white  font-bold ">Ahmed</p>      
+    </div>
+
+
   <div class="md:hidden">
     <button (click)="toggleMenu()" class="text-white focus:outline-none">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,7 +38,7 @@
 
 
 
-<app-popup-inscription *ngIf="isPopupOpen" (close)="closePopupins()"></app-popup-inscription>
+<app-popup-inscription  *ngIf="isPopupOpen" (close)="closePopupins()"    (dataEvent)="receiveData($event)"></app-popup-inscription>
 
 <!--
 <ul class="md:flex justify-center space-x-8 font-semibold hidden  ">

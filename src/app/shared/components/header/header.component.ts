@@ -7,6 +7,20 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  isLoggedIn = false;
+  receivedDataa: string="";
+
+  receiveData(data: boolean) {
+    this.isLoggedIn = data; // Assign the received data from child to a variable in the parent
+  }
+
+  ngOnInit(){
+    const token = localStorage.getItem('token'); // Replace 'token' with the key you use to store the token
+    if(!!token){
+      this.isLoggedIn=true
+    }
+
+  }
 
   isPopupOpen: boolean = false;
   isMenuOpen: boolean = false;
