@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faTachometerAlt, faUserCog, faBuilding, faCar, faCalendarAlt, faInbox, faRightFromBracket, faChevronRight, faChevronDown, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { LogoutService } from '../logout.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +9,13 @@ import { faTachometerAlt, faUserCog, faBuilding, faCar, faCalendarAlt, faInbox, 
 })
 export class MenuComponent {
   openSubMenus: string[] = [];
+
+  constructor(private logoutService: LogoutService) {}
+  onDeleteToken(): void {
+    const tokenKey = 'token';
+    this.logoutService.deleteTokenFromLocalStorage();
+    window.location.href = '/accueil';
+  }
 
   //Font Awesome icons
   dashboard = faTachometerAlt;
@@ -23,10 +31,8 @@ export class MenuComponent {
 
   toggleSubMenu(subMenu: string): void {
     if (this.openSubMenus.includes(subMenu)) {
-      // Submenu is already open, close it
       this.openSubMenus = this.openSubMenus.filter(item => item !== subMenu);
     } else {
-      // Submenu is closed, open it
       this.openSubMenus.push(subMenu);
     }
   }

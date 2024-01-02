@@ -29,14 +29,26 @@ export class PopupInscriptionComponent {
     email: ['', [Validators.required, Validators.email]],
     telephone: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
     password: ['',[ Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-    confirmePassword: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-  }
-  );
+    confirmePassword: ['', [Validators.required, this.matchValues('password') ]],
+  });
   this.se_connecter=this.formBuilder.group({
     email:['',[Validators.required, Validators.email]],
     password:['',[Validators.required]]
   })
 };
+
+matchValues(matchTo: string) {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const password = control.root.get(matchTo);
+    const confirmPassword = control.value;
+    
+    if (password && confirmPassword !== password.value) {
+      return { mismatch: true };
+    }
+    return null;
+  };
+}
+
   getControlErrors(formGroup: FormGroup,controlName: string, errorType: string): boolean {
     const control = formGroup.get(controlName);
     return control?.hasError(errorType) || false;

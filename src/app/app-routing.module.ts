@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:"pre-reservations",component:PreReservationsComponent},
   {path:"reservations",component:ReservationsComponent},
   {path:"inbox",component:InboxComponent},
-  {path:"**",redirectTo:"dashboard",pathMatch:"full"}
+  //{path:"**",redirectTo:"accueil",pathMatch:"full"}
 ];
 
 @NgModule({

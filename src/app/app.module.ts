@@ -29,9 +29,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { TestComponent } from './test/test.component';
-import { MatTableModule } from '@angular/material/table'; // Import MatTableModule from Angular Material
-import { CustomPaginatorIntl } from './cote_admin/gestion-comptes/comptes/custom-paginator-intl'; // Path to your custom paginator service
+import { MatTableModule } from '@angular/material/table';
+import { CustomPaginatorIntl } from './cote_admin/gestion-comptes/comptes/custom-paginator-intl'; // Path to custom paginator service
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PreReservationsComponent } from './cote_admin/gestion-reservations/pre-reservations/pre-reservations.component';
@@ -64,7 +63,6 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
     CreerCompteComponent,
     HeaderAdminComponent,
     ComptesComponent,
-    TestComponent,
     PreReservationsComponent,
     ReservationsComponent,
     AgencesComponent,
@@ -72,8 +70,6 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
     InboxComponent,
     VoituresComponent,
     AjouterVoitureComponent, 
-     
-   
   ],
   
   imports: [

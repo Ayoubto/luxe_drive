@@ -14,7 +14,7 @@ export class ContactComponent implements OnInit {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', Validators.required],
+      tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       objet: ['', Validators.required],
       message: ['', Validators.required],
     });
@@ -22,8 +22,9 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {}
 
+  formSubmitted = false;
   onSubmit() {
-    // Handle form submission logic here
+    this.formSubmitted=true
     console.log('Form submitted:', this.contactForm.value);
   }
 }
