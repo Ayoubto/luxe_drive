@@ -14,8 +14,10 @@ import { AjouterAgenceComponent } from './cote_admin/gestion-agences/ajouter-age
 import { InboxComponent } from './cote_admin/inbox/inbox.component';
 import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
+import { ProfilComponent } from './shared/components/profil/profil.component';
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
+  {path:"profil",component:ProfilComponent},
   {path:"contact",component:PageContactComponent},
   {path:"nos-agences",component:PageAgencesComponent},
   {path:"nos-voitures",component:PageReservationComponent},
@@ -30,7 +32,7 @@ const routes: Routes = [
   {path:"pre-reservations",component:PreReservationsComponent},
   {path:"reservations",component:ReservationsComponent},
   {path:"inbox",component:InboxComponent},
-  //{path:"**",redirectTo:"accueil",pathMatch:"full"}
+  {path:"**",redirectTo:"accueil",pathMatch:"full"}
 ];
 
 @NgModule({

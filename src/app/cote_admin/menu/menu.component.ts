@@ -11,8 +11,7 @@ export class MenuComponent {
   openSubMenus: string[] = [];
 
   constructor(private logoutService: LogoutService) {}
-  onDeleteToken(): void {
-    const tokenKey = 'token';
+  seDeconnecter(): void {
     this.logoutService.deleteTokenFromLocalStorage();
     window.location.href = '/accueil';
   }

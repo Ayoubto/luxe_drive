@@ -5,14 +5,14 @@ import { PopupInscriptionComponent } from './popup-inscription/popup-inscription
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProfilComponent } from './components/profil/profil.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     PopupInscriptionComponent,
-
-
+    ProfilComponent,
   ],
   imports: [
     CommonModule,
