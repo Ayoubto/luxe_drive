@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { PopupInscriptionComponent } from './popup-inscription/popup-inscription.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -16,8 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   exports:[
     HeaderComponent,

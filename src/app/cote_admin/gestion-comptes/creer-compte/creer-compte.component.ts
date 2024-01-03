@@ -11,15 +11,10 @@ import {ClientService} from '../../../client.service'
   styleUrls: ['./creer-compte.component.css']
 })
 export class CreerCompteComponent {
- 
-
-
-
-    // lire Id 
-    hasIdParam: boolean=false;
+  hasIdParam: boolean=false;
   
-    id: number | null=null;
-    responseData: any={};
+  id: number | null=null;
+  responseData: any={};
 
   Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
@@ -63,21 +58,20 @@ export class CreerCompteComponent {
       adresse: ['', Validators.required],
       type: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-      confirmPwd: ['', [Validators.required]],
-    },{Validators:this.passwordMatchValidator }
-    );
-   
+      confirmPwd: ['', [Validators.required, this.matchValues('password')]],
+    });
   }
 
-  passwordMatchValidator(formGroup: FormGroup) {
-    const password = formGroup.get('password')?.value;
-    const confirmPassword = formGroup.get('confirmPwd')?.value;
-
-    if (password !== confirmPassword) {
-      formGroup.get('confirmPwd')?.setErrors({ mismatch: true });
-    } else {
-      formGroup.get('confirmPwd')?.setErrors(null);
-    }
+  matchValues(matchTo: string) {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const password = control.root.get(matchTo);
+      const confirmPwd = control.value;
+      
+      if (password && confirmPwd !== password.value) {
+        return { mismatch: true };
+      }
+      return null;
+    };
   }
 
   ngOnInit() {
@@ -91,7 +85,6 @@ export class CreerCompteComponent {
         this.responseData = null;
    
       }
-
     });
     
   }
@@ -103,7 +96,7 @@ export class CreerCompteComponent {
       },
       (error) => {
         console.error('Error fetching data:', error);
-        this.responseData = {ERROR:"jfjfjf"}; // Set formData as empty in case of an error
+        this.responseData = {ERROR:""}; // Set formData as empty in case of an error
       
       }
     );
@@ -111,13 +104,11 @@ export class CreerCompteComponent {
   }
   formSubmitted = false;
   onSubmit() {
-    // Handle form submission logic here
     console.log('Form submitted eroors :', this.creerCompte.get("confirmPwd"));
     this.formSubmitted=true
   }
   onSubmitNotEmpty(){
     console.log('Form update:', this.creerCompte.value);
-
   }
 
   //Font Awesome icons
@@ -125,19 +116,19 @@ export class CreerCompteComponent {
   tele = faPhone;
   adresse = faMapMarkerAlt;
   password = faKey;
-  eyePwd = faEye;
-  eyeConfirmPwd = faEye;
+  eyePwd = faEyeSlash;
+  eyeConfirmPwd = faEyeSlash;
 
   hidePassword = true;
   hideConfirmPassword = true;
 
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
-    this.eyePwd = this.hidePassword ? faEye : faEyeSlash;
+    this.eyePwd = this.hidePassword ? faEyeSlash : faEye;
   }
 
   toggleConfirmPasswordVisibility(): void {
     this.hideConfirmPassword = !this.hideConfirmPassword;
-    this.eyeConfirmPwd = this.hideConfirmPassword ? faEye : faEyeSlash;
+    this.eyeConfirmPwd = this.hideConfirmPassword ? faEyeSlash : faEye;
   }
 }

@@ -78,13 +78,16 @@
                 Veuillez saisir une adresse e-mail valide
               </div>        
               
-              <input
-                type="password"
-                class="mt-0 w-full block px-0.5 py-1.5  focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
-                placeholder="Mot de passe"
-                formControlName="password"
-                id="password" 
-              />
+              <div class="relative">
+                <input
+                  type="{{ hidePassword ? 'password' : 'text' }}"
+                  class="mt-0 w-full block px-0.5 py-1.5 focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
+                  placeholder="Mot de passe"
+                  formControlName="password"
+                  id="password"
+                />
+                <fa-icon [icon]="eyePwd" (click)="togglePasswordVisibility()" class="text-gray-300 cursor-pointer absolute right-2 top-1/2 transform -translate-y-1/2"></fa-icon>
+              </div>              
               <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted || newCompte.controls['password'].touched) && newCompte.controls['password'].errors?.['required']">
                 Mot de passe est obligatoire
               </div>
@@ -92,13 +95,16 @@
                 Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre, un caractère spécial et avoir une longueur minimale de 8 caractères
               </div> 
           
-              <input
-                type="password"
-                class="mt-0 w-full block px-0.5 py-1.5  focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
-                placeholder="Confirmez votre mot de passe"
-                formControlName="confirmePassword"
-                id="confirmePassword"
-              />
+              <div class="relative">
+                <input
+                  type="{{ hideConfirmPassword ? 'password' : 'text' }}"
+                  class="mt-0 w-full block px-0.5 py-1.5 focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
+                  placeholder="Confirmez votre mot de passe"
+                  formControlName="confirmePassword"
+                  id="confirmePassword"
+                />
+                <fa-icon [icon]="eyeConfirmPwd" (click)="toggleConfirmPasswordVisibility()" class="text-gray-300 cursor-pointer absolute right-2 top-1/2 transform -translate-y-1/2"></fa-icon>
+              </div> 
               <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted || newCompte.controls['confirmePassword'].touched) && newCompte.get('confirmePassword')?.hasError('required')">
                 Veuillez confirmer le mot de passe
               </div>
@@ -145,12 +151,16 @@
                   Veuillez saisir une adresse e-mail valide
                 </div>
 
-                <input type="password"
-                  class="mt-0 w-full block px-0.5 py-1.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black focus:outline-none"
-                  placeholder="Mot de passe"
-                  id="password" 
-                  formControlName="password"
-                />
+                <div class="relative">
+                  <input
+                    type="{{ hidePasswordLogin ? 'password' : 'text' }}"
+                    class="mt-0 w-full block px-0.5 py-1.5 focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
+                    placeholder="Mot de passe"
+                    formControlName="password"
+                    id="password"
+                  />
+                  <fa-icon [icon]="eyePwdLogin" (click)="togglePasswordLoginVisibility()" class="text-gray-300 cursor-pointer absolute right-2 top-1/2 transform -translate-y-1/2"></fa-icon>
+                </div>
                 <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted_connecter || se_connecter.controls['password'].touched) && se_connecter.controls['password'].errors?.['required']">
                   Mot de passe est obligatoire
                 </div>
