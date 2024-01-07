@@ -86,6 +86,8 @@ export class PopupInscriptionComponent {
             const dataToSend = true; 
             this.dataEvent.emit(dataToSend);
             localStorage.setItem('token', response.jwt);
+            this.authService.setCurrentUser(response);
+            console.log(response.role)
             this.close.emit();
             console.log("True")
           } else {

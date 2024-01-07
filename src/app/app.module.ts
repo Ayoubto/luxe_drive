@@ -69,7 +69,8 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
     AjouterAgenceComponent,
     InboxComponent,
     VoituresComponent,
-    AjouterVoitureComponent, 
+    AjouterVoitureComponent,
+
   ],
   
   imports: [
@@ -84,7 +85,7 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
     MatPaginatorModule,
     MatSlideToggleModule,
     MatTableModule,
-    MatSortModule,  
+    MatSortModule,
   ],
 
 

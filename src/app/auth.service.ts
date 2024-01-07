@@ -7,7 +7,19 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
+  userRole: string = 'user'; 
+  private currentUser: any;
 
+
+  setCurrentUser(user: any): void {
+    this.currentUser = user;
+    console.log(this.isAdmin())
+  }
+  isAdmin(): boolean {
+   console.log(this.currentUser)
+    return  true
+    
+  }
   private apiUrl = 'http://localhost:8093/api';
   private authToken: string | null = null;
 

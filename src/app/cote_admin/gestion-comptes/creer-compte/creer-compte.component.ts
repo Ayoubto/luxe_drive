@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators,AbstractControl } from '@angular/for
 import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import {ClientService} from '../../../client.service'
-
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-creer-compte',
@@ -12,7 +12,6 @@ import {ClientService} from '../../../client.service'
 })
 export class CreerCompteComponent {
   hasIdParam: boolean=false;
-  
   id: number | null=null;
   responseData: any={};
 
@@ -48,7 +47,7 @@ export class CreerCompteComponent {
 
   creerCompte: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService,private authService: AuthService) {
     this.creerCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -56,7 +55,7 @@ export class CreerCompteComponent {
       email: ['', [Validators.required, Validators.email]],
       tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       adresse: ['', Validators.required],
-      type: ['', Validators.required],
+      role: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       confirmPwd: ['', [Validators.required, this.matchValues('password')]],
     });
@@ -103,9 +102,34 @@ export class CreerCompteComponent {
     console.log(this.responseData)
   }
   formSubmitted = false;
+  compte_deja_exist=false
   onSubmit() {
-    console.log('Form submitted eroors :', this.creerCompte.get("confirmPwd"));
-    this.formSubmitted=true
+    if(this.creerCompte.valid){
+      this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
+      this.authService.registerUser(this.creerCompte.value).subscribe(
+      (response:any) => {
+        if (response.jwt) {
+          const dataToSend = true; 
+      
+          localStorage.setItem('token', response.jwt);
+          window.location.reload();
+
+          // Display an alert after the page reloads
+          setTimeout(() => {
+            alert('Form submitted successfully!');
+          }, 100);
+
+        }
+      },
+      (error:any) => {
+        if(error.jwt="Email is already taken"){
+           this.compte_deja_exist=true
+        }
+      }
+    );
+    this.formSubmitted=true 
+    }
+    this.formSubmitted=true 
   }
   onSubmitNotEmpty(){
     console.log('Form update:', this.creerCompte.value);

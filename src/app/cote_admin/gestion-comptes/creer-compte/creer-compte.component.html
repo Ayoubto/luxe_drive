@@ -133,19 +133,19 @@
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
             <div class="flex justify-between mb-10">
-                <label for="type" class="w-1/3 mr-6">
+                <label for="role" class="w-1/3 mr-6">
                     <span class="font-semibold">Type d'utilisateur :</span>
                     <div class="mt-4 uppercase text-lg text-gray-600">
                         <label for="client" class="flex mb-4">
-                            <input type="checkbox" id="client" name="type" formControlName="type" value="client" />
+                            <input type="radio" id="client" name="role" formControlName="role" value="user" />
                             <span class="ml-4">Client</span>
                         </label>
                         <label for="manager" class="flex mb-4">
-                            <input type="checkbox" id="manager" name="type" formControlName="type" value="manager" />
+                            <input type="radio" id="manager" name="role" formControlName="role" value="manager" />
                             <span class="ml-4">Agence Manager</span>
                         </label>
                         <label for="admin" class="flex mb-4">
-                            <input type="checkbox" id="admin" name="type" formControlName="type" value="admin" />
+                            <input type="radio" id="admin" name="role" formControlName="role" value="admin" />
                             <span class="ml-4">Super Manager</span>
                         </label>
                     </div>

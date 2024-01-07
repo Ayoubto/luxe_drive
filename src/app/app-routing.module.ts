@@ -15,6 +15,9 @@ import { InboxComponent } from './cote_admin/inbox/inbox.component';
 import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 import { ProfilComponent } from './shared/components/profil/profil.component';
+import { AuthGuard } from './auth.guard';
+
+
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
   {path:"profil",component:ProfilComponent},
@@ -22,7 +25,7 @@ const routes: Routes = [
   {path:"nos-agences",component:PageAgencesComponent},
   {path:"nos-voitures",component:PageReservationComponent},
   {path:"dashboard",component:DashboardComponent},
-  {path:"ajouter-compte",component:CreerCompteComponent},
+  {path:"ajouter-compte",component:CreerCompteComponent , canActivate: [AuthGuard]},
   {path:"modifier-compte/:id",component:CreerCompteComponent},
   {path:"comptes",component:ComptesComponent},
   {path:"ajouter-agence",component:AjouterAgenceComponent},
