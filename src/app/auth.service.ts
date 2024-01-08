@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
-
+import * as jwt_decode from "jwt-decode";
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userRole: string = 'user'; 
   private currentUser: any;
+  helper = new JwtHelperService();
 
 
-  setCurrentUser(user: any): void {
-    this.currentUser = user;
-    console.log(this.isAdmin())
-  }
+
   isAdmin(): boolean {
-   console.log(this.currentUser)
-    return  true
+    const token = localStorage.getItem('token'); 
+    if(!token){
+      return false;
+    }
+    const decodetoken= this.helper.decodeToken(token);
+    if(decodetoken.role="admin"){
+      return true;
+    }
+
+    if(this.helper.isTokenExpired(token)){
+      return false;
+    }
+
+    return false;
     
   }
   private apiUrl = 'http://localhost:8093/api';

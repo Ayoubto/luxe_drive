@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,AbstractControl } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-popup-inscription',
   templateUrl: './popup-inscription.component.html',
@@ -20,7 +20,7 @@ export class PopupInscriptionComponent {
   newCompte: FormGroup;
   se_connecter:FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthService){
+  constructor(private formBuilder: FormBuilder,private authService: AuthService,private router: Router){
     this.newCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -86,10 +86,11 @@ export class PopupInscriptionComponent {
             const dataToSend = true; 
             this.dataEvent.emit(dataToSend);
             localStorage.setItem('token', response.jwt);
-            this.authService.setCurrentUser(response);
             console.log(response.role)
+            if(response.role=="admin"){
+              this.router.navigate(['/dashboard']);
+            }
             this.close.emit();
-            console.log("True")
           } else {
               console.log("Something went wrong")
           }
