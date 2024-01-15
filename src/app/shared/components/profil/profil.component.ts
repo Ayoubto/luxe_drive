@@ -52,7 +52,6 @@ export class ProfilComponent {
     this.modifierProfil = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       adresse: ['', Validators.required],
