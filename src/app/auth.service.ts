@@ -74,4 +74,39 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/auth/signin`, credentials ,{ headers });
   }
 
+  getId(){
+    const token = localStorage.getItem('token'); 
+    if(!token){
+      return false;
+    }
+    const decodetoken= this.helper.decodeToken(token);
+    const ID=decodetoken.id;
+    return ID;
+
+  }
+  getuserbyId(){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authToken}`
+    });
+   const id=this.getId()
+
+   if (id) {
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`${this.apiUrl}/auth/getuser/${id}`, { headers })
+        .subscribe(
+          (data) => {
+            resolve(data); // Resolve the Promise with the retrieved data
+          },
+          (error) => {
+            console.error('Error occurred:', error);
+            reject(error); // Reject the Promise if an error occurs
+          }
+        );
+    });
+  } else {
+    return Promise.resolve(null); // Return a resolved Promise if ID is not available
+  }
+
+  }
+
 }
