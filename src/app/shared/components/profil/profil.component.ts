@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute } from '@angular/router';
 import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { ClientService } from '../../../client.service';
-
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -46,9 +46,30 @@ export class ProfilComponent {
     return control?.hasError(errorType) || false;
   }
 
+  user:any;
+  getUserData(): void {
+    this.userService.getuserbyId()
+      .then((data) => {
+        this.user = data; 
+        console.log('User data:', this.user); 
+        this.modifierProfil.patchValue({
+          nom:this.user.nom,
+          prenom:this.user.prenom,
+          email:this.user.email,
+          tele:this.user.telephone,
+          adresse:this.user.adresse,
+        })
+      })
+      .catch((error) => {
+        console.error('Error occurred:', error); 
+      });
+  }
+
+
+
   modifierProfil: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService,private userService:AuthService) {
     this.modifierProfil = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -57,7 +78,7 @@ export class ProfilComponent {
       tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       adresse: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
-      confirmPwd: ['', [Validators.required, this.matchValues('password')]],
+      confirmPwd: ['', [ this.matchValues('password')]],
     });
   }
 
@@ -85,6 +106,8 @@ export class ProfilComponent {
    
       }
     });
+
+    this.getUserData()
     
   }
   fetchDataById(id: number): void {
@@ -103,7 +126,7 @@ export class ProfilComponent {
   }
   formSubmitted = false;
   onSubmit() {
-    console.log('Form submitted eroors :', this.modifierProfil.get("confirmPwd"));
+    console.log('Form submitted eroors :', this.modifierProfil);
     this.formSubmitted=true
   }
   onSubmitNotEmpty(){
