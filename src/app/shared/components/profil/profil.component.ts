@@ -207,3 +207,4 @@ export class ProfilComponent {
     this.eyeConfirmPwd = this.hideConfirmPassword ? faEyeSlash : faEye;
   }
 }
+
