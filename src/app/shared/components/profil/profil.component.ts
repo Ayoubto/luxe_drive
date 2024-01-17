@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { ClientService } from '../../../client.service';
-
+import { AuthService } from 'src/app/auth.service';
+import * as md5 from 'md5';
+import * as CryptoJS from 'crypto-js';
+import * as bcrypt from 'bcryptjs';
+import { CommunicationService } from 'src/app/communication.service';
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -13,9 +16,9 @@ export class ProfilComponent {
   profilePicture = '../../../../assets/images/users/Frame 85.svg';
   defaultImage = '../../../../assets/images/profile.jpg';
   currentImage: string = this.profilePicture;
-
+  nom:string=""
+  prenom:string=""
   hasIdParam: boolean=false;
-  
   id: number | null=null;
   responseData: any={};
 
@@ -24,7 +27,7 @@ export class ProfilComponent {
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
     fileInput.click();
-
+   
     fileInput.addEventListener('change', (event: any) => {
       const file = event.target.files[0];
       if (file) {
@@ -48,18 +51,29 @@ export class ProfilComponent {
 
   modifierProfil: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private AuthService:AuthService,private communicationService: CommunicationService) {
     this.modifierProfil = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
-      adresse: ['', Validators.required],
+      tele: ["", [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
+      address: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       confirmPwd: ['', [Validators.required, this.matchValues('password')]],
     });
   }
-
+  initializeFormValues() {
+    if (this.responseData) {
+      this.modifierProfil.patchValue({
+        nom:this.responseData.nom || '',
+        prenom:this.responseData.prenom || '',
+        email:this.responseData.email || '',
+        address:this.responseData.address || '',
+        tele: this.responseData.telephone || '', 
+      });
+    }
+  }
+  
   matchValues(matchTo: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const password = control.root.get(matchTo);
@@ -75,22 +89,28 @@ export class ProfilComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.id = id ? Number(id) : null;
+      this.id = id.toString() ;
       
       if (this.id !== null) {
+        console.log(this.id)
         this.fetchDataById(this.id);
+      console.log("Hello wor d")
       } else {
         this.responseData = null;
+        console.log("Hello wor diii")
    
       }
     });
     
   }
   fetchDataById(id: number): void {
-    this.ClientService.getDataById(id).subscribe(
+    this.AuthService.getDataById(id).subscribe(
       (data) => {
-        this.responseData = data; // Assign fetched data to formData
-        
+        this.responseData = data; 
+        this.nom=this.responseData.nom
+        this.prenom=this.responseData.prenom
+        console.log(this.responseData.value)
+        this.initializeFormValues();
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -101,13 +121,63 @@ export class ProfilComponent {
     console.log(this.responseData)
   }
   formSubmitted = false;
+
+
   onSubmit() {
-    console.log('Form submitted eroors :', this.modifierProfil.get("confirmPwd"));
     this.formSubmitted=true
   }
-  onSubmitNotEmpty(){
-    console.log('Form update:', this.modifierProfil.value);
+
+  verifyPassword(): string {
+    const hashedUserPassword = md5(this.modifierProfil.value.password);
+    return hashedUserPassword
   }
+  userEnteredPassword = '';
+
+  hashPassword(): void {
+    const secretKey = 'your-secret-key'; // Replace with your actual secret key
+    const hashedPassword = CryptoJS.HmacSHA256(this.userEnteredPassword, secretKey).toString(CryptoJS.enc.Hex);
+
+    this.userEnteredPassword=hashedPassword
+    console.log(hashedPassword);
+  }
+  onSubmitNotEmpty() {
+    this.formSubmitted=true
+    console.log(this.verifyPassword())
+    this.hashPassword()
+    if(this.responseData.password==this.userEnteredPassword){      
+    }
+
+    if (this.modifierProfil.valid && this.id !== null ) {
+
+      this.updateUser(this.id);
+      this.formSubmitted = true;
+    }
+  }
+  updateUser(id: number) {
+    const formDataWithoutConfirmPassword = { ...this.modifierProfil.value };
+    delete formDataWithoutConfirmPassword.confirmPwd;
+    delete formDataWithoutConfirmPassword.password
+    
+    this.AuthService.updateUser(id, formDataWithoutConfirmPassword).subscribe(
+      (response: any) => {
+        if (response) {       
+          console.log(response);
+          this.communicationService.triggerSubmitEvent();
+        
+
+          // Display an alert after the page reloads
+          setTimeout(() => {
+            alert('Form submitted successfully!');
+          }, 100);
+        }
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+  
+  
 
   //Font Awesome icons
   email = faEnvelope;

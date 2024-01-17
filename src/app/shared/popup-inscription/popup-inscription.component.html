@@ -43,19 +43,20 @@
                 type="text"
                 class="mt-0 w-full block px-0.5 py-1.5  focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
                 placeholder="Adresse"
-                formControlName="adresse"
+                formControlName="address"
                 id="Adresse" 
               />
-              <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted || newCompte.controls['adresse'].touched) && newCompte.controls['adresse'].errors?.['required']">
+              <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted || newCompte.controls['address'].touched) && newCompte.controls['address'].errors?.['required']">
                 Adresse est obligatoire
               </div>
           
               <input
-                type="number"
+                type="tel"
                 class="mt-0 w-full block px-0.5 py-1.5  focus:border-black border-0 border-b-2 border-gray-200 focus:ring-0 focus:outline-none"
                 placeholder="Téléphone"
                 formControlName="telephone"
                 id="Téléphone" 
+                pattern="^[0-9+\-\s]+$"
               />
               <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted || newCompte.controls['telephone'].touched) && newCompte.controls['telephone'].errors?.['required']">
                 Téléphone est obligatoire

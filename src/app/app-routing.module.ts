@@ -20,7 +20,7 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
-  {path:"profil",component:ProfilComponent},
+  {path:"profil/:id",component:ProfilComponent},
   {path:"contact",component:PageContactComponent},
   {path:"nos-agences",component:PageAgencesComponent},
   {path:"nos-voitures",component:PageReservationComponent},

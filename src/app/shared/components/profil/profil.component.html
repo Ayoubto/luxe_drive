@@ -5,8 +5,11 @@
 
     <div>
         <div class="flex flex-col justify-center items-center mb-6">
-            <img [src]="currentImage" alt="Selected Image" class="w-[100px] h-[100px] rounded-full border-4 object-cover mb-2" />
-            <p class="font-medium">{{responseData.name }}</p>
+          <!--  <img [src]="currentImage" alt="Selected Image" class="w-[100px] h-[100px] rounded-full border-4 object-cover mb-2" />-->
+            <div class=" bg-slate-600 text-white font-bold text-4xl rounded-full w-[90px] h-[90px] flex justify-center items-center">
+                {{ prenom[0] }}{{nom[0] }}
+              </div>
+            <p class="font-medium mt-2">{{responseData.nom +" "+responseData.prenom }}</p>
         </div>
         <div class="flex justify-center space-x-5 mb-12">
             <button (click)="onAddImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modifier la photo</button>
@@ -23,7 +26,6 @@
                   class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                   id="nom"
                   formControlName="nom"
-                  [value]="responseData && responseData.name ? responseData.name : ''"
                   required
                 />
                 <div class="text-red-700 text-xs " *ngIf="(formSubmitted || modifierProfil.controls['nom'].touched) && modifierProfil.controls['nom'].errors?.['required']">
@@ -38,7 +40,6 @@
                   class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                   id="prenom"
                   formControlName="prenom"
-                  [value]="responseData && responseData.name ? responseData.name : ''"
                   required
                 />
                 <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['prenom'].touched) && modifierProfil.controls['prenom'].errors?.['required']">
@@ -57,7 +58,6 @@
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="email"
                         formControlName="email"
-                        [value]="responseData && responseData.email ? responseData.email : ''"
                         required
                     />
 
@@ -81,8 +81,7 @@
                         type="text"
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="tele"
-                        formControlName="tele"
-                        [value]="responseData && responseData.phone ? responseData.phone : ''"
+                        formControlName="tele"                    
                         required
                     />
                     <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
@@ -105,39 +104,19 @@
                         type="text"
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="adresse"
-                        formControlName="adresse"
-                        [value]="responseData && responseData.name ? responseData.name : ''"
+                        formControlName="address"                      
                         required
                     />
                     <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                 </div>    
-                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['adresse'].touched) && modifierProfil.controls['adresse'].errors?.['required']">
+                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['address'].touched) && modifierProfil.controls['address'].errors?.['required']">
                     Adresse est obligatoire 
                 </div>                      
             </label>
         </div>
         <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
         <div class="mb-10">
-            <label for="password">
-                <span class="font-semibold">Mot de passe actuel :</span>
-              <div class="relative">
-                    <fa-icon [icon]="password" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
-                    <input
-                        type="{{ hidePassword ? 'password' : 'text' }}"
-                        class="w-full block p-4 pl-12 mt-4 mb-2 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
-                        id="password"
-                        formControlName="password"
-                        required
-                    />
-                    <fa-icon [icon]="eyePwdActuel" (click)="togglePasswordActuelVisibility()" class="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-300 cursor-pointer"></fa-icon>
-                </div>    
-                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['password'].touched) && modifierProfil.controls['password'].errors?.['required']">
-                    Mot de passe est obligatoire 
-                </div>   
-                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['password'].touched) && modifierProfil.controls['password'].errors?.['pattern']">
-                    Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre, un caractère spécial et avoir une longueur minimale de 8 caractères
-                </div>                   
-            </label>
+
                 <label for="password">
                     <span class="font-semibold">Nouveau mot de passe :</span>
                     <div>
@@ -148,7 +127,7 @@
                             class="w-full block p-4 pl-12 mt-4 mb-2 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="password"
                             formControlName="password"
-                            required
+                           
                         />
                         <fa-icon [icon]="eyePwd" (click)="togglePasswordVisibility()" class="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-300 cursor-pointer"></fa-icon>
                     </div>    
@@ -186,7 +165,7 @@
         </div>
         <div class="flex justify-end mb-8">
             <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Annuler</button>
-            <button *ngIf="!responseData"
+            <button *ngIf="!responseData.value"
                 type="submit"      
                 class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold px-4 bg-black"
                 [ngClass]="{ 'hover:bg-white hover:text-black': modifierProfil.valid }">

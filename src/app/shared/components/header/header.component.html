@@ -4,18 +4,21 @@
   </div>
 
   <div class="md:flex justify-center space-x-8 font-semibold hidden">
-    <a routerLink="../accueil" class="text-white hover:text-gray-300">Accueil</a>
-    <a routerLink="../nos-voitures" class="text-white hover:text-gray-300">Réservation</a>
-    <a routerLink="../nos-agences" class="text-white hover:text-gray-300">Agences</a>
-    <a routerLink="../contact" class="text-white hover:text-gray-300">Contact</a>
+    <a routerLink="/accueil" class="text-white hover:text-gray-300">Accueil</a>
+    <a routerLink="/nos-voitures" class="text-white hover:text-gray-300">Réservation</a>
+    <a routerLink="/nos-agences" class="text-white hover:text-gray-300">Agences</a>
+    <a routerLink="/contact" class="text-white hover:text-gray-300">Contact</a>
   </div>
 
   <button  *ngIf="!isLoggedIn" (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-black text-white font-semibold py-[8px] rounded-3xl px-[20px] hidden md:flex ">Se connecter / S’inscrire</button>
   
     <div *ngIf="isLoggedIn" class="relative inline-block">
       <div class="flex items-center space-x-2 cursor-pointer" (click)="toggleDropdown()">
-        <img src="../../../../assets/images/users/Frame 85.svg" class="rounded-full h-10 w-10">
-        <p class="text-white font-bold">Ahmed Benali</p>
+      <!--  <img src="../../../../assets/images/users/Frame 85.svg" class="rounded-full h-10 w-10">-->
+        <div class=" bg-slate-600 text-white font-bold text-xl rounded-full h-10 w-10 flex justify-center items-center">
+          {{ prenom[0] }}{{nom[0] }}
+        </div>
+        <p class="text-white font-bold flex items-center translate-y-2">{{name}}</p>
       </div>
       <div *ngIf="showDropdown" class="dropdown z-50 space-y-2 text-white absolute bg-white p-2 mt-2 w-48 rounded-lg shadow-lg right-0 font-medium">
         <div class="relative">

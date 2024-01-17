@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators,AbstractControl } from '@angular/for
 import { AuthService } from '../../auth.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { CommunicationService } from 'src/app/communication.service';
 @Component({
   selector: 'app-popup-inscription',
   templateUrl: './popup-inscription.component.html',
@@ -20,15 +21,16 @@ export class PopupInscriptionComponent {
   newCompte: FormGroup;
   se_connecter:FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthService,private router: Router){
+  constructor(private formBuilder: FormBuilder,private authService: AuthService,private router: Router,private communicationService: CommunicationService){
     this.newCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      adresse: ['', [Validators.required, Validators.minLength(3)]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       password: ['',[ Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       confirmePassword: ['', [Validators.required, this.matchValues('password') ]],
+
     });
 
     this.se_connecter=this.formBuilder.group({
@@ -57,12 +59,15 @@ export class PopupInscriptionComponent {
   inscrire() {
     if(this.newCompte.valid){
       this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
-      this.authService.registerUser(this.newCompte.value).subscribe(
+      const formDataWithoutConfirmPassword = { ...this.newCompte.value };
+      delete formDataWithoutConfirmPassword.confirmePassword;
+      this.authService.registerUser(formDataWithoutConfirmPassword).subscribe(
       (response:any) => {
         if (response.jwt) {
           const dataToSend = true; 
           this.dataEvent.emit(dataToSend);
           localStorage.setItem('token', response.jwt);
+          this.communicationService.triggerSubmitEvent();
           this.close.emit();
         }
       },
@@ -86,6 +91,7 @@ export class PopupInscriptionComponent {
             const dataToSend = true; 
             this.dataEvent.emit(dataToSend);
             localStorage.setItem('token', response.jwt);
+            this.communicationService.triggerSubmitEvent();
             console.log(response.role)
             if(response.role=="admin"){
               this.router.navigate(['/dashboard']);
