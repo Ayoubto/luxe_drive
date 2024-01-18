@@ -148,7 +148,12 @@ export class ProfilComponent {
     
     this.AuthService.updateUser(id, formDataWithoutConfirmPassword).subscribe(
       (response: any) => {
-        if (response) {       
+        if (response) { 
+          this.formSubmitted=false
+          this.modifierProfil.patchValue({
+            password:  '', 
+            confirmPwd:''
+          });  
           console.log(response);
           this.communicationService.triggerSubmitEvent();
         

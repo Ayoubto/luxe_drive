@@ -4,6 +4,7 @@ import { LogoutService } from 'src/app/cote_admin/logout.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CommunicationService } from 'src/app/communication.service';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -33,6 +34,7 @@ export class HeaderComponent {
         this.name=decodetoken.nom +" "+ decodetoken.prenom
         this.nom=decodetoken.nom
         this.prenom= decodetoken.prenom
+        this.fetchDataById(decodetoken.id)
       }
       
     });
@@ -46,12 +48,29 @@ export class HeaderComponent {
       
     }
   }
+  responseData:any=""
+  fetchDataById(id: number): void {
+    this.AuthService.getDataById(id).subscribe(
+      (data) => {
+        this.responseData = data; 
+        this.name=this.responseData.nom +" "+this.responseData.prenom
+        this.nom=this.responseData.nom
+        this.prenom=this.responseData.prenom
 
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+        this.responseData = {ERROR:""}; // Set formData as empty in case of an error
+      
+      }
+    );
+    console.log(this.responseData)
+  }
   toggleDropdown() {
     this.showDropdown = !this.showDropdown;
   }
 
-  constructor(private logoutService: LogoutService,private communicationService: CommunicationService,private router: Router) {}
+  constructor(private logoutService: LogoutService,private communicationService: CommunicationService,private router: Router,private AuthService:AuthService) {}
   logout(): void{
     this.logoutService.deleteTokenFromLocalStorage();
     window.location.href = '/accueil';
