@@ -55,7 +55,7 @@
                 <div>
                 <div class="relative">
                     <input
-                        type="email"
+                        type="email" readonly
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="email"
                         formControlName="email"
@@ -82,15 +82,15 @@
                         type="text"
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                         id="tele"
-                        formControlName="tele"                    
+                        formControlName="telephone"                    
                         required
                     />
                     <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                 </div>   
-                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['tele'].touched) && modifierProfil.controls['tele'].errors?.['required']">
+                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['telephone'].touched) && modifierProfil.controls['telephone'].errors?.['required']">
                     Téléphone est obligatoire 
                 </div>
-                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['tele'].touched) && modifierProfil.controls['tele'].errors?.['pattern']">
+                <div class="text-red-700 text-xs mt-1" *ngIf="(formSubmitted || modifierProfil.controls['telephone'].touched) && modifierProfil.controls['telephone'].errors?.['pattern']">
                     Veuillez saisir un numéro de téléphone valide
                 </div>                       
                 </div>
@@ -119,7 +119,7 @@
         <div class="mb-10">
 
                 <label for="password">
-                    <span class="font-semibold">Nouveau mot de passe :</span>
+                    <span class="font-semibold">Votre mot de passe :</span>
                     <div>
                   <div class="relative">
                         <fa-icon [icon]="password" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>

@@ -56,7 +56,7 @@ export class ProfilComponent {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tele: ["", [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
+      telephone: ["", [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       address: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       confirmPwd: ['', [Validators.required, this.matchValues('password')]],
@@ -69,7 +69,7 @@ export class ProfilComponent {
         prenom:this.responseData.prenom || '',
         email:this.responseData.email || '',
         address:this.responseData.address || '',
-        tele: this.responseData.telephone || '', 
+        telephone: this.responseData.telephone || '', 
       });
     }
   }
@@ -127,25 +127,13 @@ export class ProfilComponent {
     this.formSubmitted=true
   }
 
-  verifyPassword(): string {
-    const hashedUserPassword = md5(this.modifierProfil.value.password);
-    return hashedUserPassword
-  }
-  userEnteredPassword = '';
 
-  hashPassword(): void {
-    const secretKey = 'your-secret-key'; // Replace with your actual secret key
-    const hashedPassword = CryptoJS.HmacSHA256(this.userEnteredPassword, secretKey).toString(CryptoJS.enc.Hex);
 
-    this.userEnteredPassword=hashedPassword
-    console.log(hashedPassword);
-  }
+
   onSubmitNotEmpty() {
     this.formSubmitted=true
-    console.log(this.verifyPassword())
-    this.hashPassword()
-    if(this.responseData.password==this.userEnteredPassword){      
-    }
+
+  
 
     if (this.modifierProfil.valid && this.id !== null ) {
 
