@@ -20,7 +20,7 @@
                       class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                       id="nom"
                       formControlName="nom"
-                      [value]="responseData && responseData.name ? responseData.name : ''"
+                      [value]="responseData && responseData.nom ? responseData.nom : ''"
                       required
                     />
                     <div class="text-red-700 text-xs " *ngIf="(formSubmitted || creerCompte.controls['nom'].touched) && creerCompte.controls['nom'].errors?.['required']">

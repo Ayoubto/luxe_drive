@@ -38,8 +38,9 @@ export class ComptesComponent implements AfterViewInit{
   getUsersData() {
     this.AuthService.getAllUsers().subscribe(
       (data) => {
+        console.log(data)
         this.responseData = data ;
-        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 }));
+        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];
       },
@@ -96,6 +97,7 @@ export class ComptesComponent implements AfterViewInit{
 
   ngOnInit() {
     this.getUsersData()
+    console.log(this.dataSource.data[0]?.prenom);
   }
 
   ngAfterViewInit() {

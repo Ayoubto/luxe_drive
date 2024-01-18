@@ -62,7 +62,7 @@
             <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let element" class="custom-cell">
               
-              <a routerLink="/modifier-compte/{{element.id}}" class="">
+              <a [routerLink]="'/modifier-compte/' + element.id"class="">
                 <fa-icon [icon]="modifier" class="mr-3"></fa-icon>
             </a>
               <fa-icon [icon]="supprimer"></fa-icon>
