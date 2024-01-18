@@ -3,7 +3,7 @@
     <app-header-admin [Titre]="Page_Titre"></app-header-admin>
     <div class="flex flex-col bg-white px-8">
         <div class="lg:container lg:mx-auto space-y-5 my-8">
-            <p class="text-center font-bold text-3xl">Ajouter une agence</p>
+            <p class="text-center font-bold text-3xl">{{form_Titre}} </p>
         </div>
         <form [formGroup]="ajouterAgence" (ngSubmit)="onSubmit()">
             <div class="flex justify-between mb-10">
@@ -13,10 +13,10 @@
                       type="text"
                       class="w-full block p-4 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                       id="nom"
-                      formControlName="nom"
+                      formControlName="nom_agence"
                       required
                     />
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['nom'].touched) && ajouterAgence.controls['nom'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['nom_agence'].touched) && ajouterAgence.controls['nom_agence'].errors?.['required']">
                         Nom d'agence est obligatoire
                     </div> 
                 </label>
@@ -45,15 +45,15 @@
                             type="email"
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="email"
-                            formControlName="email"
+                            formControlName="email_agence"
                             required
                         />
                         <fa-icon [icon]="email" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email'].touched) && ajouterAgence.controls['email'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email_agence'].touched) && ajouterAgence.controls['email_agence'].errors?.['required']">
                         email d'agence est obligatoire
                     </div> 
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email'].touched) && ajouterAgence.controls['email'].errors?.['email']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['email_agence'].touched) && ajouterAgence.controls['email_agence'].errors?.['email']">
                         ecrire correct email
                     </div> 
                 </label>
@@ -65,33 +65,49 @@
                             type="text"
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="tele"
-                            formControlName="tele"
+                            formControlName="telephone_agence"
                             required
                         />
                         <fa-icon [icon]="tele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['tele'].touched) && ajouterAgence.controls['tele'].errors?.['patter']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['telephone_agence'].touched) && ajouterAgence.controls['telephone_agence'].errors?.['patter']">
                         ecrire correct numero telephone
                     </div> 
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['tele'].touched) && ajouterAgence.controls['tele'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['telephone_agence'].touched) && ajouterAgence.controls['telephone_agence'].errors?.['required']">
                         numero telephone est obligatiore
                     </div> 
                 </label>
             </div>
-            <div class="mb-10">
-                <label for="adresse" class="font-semibold">
+            <div class="mb-10 flex justify-between space-x-10" formGroupName="localisation">
+                <label for="ville" class="font-semibold w-1/3">
+                    <span>Ville :</span>
+                    <div class="relative">
+                        <input
+                            type="text"
+                            class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
+                            id="ville"
+                            formControlName="adresse"
+                            required
+                        />
+                        <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
+                    </div>
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['localisation'].touched) && ajouterAgence.controls['localisation'].errors?.['required']">
+                        adresse d'agence est obligatiore
+                    </div> 
+                </label>
+                <label for="adresse" class="font-semibold w-2/3">
                     <span>Adresse :</span>
                     <div class="relative">
                         <input
                             type="text"
                             class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
                             id="adresse"
-                            formControlName="adresse"
+                            formControlName="ville"
                             required
                         />
                         <fa-icon [icon]="adresse" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['adresse'].touched) && ajouterAgence.controls['adresse'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['localisation'].touched) && ajouterAgence.controls['localisation'].errors?.['required']">
                         adresse d'agence est obligatiore
                     </div> 
                 </label>

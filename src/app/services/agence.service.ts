@@ -14,4 +14,9 @@ export class AgenceService {
   getAllAgence(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getallagences`);
   }
+
+  AddAgence(newAgence: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/addagence`,newAgence);
+  }
+   
 }

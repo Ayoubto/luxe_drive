@@ -18,6 +18,7 @@ export class CreerCompteComponent {
   Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
   currentImage: string = this.defaultImage;
+  form_Titre="Créer un compte"
 
   onAddImage() {
     const fileInput = document.createElement('input');
@@ -79,6 +80,7 @@ export class CreerCompteComponent {
       this.id = id ? Number(id) : null;
       
       if (this.id !== null) {
+        this.form_Titre="Modifier compte"
         this.fetchDataById(this.id);
       } else {
         this.responseData = null;

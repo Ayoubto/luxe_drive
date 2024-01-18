@@ -5,7 +5,7 @@
     <div class="h-0.5 bg-gray-300 opacity-30">&nbsp;</div>
 
     <div class="flex-1 py-8 text-white overflow-y-auto">
-        <a routerLink="../dashboard" class="nav-link block px-8 py-2 mb-4 hover:bg-white">
+        <a routerLink="/dashboard" class="nav-link block px-8 py-2 mb-4 hover:bg-white">
             <fa-icon [icon]="dashboard" class="mr-2"></fa-icon>
             Tableau de bord
         </a>
@@ -18,11 +18,11 @@
             </a>
             <!-- Submenu -->
             <div *ngIf="openSubMenus.includes('gestionComptes')">
-                <a routerLink="../ajouter-compte" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/ajouter-compte" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Créer un compte
                 </a>
-                <a routerLink="../comptes" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/comptes" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Comptes
                 </a>
@@ -37,11 +37,11 @@
             </a>
             <!-- Submenu -->
             <div *ngIf="openSubMenus.includes('gestionAgences')">
-                <a routerLink="../ajouter-agence" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/ajouter-agence" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Ajouter une agence
                 </a>
-                <a routerLink="../agences" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/agences" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Agences
                 </a>
@@ -60,7 +60,7 @@
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Ajouter une voiture
                 </a>
-                <a routerLink="../voitures" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/voitures" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Voitures
                 </a>
@@ -75,18 +75,18 @@
             </a>
             <!-- Submenu -->
             <div *ngIf="openSubMenus.includes('gestionReservations')">
-                <a routerLink="../pre-reservations" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/pre-reservations" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Pré-réservations
                 </a>
-                <a routerLink="../reservations" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/reservations" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
                     Réservations
                 </a>
             </div>
         </div>
         
-        <a routerLink="../inbox" class="nav-link block px-8 py-2 my-4 hover:bg-white">
+        <a routerLink="/inbox" class="nav-link block px-8 py-2 my-4 hover:bg-white">
             <fa-icon [icon]="inbox" class="mr-2"></fa-icon>
             Boîte de réception
         </a>
