@@ -5,6 +5,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {ClientService} from '../../../client.service'
 import { MatSort } from '@angular/material/sort';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-comptes',
@@ -17,7 +18,7 @@ export class ComptesComponent implements AfterViewInit{
   Page_Titre="Gestion des Comptes"
 
   // constructor 
-  constructor(private ClientService: ClientService) { }
+  constructor(private ClientService: ClientService,private AuthService:AuthService ) { }
   
   // prend data en api (service)
   responseData: any[]=[];
@@ -26,6 +27,19 @@ export class ComptesComponent implements AfterViewInit{
       (data) => {
         this.responseData = data ;
         
+        this.filteredData = [...this.responseData];
+        this.dataSource.data=this.filteredData as PeriodicElement[];
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  getUsersData() {
+    this.AuthService.getAllUsers().subscribe(
+      (data) => {
+        this.responseData = data ;
+        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 }));
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];
       },
@@ -81,7 +95,7 @@ export class ComptesComponent implements AfterViewInit{
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit() {
-    this.getData()
+    this.getUsersData()
   }
 
   ngAfterViewInit() {
@@ -99,10 +113,10 @@ export class ComptesComponent implements AfterViewInit{
  
 export interface PeriodicElement {
   id:string;
-  name: string;
-  username: string;
+  nom: string;
+  prenom: string;
   email:string;
   tele:string;
-  adresse:string;
+  address:string;
   actions:string
 }

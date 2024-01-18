@@ -40,6 +40,10 @@ export class AuthService {
   getDataById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/auth/getuser/${id}`);
   }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/auth/getallusers`);
+  }
   updateUser(id: number, userData: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/auth/updateuser/${id}`, userData);
   }
