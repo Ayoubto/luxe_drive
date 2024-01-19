@@ -3,8 +3,7 @@ import {MatPaginator,MatPaginatorIntl , MatPaginatorModule} from '@angular/mater
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatSort } from '@angular/material/sort';
-
-
+import { VoitureService } from 'src/app/services/voiture.service';
 
 @Component({
   selector: 'app-voitures',
@@ -14,84 +13,25 @@ import { MatSort } from '@angular/material/sort';
 })
 export class VoituresComponent {
   Page_Titre="Gestion des Voitures"
-
+constructor(private VoitureService:VoitureService){}
     // Manually created data
-    responseData:PeriodicElement[]=[
-      {
-        image: '../../../../assets/images/Cart-Cars/Cars/BMW M8 Coupe 2022.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: 'BMW X7 M50i 2022' 
+    responseData: any[]=[];
 
-      },
-      {
-        image: '../../../../assets/images/Cart-Cars/Cars/Nissan Maxima Platinum.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: '' 
-
-      },      {
-        image: '../../../../assets/images/Cart-Cars/Cars/Porsche Cayenne GTS 2022.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: '' 
-
-      },      {
-        image: '../../../../assets/images/Cart-Cars/Cars/Porsche Cayenne GTS 2023.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: '' 
-
-      },      {
-        image: '../../../../assets/images/Cart-Cars/Cars/BMW M8 Coupe 2022.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: '' 
-
-      },      {
-        image: '../../../../assets/images/Cart-Cars/Cars/Audi A8 L 2022.svg', 
-        marque: 'Nissan', 
-        modele: 'Maxima Platinum 2022', 
-        capacity: "4 persone", 
-        quantite: 12, 
-        boite: 'automatique', 
-        Portes_Energie:"Elictric",
-        consommation:"4.2",
-        prix:200,
-        actions: '' 
-
-      }
-    ]
+    getVoituresData() {
+      this.VoitureService.getAllAVoiture().subscribe(
+        (data) => {
+          console.log(data)
+          this.responseData = data ;
+          this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1  }));
+          this.filteredData = [...this.responseData];
+          this.dataSource.data=this.filteredData as PeriodicElement[];
+        },
+        (error) => {
+          console.error(error);
+          console.log("Hello word")
+        }
+      );
+    }
 
 
 
@@ -134,6 +74,7 @@ export class VoituresComponent {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getVoituresData()
   }
 
   onInputChange() {
