@@ -15,7 +15,7 @@
     <div *ngIf="isLoggedIn" class="relative inline-block">
       <div class="flex items-center space-x-2 cursor-pointer" (click)="toggleDropdown()">
       <!--  <img src="../../../../assets/images/users/Frame 85.svg" class="rounded-full h-10 w-10">-->
-        <div class=" bg-slate-600 text-white font-bold text-xl rounded-full h-10 w-10 flex justify-center items-center">
+        <div class=" bg-gray-500 text-white font-bold text-xl rounded-full h-10 w-10 flex justify-center items-center">
           {{ prenom[0] }}{{nom[0] }}
         </div>
         <p class="text-white font-bold flex items-center translate-y-2">{{name}}</p>
@@ -24,6 +24,10 @@
         <div class="relative">
           <fa-icon [icon]="profil" class="absolute top-1/2 transform -translate-y-1/2 left-3 text-black"></fa-icon>
           <button (click)="changeProfile()" class="block w-full text-center bg-gray-100 text-black py-2 px-4 rounded-lg">Modifier le profil</button>
+        </div>
+        <div class="relative">
+          <fa-icon [icon]="history" class="absolute top-1/2 transform -translate-y-1/2 left-3 text-black"></fa-icon>
+          <button (click)="viewHistory()" class="block w-full text-center bg-gray-300 text-black py-2 px-4 rounded-lg">Historique</button>
         </div>
         <button (click)="logout()" class="block w-full text-center bg-black py-2 px-4 rounded-lg">Se déconnecter</button>
       </div>
