@@ -22,7 +22,7 @@ constructor(private VoitureService:VoitureService){}
         (data) => {
           console.log(data)
           this.responseData = data ;
-          this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1  }));
+        
           this.filteredData = [...this.responseData];
           this.dataSource.data=this.filteredData as PeriodicElement[];
         },

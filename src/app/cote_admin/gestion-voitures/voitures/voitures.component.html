@@ -38,9 +38,9 @@
                 <ng-container matColumnDef="info">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Informations</th>
                     <td mat-cell *matCellDef="let element" class="bg-black"> 
-                        <div class="flex px-1 pt-2"><p class="font-bold">Capacité : </p>{{element.nb_personnes}}</div> 
-                        <div class="flex px-1"><p class="font-bold">Boîte : </p>{{element.boite}}</div> 
-                        <div class="flex px-1"><p class="font-bold">Carburant : </p> {{element.Portes_Energie}}</div> 
+                        <div class="flex px-1 pt-2"><p class="font-bold">Capacité : </p>{{element.nb_personnes}} personne</div> 
+                        <div class="flex px-1"><p class="font-bold">Boîte : </p>{{element.manual_gearbox}}</div> 
+                        <div class="flex px-1"><p class="font-bold">Carburant : </p> {{element.carburant}}</div> 
                         <div class="flex px-1"><p class="font-bold">Consommation : </p> {{element.consommation}}</div> 
                     </td>
                 </ng-container>
