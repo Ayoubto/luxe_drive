@@ -1,16 +1,15 @@
-
 <app-header></app-header>
 
 <div class="lg:container lg:mx-auto space-y-5 my-16 pb-2">
     <p class="text-center font-bold text-4xl">Modifier votre profil</p>
 
     <div>
-        <div class="flex flex-col justify-center items-center mb-6">
+        <div class="flex flex-col justify-center items-center pt-4 mt-4 mb-6">
           <!--  <img [src]="currentImage" alt="Selected Image" class="w-[100px] h-[100px] rounded-full border-4 object-cover mb-2" />-->
-            <div class=" bg-slate-600 text-white font-bold text-4xl rounded-full w-[90px] h-[90px] flex justify-center items-center">
+            <div class=" bg-gray-500 text-white font-bold text-4xl rounded-full w-[90px] h-[90px] flex justify-center items-center">
                 {{ prenom[0] }}{{nom[0] }}
               </div>
-            <p class="font-medium mt-2">{{responseData.nom +" "+responseData.prenom }}</p>
+            <p class="pt-4 text-lg font-medium mt-2">{{responseData.prenom +" "+responseData.nom }}</p>
         </div>
         <div class="flex justify-center space-x-5 mb-12">
             <button (click)="onAddImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modifier la photo</button>
@@ -119,7 +118,7 @@
         <div class="mb-10">
 
                 <label for="password">
-                    <span class="font-semibold">Votre mot de passe :</span>
+                    <span class="font-semibold">Nouveau mot de passe :</span>
                     <div>
                   <div class="relative">
                         <fa-icon [icon]="password" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faHistory, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { LogoutService } from 'src/app/cote_admin/logout.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -16,22 +16,24 @@ export class HeaderComponent {
   receivedDataa: string="";
   name:string=""
   helper = new JwtHelperService();
-  nom:string="Et-toubi"
-  prenom:string="Ayoub"
+  nom:string=""
+  prenom:string=""
   haveImage:boolean=false
+
   profil = faUserCircle
+  history = faHistory
 
   receiveData(data: boolean) {
-    this.isLoggedIn = data; // Assign the received data from child to a variable in the parent
+    this.isLoggedIn = data;
   }
 
   ngOnInit(){
     this.communicationService.submitEvent$.subscribe(() => {
-      const token = localStorage.getItem('token'); // Replace 'token' with the key you use to store the token
+      const token = localStorage.getItem('token');
       if(!!token){
         this.isLoggedIn=true
         const decodetoken= this.helper.decodeToken(token);
-        this.name=decodetoken.nom +" "+ decodetoken.prenom
+        this.name=decodetoken.prenom +" "+ decodetoken.nom
         this.nom=decodetoken.nom
         this.prenom= decodetoken.prenom
         this.fetchDataById(decodetoken.id)
@@ -42,7 +44,7 @@ export class HeaderComponent {
     if(!!token){
       this.isLoggedIn=true
       const decodetoken= this.helper.decodeToken(token);
-      this.name=decodetoken.nom +" "+ decodetoken.prenom
+      this.name=decodetoken.prenom +" "+ decodetoken.nom
       this.nom=decodetoken.nom
       this.prenom= decodetoken.prenom
       
@@ -53,7 +55,7 @@ export class HeaderComponent {
     this.AuthService.getDataById(id).subscribe(
       (data) => {
         this.responseData = data; 
-        this.name=this.responseData.nom +" "+this.responseData.prenom
+        this.name=this.responseData.prenom +" "+this.responseData.nom
         this.nom=this.responseData.nom
         this.prenom=this.responseData.prenom
 
@@ -76,8 +78,6 @@ export class HeaderComponent {
     window.location.href = '/accueil';
   }
 
-
-
   changeProfile() {
     const token = localStorage.getItem('token'); 
     if(!token){
@@ -86,15 +86,28 @@ export class HeaderComponent {
     const decodetoken= this.helper.decodeToken(token);
     if(decodetoken.id){
       this.router.navigate(['../profil',decodetoken.id ]);
-   
     }
 
     if(this.helper.isTokenExpired(token)){
       return false;
     }
-
     return false;
-    
+  }
+
+  viewHistory() {
+    const token = localStorage.getItem('token'); 
+    if(!token){
+      return 
+    }
+    const decodetoken= this.helper.decodeToken(token);
+    if(decodetoken.id){
+      this.router.navigate(['../historique',decodetoken.id ]);
+    }
+
+    if(this.helper.isTokenExpired(token)){
+      return false;
+    }
+    return false;
   }
 
   isPopupOpen: boolean = false;

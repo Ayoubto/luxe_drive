@@ -16,11 +16,13 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
 import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 import { ProfilComponent } from './shared/components/profil/profil.component';
 import { AuthGuard } from './auth.guard';
+import { HistoriqueComponent } from './shared/components/historique/historique.component';
 
 
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
   {path:"profil/:id",component:ProfilComponent},
+  {path:"historique/:id",component:HistoriqueComponent},
   {path:"contact",component:PageContactComponent},
   {path:"nos-agences",component:PageAgencesComponent},
   {path:"nos-voitures",component:PageReservationComponent},
