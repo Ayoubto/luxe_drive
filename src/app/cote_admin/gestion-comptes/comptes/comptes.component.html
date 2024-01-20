@@ -65,7 +65,7 @@
               <a [routerLink]="'/modifier-compte/' + element.id"class="">
                 <fa-icon [icon]="modifier" class="mr-3"></fa-icon>
             </a>
-              <fa-icon [icon]="supprimer" (click)="openConfirmationDialog(element.id,element.nom,element.prenom)"></fa-icon>
+              <fa-icon class="cursor-pointer" [icon]="supprimer" (click)="openConfirmationDialog(element.id,element.nom,element.prenom)"></fa-icon>
             </td>
           </ng-container>         
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

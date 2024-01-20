@@ -55,6 +55,8 @@ export class ComptesComponent implements AfterViewInit{
   Search() {
     if (this.inputValue === '') {
       this.dataSource.data = this.responseData; 
+    }
+    else{
       this.dataSource.data = this.responseData.filter(cli => this.checkProperties(cli, this.inputValue));
     }
   }
@@ -127,7 +129,7 @@ export class ComptesComponent implements AfterViewInit{
       this.AuthService.deleteUser(id).subscribe(
         response => {
           console.log('User deleted successfully:', response);
-          window.location.reload();
+          this.getUsersData()
         },
         error => {
           console.error('Error deleting user:', error);
