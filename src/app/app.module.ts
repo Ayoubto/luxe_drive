@@ -41,6 +41,7 @@ import { InboxComponent } from './cote_admin/inbox/inbox.component';
 import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,8 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
     InboxComponent,
     VoituresComponent,
     AjouterVoitureComponent,
+
+
 
   ],
   

@@ -4,7 +4,7 @@ import { faEnvelope, faEye, faEyeSlash, faKey, faMapMarkerAlt, faPhone } from '@
 import { ActivatedRoute } from '@angular/router';
 import {ClientService} from '../../../client.service'
 import { AuthService } from '../../../auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-creer-compte',
   templateUrl: './creer-compte.component.html',
@@ -48,20 +48,34 @@ export class CreerCompteComponent {
 
   creerCompte: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService,private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService,private authService: AuthService,private router: Router) {
     this.creerCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      tele: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
-      adresse: ['', Validators.required],
+      telephone: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
+      address: ['', Validators.required],
       role: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       confirmPwd: ['', [Validators.required, this.matchValues('password')]],
     });
+
   }
 
+
+  initializeFormValues() {
+    if (this.responseData) {
+      this.creerCompte.patchValue({
+        nom:this.responseData.nom || '',
+        prenom:this.responseData.prenom || '',
+        email:this.responseData.email || '',
+        address:this.responseData.address || '',
+        telephone: this.responseData.telephone || '', 
+        role: this.responseData.role || '', 
+      });
+    }
+  }
   matchValues(matchTo: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const password = control.root.get(matchTo);
@@ -77,11 +91,15 @@ export class CreerCompteComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.id = id ? Number(id) : null;
+      console.log(id)
+      this.id = id.toString() ;
       
       if (this.id !== null) {
         this.form_Titre="Modifier compte"
-        this.fetchDataById(this.id);
+        
+        this.fetchDataById(id);
+      
+        
       } else {
         this.responseData = null;
    
@@ -90,9 +108,10 @@ export class CreerCompteComponent {
     
   }
   fetchDataById(id: number): void {
-    this.ClientService.getDataById(id).subscribe(
+    this.authService.getDataById(id).subscribe(
       (data) => {
         this.responseData = data; // Assign fetched data to formData
+        this.initializeFormValues();
         
       },
       (error) => {
@@ -106,6 +125,7 @@ export class CreerCompteComponent {
   formSubmitted = false;
   compte_deja_exist=false
   onSubmit() {
+   
     if(this.creerCompte.valid){
       this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
       this.authService.registerUser(this.creerCompte.value).subscribe(
@@ -134,7 +154,27 @@ export class CreerCompteComponent {
     this.formSubmitted=true 
   }
   onSubmitNotEmpty(){
-    console.log('Form update:', this.creerCompte.value);
+    const formData = { ...this.creerCompte.value };
+    delete formData.password;
+    delete formData.confirmPwd;
+    if(this.id){
+      this.authService.updateUser(this.id ,formData).subscribe(
+      (response:any) => {    
+          localStorage.setItem('token', response.jwt);
+         
+          setTimeout(() => {
+            alert('Form Upadte successfully!');
+          }, 100);
+      },
+      
+    ); 
+    this.router.navigateByUrl('/comptes');   
+    }
+
+
+    console.log("Hello word ")
+    console.log('Form update:', formData);
+  
   }
 
   //Font Awesome icons

@@ -21,7 +21,7 @@ export class ProfilComponent {
   hasIdParam: boolean=false;
   id: number | null=null;
   responseData: any={};
-
+  
   onAddImage() {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
