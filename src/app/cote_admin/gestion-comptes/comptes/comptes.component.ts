@@ -109,6 +109,38 @@ export class ComptesComponent implements AfterViewInit{
     this.Search();
   }
 
+
+
+  isConfirmationDialogOpen = false;
+  confirmationDialogData: { message: string, id: string } | null = null;
+  messageConf=""
+  openConfirmationDialog(id:any,name:string,prenom:string): void {
+    this.isConfirmationDialogOpen = true;
+    this.messageConf="Êtes-vous sûr de vouloir supprimer "+name+ " "+prenom+" ?"
+    this.confirmationDialogData = {
+      message: 'Êtes-vous sûr de vouloir supprimer cet utilisateur ?',
+      id: id
+    };
+  }
+  handleConfirmation(result: boolean, id: string | undefined): void {
+    if (result) {
+      this.AuthService.deleteUser(id).subscribe(
+        response => {
+          console.log('User deleted successfully:', response);
+          window.location.reload();
+        },
+        error => {
+          console.error('Error deleting user:', error);
+        }
+      );
+      console.log(id);
+    } else {
+    
+      console.log('User clicked "Non"');
+    }
+    this.isConfirmationDialogOpen = false;
+  }
+
   modifier = faPencil
   supprimer = faTrash
 }
