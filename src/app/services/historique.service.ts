@@ -9,4 +9,7 @@ export class HistoriqueService {
   constructor(private http: HttpClient) { }
   private apiUrl = 'http://localhost:8093';
 
+  getReservationsClient(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getreservationsbyuser/{userId}`);
+  }
 }
