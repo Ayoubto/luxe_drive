@@ -71,61 +71,61 @@
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
             <div class="flex justify-between mb-10">
-                <label for="Portes_Energie" class="w-1/4 mr-6 block font-semibold mx-3">
+                <label for="carburant" class="w-1/4 mr-6 block font-semibold mx-3">
                     <span>Portes Energie</span>
                     <div class="relative">
                         <select
                             class="w-full block pl-12  mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
-                            id="Portes_Energie"
-                            formControlName="Portes_Energie"
+                            id="carburant"
+                            formControlName="carburant"
                             required
                         >
-                            <option value="Dies">Diesel</option>
-                            <option value="Ess">Essence</option>
-                            <option value="Elect">Electrice</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Essence">Essence</option>
+                            <option value="Électrique">Electrice</option>
                         </select>
                         <fa-icon [icon]="energy" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['Portes_Energie'].touched) && creervoiture.controls['Portes_Energie'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['carburant'].touched) && creervoiture.controls['carburant'].errors?.['required']">
                         portes energie de voiture obligatoire 
                     </div> 
                 </label>
 
-                <label for="boite" class="w-1/4 block font-semibold mx-3">
+                <label for="manual_gearbox" class="w-1/4 block font-semibold mx-3">
                     <span>Boîte</span>
                     <div class="relative">
                         <select
                             class="w-full block pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
-                            id="boite"
-                            formControlName="boite"
+                            id="manual_gearbox"
+                            formControlName="manual_gearbox"
                             required
                         >
-                            <option value="automatique">Automatique</option>
-                            <option value="manuelle">Manuelle</option>
+                            <option value="Auto">Automatique</option>
+                            <option value="Manuelle">Manuelle</option>
                         </select>
 
                         <fa-icon [icon]="boite" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['boite'].touched) && creervoiture.controls['boite'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['manual_gearbox'].touched) && creervoiture.controls['manual_gearbox'].errors?.['required']">
                         boite de voiture obligatoire 
                     </div> 
                 </label>
 
-                <label for="capacity" class="w-1/4 block font-semibold mx-3">
+                <label for="nb_personnes" class="w-1/4 block font-semibold mx-3">
                     <span>Capacité</span>
                     <div class="relative">
                         <input
                         type="number"
                         class="w-full block p-4 pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
-                        id="capacity"
-                        formControlName="capacity"
+                        id="nb_personnes"
+                        formControlName="nb_personnes"
                         [value]="responseData && responseData.name ? responseData.name : ''"
                         required
                       />
 
                         <fa-icon [icon]="modele" class="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-300"></fa-icon>
                     </div>
-                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['capacity'].touched) && creervoiture.controls['capacity'].errors?.['required']">
+                    <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || creervoiture.controls['nb_personnes'].touched) && creervoiture.controls['nb_personnes'].errors?.['required']">
                         capacite de voiture obligatoire 
                     </div> 
                 </label>

@@ -25,7 +25,7 @@
             <table mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="image">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header >Image</th>
-                    <td mat-cell *matCellDef="let element">  <img src="../../../../assets/images/Cart-Cars/Cars/{{element.img}}.svg" alt="" class="w-24"> </td>
+                    <td mat-cell *matCellDef="let element">  <img src="../../../../assets/images/Cart-Cars/cars_image/{{element.img}}.svg" alt="" class="w-24"> </td>
                 </ng-container>         
                 <ng-container matColumnDef="marque">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Marque</th>
@@ -63,7 +63,9 @@
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef>Actions</th>
                     <td mat-cell *matCellDef="let element" class="custom-cell">
-                        <fa-icon [icon]="modifier" class="mr-4"></fa-icon>
+                        <a [routerLink]="'/modifier-voiture/' + element.id"class="">
+                            <fa-icon [icon]="modifier" class="mr-3"></fa-icon>
+                        </a>
                         <fa-icon [icon]="supprimer"></fa-icon>
                     </td>
                 </ng-container>

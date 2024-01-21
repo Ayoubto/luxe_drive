@@ -13,8 +13,16 @@ export class VoitureService {
   getAllAVoiture(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getallvoitures`);
   }
+  getVoitureById(id :any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/getvoiture/${id}`);
+  }
 
+  upadeteVoiture(id:any,agencedata:any){
+    return this.http.put<any>(`${this.apiUrl}/updatevoiture/${id}`,agencedata);
+
+  }
   Addvoiture(newAgence: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/addvoiture`,newAgence);
   }
+
 }

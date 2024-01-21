@@ -29,6 +29,7 @@ const routes: Routes = [
   {path:"dashboard",component:DashboardComponent ,canActivate: [AuthGuard]},
   {path:"ajouter-compte",component:CreerCompteComponent , canActivate: [AuthGuard]},
   {path:"modifier-compte/:id",component:CreerCompteComponent,canActivate: [AuthGuard]},
+  {path:"modifier-voiture/:id",component:AjouterVoitureComponent,canActivate: [AuthGuard]},
   {path:"modifier-agence/:id",component:AjouterAgenceComponent,canActivate: [AuthGuard]},
   {path:"comptes",component:ComptesComponent,canActivate: [AuthGuard]},
   {path:"ajouter-agence",component:AjouterAgenceComponent,canActivate: [AuthGuard]},

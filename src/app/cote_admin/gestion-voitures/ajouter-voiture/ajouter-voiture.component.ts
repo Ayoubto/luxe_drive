@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEye, faEyeSlash,faDoorOpen ,faCog  ,faTrademark ,faCubes,faLayerGroup,faMoneyBill ,faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
-import {ClientService} from '../../../client.service'
-
-
+import { VoitureService } from 'src/app/services/voiture.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ajouter-voiture',
   templateUrl: './ajouter-voiture.component.html',
@@ -48,19 +47,32 @@ onRemoveImage() {
 
 creervoiture: FormGroup;
 
-constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private ClientService: ClientService) {
+constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private VoitureService: VoitureService,private router: Router) {
  this.creervoiture = this.formBuilder.group({
    marque: ['', Validators.required],
    modele: ['', Validators.required],
    quantite : ['', [Validators.required]],
-   Portes_Energie: ['', [Validators.required, Validators.email]],
-   capacity: ['', [Validators.required,]],
-   boite: ['', Validators.required],
+   carburant: ['', [Validators.required]],
+   nb_personnes: ['', [Validators.required,]],
+   manual_gearbox: ['', Validators.required],
    consommation: ['', Validators.required],
    prix: ['', Validators.required],
  }
  );
-
+}
+initializeFormValues() {
+  if (this.responseData) {
+    this.creervoiture.patchValue({
+      marque:this.responseData.marque || '',
+      modele:this.responseData.modele || '',
+      quantite:this.responseData.quantite || '',
+      carburant:this.responseData.carburant || '',
+      nb_personnes: this.responseData.nb_personnes || '', 
+      manual_gearbox: this.responseData.manual_gearbox || '', 
+      consommation: this.responseData.consommation || '', 
+      prix: this.responseData.prix || '', 
+    });
+  }
 }
 
 passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
@@ -69,26 +81,32 @@ passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
 
  return password === confirmPwd ? null : { 'passwordMismatch': true };
 }
-
+form_Titre="Modifier compte"
 ngOnInit() {
- this.route.params.subscribe(params => {
-   const id = params['id'];
-   this.id = id ? Number(id) : null;
-   
-   if (this.id !== null) {
-     this.fetchDataById(this.id);
-   } else {
-     this.responseData = null;
-
-   }
-
- });
+  this.route.params.subscribe(params => {
+    const id = params['id'];
+    console.log(id)
+    this.id = id.toString() ;
+    
+    if (this.id !== null) {
+      this.form_Titre="Modifier compte"
+      
+      this.fetchDataById(id);
+    
+      
+    } else {
+      this.responseData = null;
+ 
+    }
+  });
  
 }
 fetchDataById(id: number): void {
- this.ClientService.getDataById(id).subscribe(
+ this.VoitureService.getVoitureById(id).subscribe(
    (data) => {
-     this.responseData = data; // Assign fetched data to formData
+     this.responseData = data;
+     console.log(this.responseData)
+     this.initializeFormValues()
      
    },
    (error) => {
@@ -101,9 +119,20 @@ fetchDataById(id: number): void {
 }
 formSubmitted = false;
 onSubmit() {
- // Handle form submission logic here
- console.log('Form submitted:', this.creervoiture.value);
- this.formSubmitted = true;
+  this.formSubmitted = true;
+  if(this.creervoiture.valid){
+    this.VoitureService.Addvoiture(this.creervoiture.value).subscribe(
+      (response:any) => {             
+          setTimeout(() => {
+            alert('add voiture  successfully!');
+          }, 100);
+      },     
+    (error) => {
+      console.error('Error adding voiture:', error);
+      alert('Error adding voiture. Please try again later.');
+    }
+  );    
+  }
 }
 
 clearForm() {
@@ -112,11 +141,18 @@ clearForm() {
 }
 
 onSubmitNotEmpty(){
- console.log('Form update:', this.creervoiture.value);
+  if(this.id){
+    this.VoitureService.upadeteVoiture(this.id ,this.creervoiture.value).subscribe(
+    (response:any) => {    
+      console.log(response)    
+        this.router.navigateByUrl('/voitures');  
+    },
+    
+  ); 
 
+  }
 }
 
-//Font Awesome icons
 
 
 eyePwd = faEye;
