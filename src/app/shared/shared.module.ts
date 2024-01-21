@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { PopupInscriptionComponent } from './popup-inscription/popup-inscription.component';
@@ -30,6 +31,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSlideToggleModule,
     MatTableModule,
     MatSortModule,
+    FormsModule,
   ],
 
   providers: [{provide: MatPaginatorIntl, useClass: CustomPaginatorIntl}],
