@@ -83,6 +83,36 @@ constructor(private VoitureService:VoitureService){}
 
   modifier = faPencil;
   supprimer = faTrash;
+
+  isConfirmationDialogOpen = false;
+  confirmationDialogData: { message: string, id: string } | null = null;
+  messageConf=""
+  openConfirmationDialog(id:any,marque:string,modele:string): void {
+    this.isConfirmationDialogOpen = true;
+    this.messageConf="Êtes-vous sûr de vouloir supprimer "+marque+ " "+modele+" ?"
+    this.confirmationDialogData = {
+      message: 'Êtes-vous sûr de vouloir supprimer cet utilisateur ?',
+      id: id
+    };
+  }
+  handleConfirmation(result: boolean, id: string | undefined): void {
+    if (result) {
+      this.VoitureService.deleteVoiture(id).subscribe(
+        response => {
+          console.log('User deleted successfully:', response);
+          this.getVoituresData()
+        },
+        error => {
+          console.error('Error deleting user:', error);
+        }
+      );
+      console.log(id);
+    } else {
+    
+      console.log('User clicked "Non"');
+    }
+    this.isConfirmationDialogOpen = false;
+  }
 }
 export interface PeriodicElement {
   image:string, 

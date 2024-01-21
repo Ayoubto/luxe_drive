@@ -25,4 +25,9 @@ export class VoitureService {
     return this.http.post<any>(`${this.apiUrl}/addvoiture`,newAgence);
   }
 
+  deleteVoiture(id:any): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/deletevoiture/${id}`);
+
+  }
+
 }
