@@ -4,7 +4,7 @@ import { MatPaginator ,MatPaginatorIntl,MatPaginatorModule} from '@angular/mater
 import { MatSort } from '@angular/material/sort';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AgenceService } from 'src/app/services/agence.service';
-
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-agences',
   templateUrl: './agences.component.html',
@@ -13,10 +13,8 @@ import { AgenceService } from 'src/app/services/agence.service';
 export class AgencesComponent {
   Page_Titre = "Gestion des Agences";
 
-  constructor(private AgenceService:AgenceService){}
-  // Manually created data
+  constructor(private AgenceService:AgenceService, private AuthService:AuthService){}
   responseData: any[]=[];
-  // Rechercher
   inputValue: string = '';
   Search() {
     if (this.inputValue === '') {
@@ -59,18 +57,26 @@ export class AgencesComponent {
   getAgences() {
     this.AgenceService.getAllAgence().subscribe(
       (data) => {
-        console.log(data)
-        this.responseData = data ;
-        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
+        console.log(data);
+        this.responseData = data;
+        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1, id: element.id.toString() }));
+        this.responseData.forEach(element => {
+          this.AuthService.getDataById(element.manager).subscribe(managerDetails => {
+          console.log(managerDetails)
+            element.manager = managerDetails.prenom +" "+ managerDetails.nom; 
+          });
+        });
+  
         this.filteredData = [...this.responseData];
-        this.dataSource.data=this.filteredData as PeriodicElement[];
+        this.dataSource.data = this.filteredData as PeriodicElement[];
       },
       (error) => {
-        console.error(error);
-        console.log("Hello word")
+        // Handle error if needed
+        console.error('Error fetching agences:', error);
       }
     );
   }
+  
   onInputChange() {
     this.Search();
   }

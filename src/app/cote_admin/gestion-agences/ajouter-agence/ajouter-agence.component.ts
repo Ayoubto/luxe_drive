@@ -4,6 +4,7 @@ import { faEnvelope, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg
 import { AgenceService } from 'src/app/services/agence.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-ajouter-agence',
   templateUrl: './ajouter-agence.component.html',
@@ -13,11 +14,27 @@ export class AjouterAgenceComponent {
   Page_Titre="Gestion des Agences"
   form_Titre="Ajouter une agence"
 
-  Managers = ["Firdaous","Abdo","Adnan","ayoub"]
+  Managers:any
+
+  getManagers(){
+    this.AuthService.getAllUsers().subscribe(
+      (data :any[]) => {
+        this.Managers = data.filter((item: any) => this.checkRole(item, "Manager"));
+        console.log(this.Managers)
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
+  }
+
+  checkRole(user: any, roleToCheck: string): boolean {
+    return user && user.role && user.role.toLowerCase() === roleToCheck.toLowerCase();
+  }
 
   ajouterAgence: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private AgenceService: AgenceService,private route: ActivatedRoute,private router: Router) {
+  constructor(private formBuilder: FormBuilder,private AgenceService: AgenceService,private route: ActivatedRoute,private router: Router,private AuthService:AuthService) {
     this.ajouterAgence = this.formBuilder.group({
       nom_agence: ['', Validators.required],
       manager: ['', Validators.required],
@@ -46,26 +63,17 @@ export class AjouterAgenceComponent {
   }
   id: number | null=null;
   ngOnInit() {
+    this.getManagers()
     this.route.params.subscribe(params => {
       const id = params['id'];
-      this.id = id.toString() ;
-      
-      if (this.id !== null) {
-        this.form_Titre="Modifier compte"
-        
+      if (id !== undefined && id !== null && id !== '') {
+        this.form_Titre = "Modifier Agence";
+        this.id = id.toString();
         this.fetchDataById(id);
-      
-      if (this.id !== null) {
-        this.form_Titre="Modifier Agence"
-     
-      } else {
-       
-   
       }
-    }});
-    
+    });
   }
-  responseData: any={};
+  responseData: any;
   fetchDataById(id: number): void {
     this.AgenceService.getAgence(id).subscribe(
       (data) => {
@@ -75,15 +83,16 @@ export class AjouterAgenceComponent {
       },
       (error) => {
         console.error('Error fetching data:', error);
-        this.responseData = {ERROR:"jfjfjf"}; // Set formData as empty in case of an error
       
       }
     );
-    console.log(this.responseData)
+    
    }
 
   formSubmitted = false;
   onSubmit() {
+    console.log("jdjdhrfhrfr")
+    console.log(this.ajouterAgence.value)
     if(this.ajouterAgence.valid){
       this.AgenceService.AddAgence(this.ajouterAgence.value).subscribe(
       (response:any) => {
@@ -105,7 +114,6 @@ export class AjouterAgenceComponent {
 
   onSubmitNotEmpty(){
     this.formSubmitted=true 
-
     if(this.id){
       if(this.ajouterAgence.valid){
       this.AgenceService.updateAgence(this.id ,this.ajouterAgence.value).subscribe(

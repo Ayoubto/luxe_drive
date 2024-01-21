@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class CreerCompteComponent {
   hasIdParam: boolean=false;
   id: number | null=null;
-  responseData: any={};
+  responseData: any=null;
 
   Page_Titre="Gestion des Comptes"
   defaultImage = '../../../../assets/images/profile.jpg';
@@ -91,20 +91,13 @@ export class CreerCompteComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      console.log(id)
-      this.id = id.toString() ;
-      
-      if (this.id !== null) {
+      if (id !== undefined && id !== null && id !== '') {
         this.form_Titre="Modifier compte"
-        
+        this.id = id.toString();
         this.fetchDataById(id);
-      
-        
-      } else {
-        this.responseData = null;
-   
       }
     });
+
     
   }
   fetchDataById(id: number): void {

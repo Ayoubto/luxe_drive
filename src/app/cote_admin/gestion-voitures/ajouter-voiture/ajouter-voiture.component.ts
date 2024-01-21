@@ -17,7 +17,7 @@ export class AjouterVoitureComponent {
  hasIdParam: boolean=false;
   
  id: number | null=null;
- responseData: any={};
+ responseData: any;
 
 
 defaultImage = '../../../../assets/images/voiture.png';
@@ -81,23 +81,20 @@ passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
 
  return password === confirmPwd ? null : { 'passwordMismatch': true };
 }
-form_Titre="Modifier compte"
+form_Titre="Ajouter Voiture"
 ngOnInit() {
   this.route.params.subscribe(params => {
     const id = params['id'];
-    this.id = id.toString() ;
-    
-    if (this.id !== null) {
-      this.form_Titre="Modifier compte"
-      
+    if (id !== undefined && id !== null && id !== '') {
+      this.form_Titre="Modifier Voiture"
+      this.id = id.toString();
       this.fetchDataById(id);
-    
-      
-    } else {
-      this.responseData = null;
- 
+    }
+    else{
+      this.responseData=null
     }
   });
+
  
 }
 fetchDataById(id: number): void {
@@ -110,7 +107,6 @@ fetchDataById(id: number): void {
    },
    (error) => {
      console.error('Error fetching data:', error);
-     this.responseData = {ERROR:"jfjfjf"}; // Set formData as empty in case of an error
    
    }
  );

@@ -29,7 +29,7 @@
                         required
                     >
                         <option value="" disabled selected hidden></option>
-                        <option *ngFor="let option of Managers" [value]="option">{{ option }}</option>
+                        <option *ngFor="let option of Managers" [value]="option.id">{{ option.nom + " "+option.prenom }}</option>
                     </select>
                     <div class="text-red-700 text-xs font-normal mt-1" *ngIf="(formSubmitted || ajouterAgence.controls['manager'].touched) && ajouterAgence.controls['manager'].errors?.['required']">
                         Manager d'agence est obligatoire
@@ -115,7 +115,8 @@
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
             <div class="flex justify-end mb-8">
                 <button type="reset" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Annuler</button>
-                <button type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
+                <button *ngIf="!responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Enregistrer</button>
+                <button *ngIf="responseData" type="submit" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modifier</button>
             </div>
         </form>
     </div>
