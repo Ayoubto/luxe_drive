@@ -85,7 +85,6 @@ form_Titre="Modifier compte"
 ngOnInit() {
   this.route.params.subscribe(params => {
     const id = params['id'];
-    console.log(id)
     this.id = id.toString() ;
     
     if (this.id !== null) {
@@ -104,8 +103,8 @@ ngOnInit() {
 fetchDataById(id: number): void {
  this.VoitureService.getVoitureById(id).subscribe(
    (data) => {
+    console.log(data)
      this.responseData = data;
-     console.log(this.responseData)
      this.initializeFormValues()
      
    },

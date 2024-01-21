@@ -20,7 +20,7 @@ constructor(private VoitureService:VoitureService){}
     getVoituresData() {
       this.VoitureService.getAllAVoiture().subscribe(
         (data) => {
-          console.log(data)
+         
           this.responseData = data ;
         
           this.filteredData = [...this.responseData];

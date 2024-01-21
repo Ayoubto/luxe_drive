@@ -5,7 +5,7 @@
         <div class="lg:container lg:mx-auto space-y-5 my-8">
             <p class="text-center font-bold text-3xl">{{form_Titre}} </p>
         </div>
-        <form [formGroup]="ajouterAgence" (ngSubmit)="onSubmit()">
+        <form [formGroup]="ajouterAgence" (ngSubmit)="responseData ? onSubmitNotEmpty() : onSubmit()">
             <div class="flex justify-between mb-10">
                 <label for="nom" class="w-1/2 mr-6 block font-semibold">
                     <span>Agence :</span>

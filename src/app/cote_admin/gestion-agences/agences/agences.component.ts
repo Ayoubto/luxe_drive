@@ -53,10 +53,10 @@ export class AgencesComponent {
 
   ngOnInit() {
 
-    this.getUsersData()
+    this.getAgences()
   }
 
-  getUsersData() {
+  getAgences() {
     this.AgenceService.getAllAgence().subscribe(
       (data) => {
         console.log(data)
@@ -82,6 +82,39 @@ export class AgencesComponent {
   }
   modifier = faPencil;
   supprimer = faTrash;
+
+  isConfirmationDialogOpen = false;
+  confirmationDialogData: { message: string, id: string } | null = null;
+  messageConf=""
+  openConfirmationDialog(id:any,nom_agence:string): void {
+    this.isConfirmationDialogOpen = true;
+    this.messageConf="Êtes-vous sûr de vouloir supprimer l agence "+nom_agence+ "  ?"
+    this.confirmationDialogData = {
+      message: 'Êtes-vous sûr de vouloir supprimer cet agence ?',
+      id: id
+    };
+  }
+  handleConfirmation(result: boolean, id: string | undefined): void {
+    if (result) {
+      this.AgenceService.deleteAgence(id).subscribe(
+        response => {
+          console.log('User deleted successfully:', response);
+          this.getAgences()
+        },
+        error => {
+          console.error('Error deleting user:', error);
+        }
+      );
+      console.log(id);
+    } else {
+    
+      console.log('User clicked "Non"');
+    }
+    this.isConfirmationDialogOpen = false;
+  }
+
+
+
 }
 
 export interface PeriodicElement {
