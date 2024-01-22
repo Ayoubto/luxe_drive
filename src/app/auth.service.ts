@@ -37,7 +37,7 @@ export class AuthService {
     this.authToken = token;
   }
 
-  getDataById(id: number): Observable<any> {
+  getDataById(id: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/auth/getuser/${id}`);
   }
 
