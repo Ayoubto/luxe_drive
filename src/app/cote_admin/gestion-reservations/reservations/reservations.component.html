@@ -24,7 +24,8 @@
         <div class="hover:border-black mb-5 flex justify-center">
             <div class="flex w-[30%]">
                 <select class="block appearance-none  bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" (change)="onSelectionChange($event)">
-                    <option *ngFor="let agence of agences" [value]="agence.value">{{ agence.label }}</option>
+                    <option value="">Tout les reservation</option>
+                    <option *ngFor="let agence of agences" [value]="agence.id">{{ agence.nom_agence }}</option>
                 </select>
                 <div class="pointer-events-none   flex items-center -mx-5 text-gray-700">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -37,11 +38,11 @@
             <table mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header >ID</th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.sequentialNumber}} </td>
                 </ng-container>         
                 <ng-container matColumnDef="client">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
-                    <td mat-cell *matCellDef="let element"> {{element.client}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
                 </ng-container>
                 <ng-container matColumnDef="tele">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</th>
@@ -66,12 +67,12 @@
                 <ng-container matColumnDef="status">
                     <th mat-header-cell *matHeaderCellDef>Status</th>
                     <td mat-cell *matCellDef="let element" class="custom-cell">
-                        <select id="status" class="block pl-3 pr-10 py-2 text-base border-2 border-gray-300 rounded-md">
-                            <option value="" disabled selected hidden></option>
-                            <option value="enAattente">En attente</option>
-                            <option value="enCours">En cours</option>
-                            <option value="completee">Complétée</option>
-                        </select>
+                        <select id="status" class="block pl-3 pr-10 py-2 text-base border-2 border-gray-300 rounded-md" [(ngModel)]="element.reservation" (ngModelChange)="onStatusChange(element)">
+                            <option value="" disabled hidden></option>
+                            <option *ngFor="let status of statuses" [value]="status" [attr.selected]="element.reservation === status ? true : null">
+                              {{ status }}
+                            </option>
+                          </select>
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -3,7 +3,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ClientService } from '../../../client.service';
-
+import { ReservationService } from 'src/app/services/reservation.service';
+import { AuthService } from 'src/app/auth.service';
+import { VoitureService } from 'src/app/services/voiture.service';
+import { AgenceService } from 'src/app/services/agence.service';
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
@@ -11,30 +14,53 @@ import { ClientService } from '../../../client.service';
 })
 export class ReservationsComponent {
   Page_Titre="Gestion des Réservations"
+  selectedStatus: string = 'En Aattente'; 
+  statuses: string[] = ['En Aattente', 'En cours', 'Completee']; 
 
-  agences = [
-    { value: '', label: 'Toutes les agences' },
-    { value: 'tanger-ville', label: 'Agence de Tanger Ville (Siège)' },
-    { value: 'tanger-aeroport', label: 'Agence de Tanger Aéroport' },
-    { value: 'casablanca-ville', label: 'Agence de Casablanca Ville' },
-    { value: 'casablanca-aeroport', label: 'Agence de Casablanca Aéroport' },
-    { value: 'marrakech-ville', label: 'Agence de Marrakech Ville' },
-    { value: 'marrakech-aeroport', label: 'Agence de Marrakech Aéroport' },
-    { value: 'agadir-ville', label: 'Agence de Agadir Ville' },
-    { value: 'agadir-aeroport', label: 'Agence de Agadir Aéroport' },
-    { value: 'tetouan-ville', label: 'Agence de Tétouan Ville' },
-  ];
 
-  // constructor 
-  constructor(private ClientService: ClientService) { }
-  
-  // prend data en api (service)
+  agences:any
+  getAgence (){
+    this.AgenceService.getAllAgence().subscribe(AgenceData => {
+        this.agences=AgenceData
+        console.log(this.agences)
+      });
+  }
+
+  onStatusChange(element:any){
+    console.log(element)
+
+  }
+
+  constructor(private AuthService: AuthService,private ReservationService:ReservationService,private VoitureService:VoitureService, private AgenceService:AgenceService) { }
   responseData: any[]=[];
   getData() {
-    this.ClientService.getSomeData().subscribe(
+    this.ReservationService.getAllreservation().subscribe(
       (data) => {
-        this.responseData = data ;
+        this.responseData = data ;      
+        this.responseData = this.responseData.filter((reservation) => reservation.status === 'confirmée') .map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
         
+        this.responseData.forEach(element => {
+          this.AuthService.getDataById(element.user_id).subscribe(managerDetails => {
+            element.user_id = managerDetails.prenom +" "+ managerDetails.nom; 
+            element.tele = managerDetails.telephone; 
+          });
+        });
+        this.responseData.forEach(element => {
+          this.VoitureService.getVoitureById(element.voiture_id).subscribe(Voituredata => {
+            element.voiture=Voituredata.marque+" "+Voituredata.modele
+          });
+        });
+        this.responseData.forEach(element => {
+          this.AgenceService.getAgence(element.agence_depart_id).subscribe(AgenceData => {
+            element.depart=AgenceData.nom_agence
+          });
+        });
+        this.responseData.forEach(element => {
+          this.AgenceService.getAgence(element.agence_retour_id).subscribe(AgenceData => {
+            element.retour=AgenceData.nom_agence
+          });
+        });
+  
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];
       },
@@ -43,7 +69,6 @@ export class ReservationsComponent {
       }
     );
   }
-
   //Rechercher
   inputValue: string = ''
   Search() {
@@ -91,6 +116,7 @@ export class ReservationsComponent {
 
   ngOnInit() {
     this.getData();  
+    this.getAgence()
   }
 
   ngAfterViewInit() {

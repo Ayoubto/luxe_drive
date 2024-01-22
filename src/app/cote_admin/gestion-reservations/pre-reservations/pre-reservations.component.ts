@@ -24,7 +24,6 @@ export class PreReservationsComponent {
         this.agences=AgenceData
         console.log(this.agences)
       });
-  
   }
 
   // constructor 
