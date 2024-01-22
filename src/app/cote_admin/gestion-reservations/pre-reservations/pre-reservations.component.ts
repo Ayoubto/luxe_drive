@@ -4,7 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ClientService } from '../../../client.service';
 import { faCheckCircle, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { ReservationService } from 'src/app/services/reservation.service';
+import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-pre-reservations',
   templateUrl: './pre-reservations.component.html',
@@ -27,15 +28,19 @@ export class PreReservationsComponent {
   ];
 
   // constructor 
-  constructor(private ClientService: ClientService) { }
+  constructor(private AuthService: AuthService,private ReservationService:ReservationService) { }
   
   // prend data en api (service)
   responseData: any[]=[];
   getData() {
-    this.ClientService.getSomeData().subscribe(
+    this.ReservationService.getAllreservation().subscribe(
       (data) => {
         this.responseData = data ;
-        
+       
+        this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
+        this.responseData.forEach(element => {
+
+        });
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];
       },

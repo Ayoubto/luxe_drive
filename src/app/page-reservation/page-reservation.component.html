@@ -39,11 +39,16 @@
 </div>
 
 <div class="grid md:grid-cols-2 grid-cols-1  lg:grid-cols-3 m-5 mx-10 py-10 gap-y-4 gap-x-8">
-    <div *ngFor="let car of Cars">
+    <div *ngFor="let car of displayedCars">
         <app-cart-car  [Car]="car"></app-cart-car>  
     </div>
-    <div *ngFor="let car of Cars">
-        <app-cart-car  [Car]="car"></app-cart-car>  
-    </div>
+
+</div>   
+<div class="flex justify-center">
+    <div class=" my-12 ">
+        <button (click)="loadMoreCars()" class="  justify-center basis-1/2 bg-black rounded-3xl p-4 flex items-center gap-0.5 lg:w-[11.87rm] text-white ">Voir plus des voitures
+            <img src="../../../../assets/images/Search/arrow-right.svg" class="mt-1" alt="">   
+        </button>                
+    </div>        
 </div>
 <app-footer></app-footer>
