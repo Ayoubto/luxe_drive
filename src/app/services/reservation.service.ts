@@ -21,5 +21,8 @@ export class ReservationService {
   deletereservation(id:any): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/deletereservation/${id}`);
   }
+  ChangeStatus(id:any,data:any): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/updatestatus/${id}`,data);
+  }
 
 }

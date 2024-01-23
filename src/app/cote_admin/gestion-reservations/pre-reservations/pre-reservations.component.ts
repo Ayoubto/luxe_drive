@@ -19,23 +19,33 @@ export class PreReservationsComponent {
 
   agences :any
 
+  changeStatus(id:any){
+    this.ReservationService.ChangeStatus(id,"Ayoub").subscribe(
+      (responseData) => {
+       
+        this.getData()
+      },
+      (error) => {
+        // Handle error response
+        console.error('Error:', error);
+  })
+}
+
   getAgence (){
     this.AgenceService.getAllAgence().subscribe(AgenceData => {
         this.agences=AgenceData
         console.log(this.agences)
       });
   }
-
-  // constructor 
   constructor(private AuthService: AuthService,private ReservationService:ReservationService,private VoitureService:VoitureService, private AgenceService:AgenceService) { }
   
-  // prend data en api (service)
+
   responseData: any[]=[];
   getData() {
     this.ReservationService.getAllreservation().subscribe(
       (data) => {
         this.responseData = data ;      
-        this.responseData = this.responseData.filter((reservation) => reservation.status === 'confirmée') .map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
+        this.responseData = this.responseData.filter((reservation) => reservation.status === 'Pas encours') .map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
         this.responseData.forEach(element => {
           this.AuthService.getDataById(element.user_id).subscribe(managerDetails => {
             element.user_id = managerDetails.prenom +" "+ managerDetails.nom; 
