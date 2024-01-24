@@ -20,4 +20,15 @@ export class CartCarComponent {
   closePopupins() {
     this.isPopupOpen = false;
   }
+  isLoggedIn:boolean=false
+  loged(){
+    const token = localStorage.getItem('token');
+    if(!!token){
+      this.isLoggedIn=true
+  }
+}
+
+ngOnInit(){
+  this.loged()
+}
 }

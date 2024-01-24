@@ -4,16 +4,18 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { HistoriqueService } from 'src/app/services/historique.service';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { VoitureService } from 'src/app/services/voiture.service';
+import { AgenceService } from 'src/app/services/agence.service';
 @Component({
   selector: 'app-historique',
   templateUrl: './historique.component.html',
   styleUrls: ['./historique.component.css']
 })
 export class HistoriqueComponent implements OnInit{
-  constructor(private HistoriqueService:HistoriqueService){}
+  constructor(private HistoriqueService:HistoriqueService,private VoitureService:VoitureService, private AgenceService:AgenceService){}
   responseData: any[]=[];
-  
+  helper = new JwtHelperService();
   // Rechercher
   inputValue: string = '';
   Search() {
@@ -50,16 +52,41 @@ export class HistoriqueComponent implements OnInit{
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   ngOnInit(): void {
-
+    this.getIdUser()
     this.loadData()
   }
-
+  iduser:any
+  getIdUser(){
+    const token = localStorage.getItem('token'); 
+    if(token){
+      
+   
+    const decodetoken= this.helper.decodeToken(token);
+    this.iduser=decodetoken.id
+    }
+  }
   loadData(): void {
-    this.HistoriqueService.getReservationsClient().subscribe(
+    this.HistoriqueService.getReservationsClient(this.iduser).subscribe(
       (data) => {
         console.log(data)
         this.responseData = data ;
         this.responseData = this.responseData.map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
+
+        this.responseData.forEach(element => {
+          this.VoitureService.getVoitureById(element.voiture_id).subscribe(Voituredata => {
+            element.voiture=Voituredata.marque+" "+Voituredata.modele
+          });
+        });
+        this.responseData.forEach(element => {
+          this.AgenceService.getAgence(element.agence_depart_id).subscribe(AgenceData => {
+            element.depart=AgenceData.nom_agence
+          });
+        });
+        this.responseData.forEach(element => {
+          this.AgenceService.getAgence(element.agence_retour_id).subscribe(AgenceData => {
+            element.retour=AgenceData.nom_agence
+          });
+        });
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];
       },
