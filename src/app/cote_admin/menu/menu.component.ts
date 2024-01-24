@@ -22,11 +22,13 @@ getRole(){
   const token = localStorage.getItem('token'); 
   if(token){
     
- 
+  console.log("this is a admin")
   const decodetoken= this.helper.decodeToken(token);
   const userRoles = decodetoken.role
-if(userRoles=="admin"){
+  console.log(userRoles)
+if(userRoles=="[admin]"){
   this.admin=true
+  
 }
 } }
   ngOnInit(){
