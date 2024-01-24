@@ -4,6 +4,7 @@ import { AuthService } from '../../auth.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { CommunicationService } from 'src/app/communication.service';
+import { response } from 'express';
 @Component({
   selector: 'app-popup-inscription',
   templateUrl: './popup-inscription.component.html',
@@ -81,13 +82,16 @@ export class PopupInscriptionComponent {
     }
     this.formSubmitted=true 
   }
-
+  erro_de_validation:boolean=false
   connecter(){
     if(this.se_connecter.valid){
       this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
       this.authService.authenticateUser(this.se_connecter.value).subscribe(
         (response:any) => {
+          console.log(response.jwt)
+         
           if (response.jwt) {
+           
             const dataToSend = true; 
             this.dataEvent.emit(dataToSend);
             localStorage.setItem('token', response.jwt);
@@ -96,15 +100,23 @@ export class PopupInscriptionComponent {
             if(response.role=="admin" || response.role=="manager"){
               this.router.navigate(['/dashboard']);
             }
+            console.log(response)
             this.close.emit();
           } else {
               console.log("Something went wrong")
+              
           }
         },
         (error:any) => {
           if(error.jwt="Invalid email or password"){
               this.erro_de_connecter=true
+              
           }
+          if(error.jwt="Veuillez activer votre compte en vérifiant votre e-mail"){
+           this.erro_de_validation=true
+           
+            
+        }
         }
       );
       this.formSubmitted_connecter=true 
