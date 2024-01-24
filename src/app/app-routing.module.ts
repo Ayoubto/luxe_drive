@@ -27,7 +27,6 @@ const routes: Routes = [
   {path:"contact",component:PageContactComponent},
   {path:"nos-agences",component:PageAgencesComponent},
   {path:"nos-voitures",component:PageReservationComponent},
-  {path:"profil-admin/:id",component:ProfilAdminComponent},
   {path:"dashboard",component:DashboardComponent ,canActivate: [AuthGuard]},
   {path:"ajouter-compte",component:CreerCompteComponent , canActivate: [AuthGuard]},
   {path:"modifier-compte/:id",component:CreerCompteComponent,canActivate: [AuthGuard]},

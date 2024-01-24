@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { faTachometerAlt, faUserCog, faBuilding, faCar, faCalendarAlt, faInbox, faRightFromBracket, faChevronRight, faChevronDown, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { LogoutService } from '../logout.service';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -9,13 +9,29 @@ import { LogoutService } from '../logout.service';
 })
 export class MenuComponent {
   openSubMenus: string[] = [];
-
+  helper = new JwtHelperService();
+  
   constructor(private logoutService: LogoutService) {}
   seDeconnecter(): void {
     this.logoutService.deleteTokenFromLocalStorage();
     window.location.href = '/accueil';
   }
 
+  admin:boolean=false
+getRole(){
+  const token = localStorage.getItem('token'); 
+  if(token){
+    
+ 
+  const decodetoken= this.helper.decodeToken(token);
+  const userRoles = decodetoken.role
+if(userRoles=="admin"){
+  this.admin=true
+}
+} }
+  ngOnInit(){
+    this.getRole()
+  }
   //Font Awesome icons
   dashboard = faTachometerAlt;
   comptes = faUserCog;

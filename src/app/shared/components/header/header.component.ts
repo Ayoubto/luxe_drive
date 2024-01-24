@@ -40,7 +40,7 @@ export class HeaderComponent {
       }
       
     });
-    const token = localStorage.getItem('token'); // Replace 'token' with the key you use to store the token
+    const token = localStorage.getItem('token');
     if(!!token){
       this.isLoggedIn=true
       const decodetoken= this.helper.decodeToken(token);
