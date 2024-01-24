@@ -43,6 +43,7 @@ import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-v
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmerReservationComponent } from './voitures/confirmer-reservation/confirmer-reservation.component';
 import { DatePipe } from '@angular/common';
+import { ProfilAdminComponent } from './cote_admin/profil-admin/profil-admin.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { DatePipe } from '@angular/common';
     AjouterVoitureComponent,
     ConfirmationDialogComponent,
     ConfirmerReservationComponent,
+    ProfilAdminComponent,
   ],
   
   imports: [
