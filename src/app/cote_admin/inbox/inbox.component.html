@@ -2,7 +2,7 @@
 <div class="flex-1 h-full overflow-auto bg-gray-100">
     <app-header-admin [Titre]="Page_Titre"></app-header-admin>
     <div class="flex flex-col bg-white px-8">
-        <div class="lg:container lg:mx-auto space-y-5 mt-8 mb-4">
+        <div class="lg:container lg:mx-auto space-y-5 my-8">
             <p class="text-center font-bold text-3xl">Boîte de réception</p>
         </div>
         <div *ngIf="!Va">
@@ -16,17 +16,6 @@
                     <input name="name" (ngModelChange)="Search()" [(ngModel)]="inputValue" type="text" id="simple-search" class="bg-gray-50 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5" placeholder="Rechercher ..." required>
                 </div>
             </form>
-            <div class="flex items-center mb-5">
-                <button class="flex items-center bg-gray-300 text-white px-2 py-1 rounded-full mr-2 h-8 w-8">
-                    <input type="checkbox" class="h-4 w-4">
-                </button>
-                <button class="bg-red-500 text-white px-2 py-1 rounded-full mr-2 h-8 w-8">
-                    <fa-icon [icon]="supprimer"></fa-icon>
-                </button>
-                <button class="bg-blue-500 text-white px-2 py-1 rounded-full h-8 w-8">
-                    <fa-icon [icon]="trier"></fa-icon>
-                </button>
-            </div>
             <div class="mat-elevation-z8 mb-5">
                 <table mat-table [dataSource]="dataSource">
                     <ng-container matColumnDef="checkbox">
@@ -45,6 +34,33 @@
                 <mat-paginator [pageSizeOptions]="[10, 15]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
             </div>  
         </div>
-        <div *ngIf="Va"></div>
+        <div *ngIf="Va">
+            <div class="flex items-center space-x-4 mb-12 text-xl">
+                <fa-icon 
+                    [icon]="retour" 
+                    class="p-3 rounded-full hover:cursor-pointer hover:bg-gray-100"
+                    (click)="goBack()">
+                </fa-icon>
+                <fa-icon 
+                    [icon]="supprimer" 
+                    class="p-3 rounded-full hover:cursor-pointer hover:bg-gray-100"
+                    (click)="deleteMessage(idMessage)">
+                </fa-icon>
+                <fa-icon 
+                    [icon]="important" 
+                    class="p-3 rounded-full hover:cursor-pointer hover:bg-gray-100"
+                    (click)="markAsImportant(idMessage)">
+                </fa-icon>
+            </div>
+            <h2>Objet: {{ content.objet }}</h2>
+            <p><span class="font-medium">Nom: </span>{{ content.prenom_env }} {{ content.nom_env }}</p>
+            <p><span class="font-medium">E-mail: </span><{{ content.email_env }}></p>
+            <p><span class="font-medium">Téléphone: </span>{{ content.telephone_env }}</p>
+            <div class="flex justify-end">
+                <p class="font-medium text-gray-400">date: {{ content.date }}</p>
+            </div>
+            <div class="h-0.5 bg-gray-300 opacity-30 my-6 mx-auto">&nbsp;</div>
+            <p class="pb-12 mb-12">{{ content.contenu }}</p>
+        </div>
     </div>
 </div>
