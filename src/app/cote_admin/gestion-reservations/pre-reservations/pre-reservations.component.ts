@@ -34,7 +34,7 @@ export class PreReservationsComponent {
   getAgence (){
     this.AgenceService.getAllAgence().subscribe(AgenceData => {
         this.agences=AgenceData
-        console.log(this.agences)
+       
       });
   }
   constructor(private AuthService: AuthService,private ReservationService:ReservationService,private VoitureService:VoitureService, private AgenceService:AgenceService) { }
@@ -44,7 +44,8 @@ export class PreReservationsComponent {
   getData() {
     this.ReservationService.getAllreservation().subscribe(
       (data) => {
-        this.responseData = data ;      
+        this.responseData = data ;  
+        console.log(data)    
         this.responseData = this.responseData.filter((reservation) => reservation.status === 'Pas encours') .map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
         this.responseData.forEach(element => {
           this.AuthService.getDataById(element.user_id).subscribe(managerDetails => {
@@ -67,6 +68,7 @@ export class PreReservationsComponent {
             element.retour=AgenceData.nom_agence
           });
         });
+       
   
         this.filteredData = [...this.responseData];
         this.dataSource.data=this.filteredData as PeriodicElement[];

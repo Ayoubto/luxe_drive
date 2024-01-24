@@ -115,7 +115,7 @@ export class ConfirmerReservationComponent {
       Prix_Total: this.calculateTotalPrice(),
       user_id: this.idUser,
     };
-    
+   
     this.ReservationService.addreservation(reservationFormValue).subscribe(
       (responseData) => {
         this.idReservation = responseData.message
