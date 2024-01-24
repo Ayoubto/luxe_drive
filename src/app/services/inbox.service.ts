@@ -16,4 +16,10 @@ export class InboxService {
   getMessageById(id: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getmessage/${id}`);
   }
+  deleteMessage(id: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/deletemessage/${id}`);
+  }
+  markAsImportant(id: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/markasimportant/${id}`);
+  }
 }

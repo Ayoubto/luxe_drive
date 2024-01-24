@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { faCheckSquare, faPencil, faSort, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBookmark, faCheckSquare, faSort, faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { InboxService } from 'src/app/services/inbox.service';
 
 @Component({
@@ -13,49 +13,21 @@ import { InboxService } from 'src/app/services/inbox.service';
 export class InboxComponent {
   Page_Titre="Boîte de réception"
 
-  message: any
-  idMessage: any
-  content: any
+  message: any;
+  idMessage: any;
+  content: any;
 
   Va:boolean=false
 
+  cocher = faCheckSquare;
+  supprimer = faTrashAlt;
+  trier = faSort;
+  retour = faArrowLeft;
+  important = faBookmark;
+
   constructor(private InboxService:InboxService) {}
-
-  getMessages() {
-    this.InboxService.getMessages().subscribe(
-      (data) => {
-        console.log(data)
-        this.responseData = data ;
-        this.filteredData = [...this.responseData];
-        this.dataSource.data=this.filteredData as PeriodicElement[];
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  getMessage() {
-    this.InboxService.getMessageById(this.idMessage).subscribe(
-      (data) => {
-        this.content = data
-        console.log(data)
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  displayContent(id: any){
-    this.idMessage = id
-    this.getMessage();
-    
-    this.Va = !this.Va
-  }
-
+  
   responseData: PeriodicElement[] = [];
-
 
   // Rechercher
   inputValue: string = '';
@@ -103,9 +75,67 @@ export class InboxComponent {
     this.Search();
   }
 
-  cocher = faCheckSquare;
-  supprimer = faTrash;
-  trier = faSort;
+  getMessages() {
+    this.InboxService.getMessages().subscribe(
+      (data) => {
+        console.log(data)
+        this.responseData = data ;
+        this.filteredData = [...this.responseData];
+        this.dataSource.data=this.filteredData as PeriodicElement[];
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getMessage() {
+    this.InboxService.getMessageById(this.idMessage).subscribe(
+      (data) => {
+        this.content = data
+        console.log(data)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  displayContent(id: any){
+    this.idMessage = id
+    this.getMessage();
+    
+    this.Va = !this.Va
+  }
+
+  goBack(){
+    this.Va = !this.Va
+  }
+
+  deleteMessage(id: any){
+    this.idMessage = id
+    this.InboxService.deleteMessage(this.idMessage).subscribe(
+      (data) => {
+        console.log('Message supprimé avec succès:', data)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    this.Va = !this.Va
+  }
+
+  markAsImportant(id: any){
+    this.idMessage = id
+    this.InboxService.markAsImportant(this.idMessage).subscribe(
+      (data) => {
+        console.log('Message marqué comme important:', data)
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }
 
 export interface PeriodicElement {
