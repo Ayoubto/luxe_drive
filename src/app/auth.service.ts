@@ -11,8 +11,6 @@ export class AuthService {
   private currentUser: any;
   helper = new JwtHelperService();
 
-
-
   isAdmin(): boolean {
     const token = localStorage.getItem('token'); 
     if(!token){
@@ -30,6 +28,22 @@ export class AuthService {
     return false;
     
   }
+
+  isManager(): boolean {
+    const token = localStorage.getItem('token'); 
+    if(!token){
+      return false;
+    }
+    const decodetoken= this.helper.decodeToken(token);
+    if(decodetoken.role="manager"){
+      return true;
+    }
+    if(this.helper.isTokenExpired(token)){
+      return false;
+    }
+    return false;
+  }
+
   private apiUrl = 'http://localhost:8093/api';
   private authToken: string | null = null;
 
