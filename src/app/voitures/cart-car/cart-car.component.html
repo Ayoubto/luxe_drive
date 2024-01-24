@@ -23,7 +23,8 @@
                         <p class="font-sans text-sm">{{Car.carburant}}</p>
                     </div>
                 </div>
-                <button (click)="openPopup(Car.id)" class="rounded-2xl border border-1 h-[40px] border-black w-full font-sans tetx-l text-slate-500 g px-4  hover:bg-black hover:text-white">Réservez Maintenant</button>
+                <button  *ngIf="isLoggedIn" (click)="openPopup(Car.id)" class="rounded-2xl border border-1 h-[40px] border-black w-full font-sans tetx-l text-slate-500 g px-4  hover:bg-black hover:text-white">Réservez Maintenant</button>
+                <button *ngIf="!isLoggedIn"  class="rounded-2xl border border-1 h-[40px] border-black w-full font-sans tetx-l text-slate-500 g px-4  hover:bg-black hover:text-white">Cree votre compte pour reservez Maintenant </button>
             </div>
         </div>
 

@@ -20,10 +20,10 @@
         </button>
     </form>
     <div class="mat-elevation-z8 mb-5">
-        <table mat-table matSort>
+        <table mat-table matSort  [dataSource]="dataSource">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header >ID</th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.sequentialNumber}} </td>
             </ng-container>         
             <ng-container matColumnDef="voiture">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Voiture</th>
