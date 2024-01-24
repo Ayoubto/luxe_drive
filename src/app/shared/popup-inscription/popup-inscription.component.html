@@ -138,6 +138,9 @@
             <div class="text-red-700 text-base font-bold -mt-0.5 flex justify-center" *ngIf="(formSubmitted_connecter && erro_de_connecter)" >
               E-mail ou mot de passe incorrect.
             </div>
+            <div class="text-red-700 text-base font-bold -mt-0.5 flex justify-center" *ngIf="(formSubmitted_connecter && erro_de_validation)" >
+             Activer Votre compte
+            </div>
             <div class="flex flex-col gap-3 py-5">         
                 <input type="email"
                   class="mt-0 w-full block px-0.5  py-1.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black focus:outline-none "

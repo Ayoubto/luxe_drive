@@ -83,46 +83,48 @@ export class PopupInscriptionComponent {
     this.formSubmitted=true 
   }
   erro_de_validation:boolean=false
-  connecter(){
-    if(this.se_connecter.valid){
-      this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
+  connecter() {
+    if (this.se_connecter.valid) {
       this.authService.authenticateUser(this.se_connecter.value).subscribe(
-        (response:any) => {
-          console.log(response.jwt)
-         
+        (response: any) => {
+          console.log(response.jwt);
+  
           if (response.jwt) {
-           
-            const dataToSend = true; 
+            const dataToSend = true;
             this.dataEvent.emit(dataToSend);
             localStorage.setItem('token', response.jwt);
             this.communicationService.triggerSubmitEvent();
-            console.log(response.role)
-            if(response.role=="admin" || response.role=="manager"){
+            
+            console.log(response.role);
+            if (response.role === "admin" || response.role === "manager") {
               this.router.navigate(['/dashboard']);
             }
-            console.log(response)
+            
+            console.log(response);
             this.close.emit();
           } else {
-              console.log("Something went wrong")
-              
+            console.log("Something went wrong");
           }
         },
-        (error:any) => {
-          if(error.jwt="Invalid email or password"){
-              this.erro_de_connecter=true
-              
+        (error: any) => {
+          console.log("Error occurred during authentication:", error);
+          
+          if (error.error.jwt == "Invalid email or password") {
+            this.erro_de_connecter = true;
+          } else if (error.error.jwt == "Veuillez activer votre compte en vérifiant votre e-mail.") {
+            this.erro_de_validation = true;
+          } else {
+            console.log("Unexpected error occurred:", error);
           }
-          if(error.jwt="Veuillez activer votre compte en vérifiant votre e-mail"){
-           this.erro_de_validation=true
-           
-            
-        }
         }
       );
-      this.formSubmitted_connecter=true 
+  
+      this.formSubmitted_connecter = true;
+    } else {
+      this.formSubmitted_connecter = true;
     }
-    this.formSubmitted_connecter=true 
   }
+  
 
   closePopup() {
     this.close.emit();
