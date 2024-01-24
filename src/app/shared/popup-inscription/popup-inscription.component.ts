@@ -16,6 +16,7 @@ export class PopupInscriptionComponent {
 
   formSubmitted = false;
   formSubmitted_connecter = false;
+  confirmation:boolean=false
   compte_deja_exist=false;
   erro_de_connecter=false;
 
@@ -56,7 +57,7 @@ export class PopupInscriptionComponent {
     const control = formGroup.get(controlName);
     return control?.hasError(errorType) || false;
   }
-
+login:boolean=true
   inscrire() {
     if(this.newCompte.valid){
       this.authService.setAuthToken("adnanelhayanijwtadnanelhayanijwtadnanelhayanijwt"); 
@@ -66,10 +67,9 @@ export class PopupInscriptionComponent {
       (response:any) => {
         if (response.jwt) {
           const dataToSend = true; 
-          this.dataEvent.emit(dataToSend);
-          localStorage.setItem('token', response.jwt);
-          this.communicationService.triggerSubmitEvent();
-          this.close.emit();
+          this.Va=false
+          this.login=false
+          this.confirmation=true
         }
       },
       (error:any) => {
@@ -106,15 +106,12 @@ export class PopupInscriptionComponent {
             console.log("Something went wrong");
           }
         },
-        (error: any) => {
-          console.log("Error occurred during authentication:", error);
-          
+        (error: any) => {  
           if (error.error.jwt == "Invalid email or password") {
             this.erro_de_connecter = true;
           } else if (error.error.jwt == "Veuillez activer votre compte en vérifiant votre e-mail.") {
             this.erro_de_validation = true;
           } else {
-            console.log("Unexpected error occurred:", error);
           }
         }
       );
