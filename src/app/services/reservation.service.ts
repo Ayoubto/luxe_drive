@@ -15,8 +15,8 @@ export class ReservationService {
   getreservationbyid(id:any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/getreservation/${id}`);
   }
-  addreservationby(resrvation:any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/addreservation/`,resrvation);
+  addreservation(reservation:any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/addreservation`,reservation);
   }
   deletereservation(id:any): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/deletereservation/${id}`);
