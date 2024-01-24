@@ -27,6 +27,20 @@ export class ConfirmerReservationComponent {
   @Input() id!: any
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
+  formatToDatabaseDateTime(isoDateString: string): string {
+    const dateObject = new Date(isoDateString);
+    
+    const year = dateObject.getFullYear();
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObject.getDate()).padStart(2, '0');
+    const hours = String(dateObject.getHours()).padStart(2, '0');
+    const minutes = String(dateObject.getMinutes()).padStart(2, '0');
+    const seconds = String(dateObject.getSeconds()).padStart(2, '0');
+    const milliseconds = String(dateObject.getMilliseconds()).padStart(3, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`;
+  }
+
   ngOnInit() {
     this.getData();
 
@@ -34,9 +48,9 @@ export class ConfirmerReservationComponent {
 
     this.reservationForm = this.formBuilder.group({
       agence_depart_id: ['', Validators.required],
-      date_debut: ['', Validators.required],
+      dateDebut: ['', Validators.required],
       agence_retour_id: ['', Validators.required],
-      date_fin: ['', Validators.required]
+      dateFin: ['', Validators.required]
     });
   }
 
@@ -67,8 +81,8 @@ export class ConfirmerReservationComponent {
   }
 
   calculateNumberOfDays(): number {
-    const startDate: Date | null = this.reservationForm.get('date_debut')?.value;
-    const endDate: Date | null = this.reservationForm.get('date_fin')?.value;
+    const startDate: Date | null = this.reservationForm.get('dateDebut')?.value;
+    const endDate: Date | null = this.reservationForm.get('dateFin')?.value;
   
     if (startDate && endDate) {
       const start = this.datePipe.transform(startDate, 'yyyy-MM-dd') || '';
@@ -111,11 +125,15 @@ export class ConfirmerReservationComponent {
 
     const reservationFormValue = {
       ...this.reservationForm.value,
+      dateDebut: this.formatToDatabaseDateTime(this.reservationForm.value.dateDebut),
+      dateFin: this.formatToDatabaseDateTime(this.reservationForm.value.dateFin),
       voiture_id: this.voiture.id,
-      Prix_Total: this.calculateTotalPrice(),
+      prix_Total: this.calculateTotalPrice() as number,
+      status: "En attente de confirmation",
+      reservation: "En attente",
       user_id: this.idUser,
     };
-   
+    console.log(reservationFormValue)
     this.ReservationService.addreservation(reservationFormValue).subscribe(
       (responseData) => {
         this.idReservation = responseData.message
