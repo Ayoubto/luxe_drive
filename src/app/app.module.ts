@@ -41,7 +41,8 @@ import { InboxComponent } from './cote_admin/inbox/inbox.component';
 import { VoituresComponent } from './cote_admin/gestion-voitures/voitures/voitures.component';
 import { AjouterVoitureComponent } from './cote_admin/gestion-voitures/ajouter-voiture/ajouter-voiture.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-
+import { ConfirmerReservationComponent } from './voitures/confirmer-reservation/confirmer-reservation.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -73,9 +74,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     VoituresComponent,
     AjouterVoitureComponent,
     ConfirmationDialogComponent,
-
-
-
+    ConfirmerReservationComponent,
   ],
   
   imports: [
@@ -93,8 +92,11 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatSortModule,
   ],
 
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl },
+    DatePipe
+  ],  
 
-  providers: [{provide: MatPaginatorIntl, useClass: CustomPaginatorIntl}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
