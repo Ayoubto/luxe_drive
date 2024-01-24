@@ -88,7 +88,7 @@ export class HeaderAdminComponent {
     }
     const decodetoken= this.helper.decodeToken(token);
     if(decodetoken.id){
-      this.router.navigate(['../profil-admin',decodetoken.id ]);
+      this.router.navigate(['/profil-admin',decodetoken.id ]);
     }
 
     if(this.helper.isTokenExpired(token)){

@@ -93,7 +93,7 @@ export class PopupInscriptionComponent {
             localStorage.setItem('token', response.jwt);
             this.communicationService.triggerSubmitEvent();
             console.log(response.role)
-            if(response.role=="admin"){
+            if(response.role=="admin" || response.role=="manager"){
               this.router.navigate(['/dashboard']);
             }
             this.close.emit();
