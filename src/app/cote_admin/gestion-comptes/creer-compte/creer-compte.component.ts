@@ -128,7 +128,7 @@ export class CreerCompteComponent {
       
 
           setTimeout(() => {
-            alert('Form submitted successfully!');
+            alert('Compte ajoutée avec succès!');
           }, 100);
           this.router.navigate(['/comptes']);
         }
@@ -153,7 +153,7 @@ export class CreerCompteComponent {
           
          
           setTimeout(() => {
-            alert('Form Upadte successfully!');
+            alert('Compte modifier avec succe!');
           }, 100);
       },
       

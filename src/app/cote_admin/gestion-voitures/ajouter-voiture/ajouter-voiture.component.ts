@@ -120,7 +120,7 @@ onSubmit() {
     this.VoitureService.Addvoiture(this.creervoiture.value).subscribe(
       (response:any) => {             
           setTimeout(() => {
-            alert('add voiture  successfully!');
+            alert('voiture Ajouter avec succe!');
           }, 100);
       },     
     (error) => {
@@ -141,6 +141,9 @@ onSubmitNotEmpty(){
     this.VoitureService.upadeteVoiture(this.id ,this.creervoiture.value).subscribe(
     (response:any) => {    
       console.log(response)    
+      setTimeout(() => {
+        alert('voiture Modifier avec succe!');
+      }, 100);
         this.router.navigateByUrl('/voitures');  
     },
     

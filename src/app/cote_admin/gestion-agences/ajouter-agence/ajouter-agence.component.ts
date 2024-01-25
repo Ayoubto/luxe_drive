@@ -99,7 +99,7 @@ export class AjouterAgenceComponent {
       (response:any) => {
           window.location.reload();
           setTimeout(() => {
-            alert('Form submitted successfully!');
+            alert('Agence ajoutée avec succès');
           }, 100);
       },
       (error:any) => {
