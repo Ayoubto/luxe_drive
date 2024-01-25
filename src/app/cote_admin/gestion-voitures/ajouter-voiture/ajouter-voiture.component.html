@@ -7,14 +7,15 @@
         </div>
         <div class="flex items-center mb-8">
             <img [src]="currentImage" alt="Selected Image" class="w-[300px] h-[300px] rounded-xl border-4 object-cover mr-12" />
-            <button (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Ajouter une photo</button>
+            <button *ngIf="!responseData" (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Ajouter une photo</button>
+            <button *ngIf="responseData" (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modefier la photo</button>
             <button (click)="onRemoveImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Supprimer</button>
         </div>
         <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
         <form [formGroup]="creervoiture" (ngSubmit)="responseData ? onSubmitNotEmpty() : onSubmit()">
             <div class="flex justify-between mb-10">
-                <label for="marque" class="w-1/3 mr-6 block font-semibold">
-                    <span>Marque</span>
+                <label for="marque" class="w-1/3 mr-6 block">
+                    <span class="font-semibold">Marque</span>
                     <div class="relative">
                         <input
                         type="text"
@@ -32,8 +33,8 @@
 
                 </label>
 
-                <label for="modele" class="w-1/3 mr-6 block font-semibold">
-                    <span>Modèle</span>
+                <label for="modele" class="w-1/3 mr-6 block ">
+                    <span class="font-semibold">Modèle</span>
                     <div class="relative">
                         <input
                         type="text"
@@ -51,8 +52,8 @@
                     
                 </label>
 
-                <label for="quantite" class="w-1/3 block font-semibold">
-                    <span>Quantité </span>
+                <label for="quantite" class="w-1/3 block ">
+                    <span class="font-semibold">Quantité </span>
                     <div class="relative">
                     <input
                         type="number"
@@ -71,8 +72,8 @@
             </div>
             <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
             <div class="flex justify-between mb-10">
-                <label for="carburant" class="w-1/4 mr-6 block font-semibold mx-3">
-                    <span>Portes Energie</span>
+                <label for="carburant" class="w-1/4 mr-6 block  mx-3">
+                    <span class="font-semibold">Portes Energie</span>
                     <div class="relative">
                         <select
                             class="w-full block pl-12  mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
@@ -91,8 +92,8 @@
                     </div> 
                 </label>
 
-                <label for="manual_gearbox" class="w-1/4 block font-semibold mx-3">
-                    <span>Boîte</span>
+                <label for="manual_gearbox" class="w-1/4 block  mx-3">
+                    <span class="font-semibold">Boîte</span>
                     <div class="relative">
                         <select
                             class="w-full block pl-12 mt-4 h-10 border border-gray-200 rounded-lg focus:ring-0 focus:outline-none"
@@ -111,8 +112,8 @@
                     </div> 
                 </label>
 
-                <label for="nb_personnes" class="w-1/4 block font-semibold mx-3">
-                    <span>Capacité</span>
+                <label for="nb_personnes" class="w-1/4 block  mx-3">
+                    <span class="font-semibold">Capacité</span>
                     <div class="relative">
                         <input
                         type="number"
@@ -130,8 +131,8 @@
                     </div> 
                 </label>
 
-                <label for="consommation" class="w-1/4 block font-semibold mx-3">
-                    <span>Consommation</span>
+                <label for="consommation" class="w-1/4 block  mx-3">
+                    <span class="font-semibold">Consommation</span>
                     <div class="relative">
                         <input
                         type="number"
@@ -152,8 +153,8 @@
 
             </div>
             <div class="mb-10">
-                <label for="prix" class="font-semibold">
-                    <span>Prix</span>
+                <label for="prix">
+                    <span class="font-semibold">Prix</span>
                     <div class="relative">
                         <input
                             type="number"

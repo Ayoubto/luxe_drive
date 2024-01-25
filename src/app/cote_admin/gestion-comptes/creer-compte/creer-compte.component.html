@@ -7,11 +7,11 @@
         </div>
         <div class="flex items-center mb-8">
             <img *ngIf="!responseData" [src]="currentImage" alt="Selected Image" class="w-[100px] h-[100px] rounded-full border-4 object-cover mr-12" />
-            <div *ngIf="responseData" class=" bg-gray-500 text-white font-bold text-4xl rounded-full w-[100px] h-[100px] flex justify-center items-center">
-                {{ responseData.nom[0] }}{{responseData.prenom[0] }}
+            <div *ngIf="responseData" class=" bg-gray-600 text-white font-bold text-4xl rounded-full w-[100px] h-[100px] flex justify-center items-center mr-12">
+                {{ responseData.prenom[0] }}{{responseData.nom[0] }}
               </div>
             <button *ngIf="!responseData" (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Ajouter une photo</button>
-            <button *ngIf="responseData" (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modefier une photo</button>
+            <button *ngIf="responseData" (click)="onAddImage()" class="mx-8 rounded-xl border border-1 h-[48px] border-black w-48 text-white font-semibold bg-black px-4 hover:bg-white hover:text-black">Modefier la photo</button>
             <button (click)="onRemoveImage()" class="rounded-xl border border-1 h-[48px] border-black w-48 text-black font-semibold bg-white px-4">Supprimer</button>
         </div>
         <div class="h-0.5 w-[90%] bg-gray-300 opacity-30 mb-8 mx-auto">&nbsp;</div>
