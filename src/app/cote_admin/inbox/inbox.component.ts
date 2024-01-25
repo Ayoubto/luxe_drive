@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { Component, OnInit, ViewChild ,AfterViewInit} from '@angular/core';
+import { MatPaginator,MatPaginatorIntl , MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { faArrowLeft, faBookmark, faCheckSquare, faSort, faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +10,7 @@ import { InboxService } from 'src/app/services/inbox.service';
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.css']
 })
-export class InboxComponent {
+export class InboxComponent implements AfterViewInit{
   Page_Titre="Boîte de réception"
 
   message: any;
@@ -27,7 +27,7 @@ export class InboxComponent {
 
   constructor(private InboxService:InboxService) {}
   
-  responseData: PeriodicElement[] = [];
+  responseData: any[]=[];
 
   // Rechercher
   inputValue: string = '';
@@ -59,17 +59,23 @@ export class InboxComponent {
 
   // Afficher les colonnes
   displayedColumns: string[] = ['checkbox', 'objet', 'date'];
-  dataSource = new MatTableDataSource<PeriodicElement>(this.responseData);
+  dataSource = new MatTableDataSource<PeriodicElement>();
 
   // Pagination 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
 
   ngOnInit() {
     this.getMessages();
     this.getMessage();
 
-    this.dataSource.paginator = this.paginator;
+
   }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
 
   onInputChange() {
     this.Search();

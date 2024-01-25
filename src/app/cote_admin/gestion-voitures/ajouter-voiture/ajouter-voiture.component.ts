@@ -102,6 +102,7 @@ fetchDataById(id: number): void {
    (data) => {
     console.log(data)
      this.responseData = data;
+     this.currentImage = `../../../../assets/images/Cart-Cars/cars_image/${data.img}.svg`;
      this.initializeFormValues()
      
    },
