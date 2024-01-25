@@ -52,7 +52,7 @@ export class CreerCompteComponent {
     this.creerCompte = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', []],
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', [Validators.required, Validators.pattern(/^(\+\d{1,3})?\d{9,10}$/)]],
       address: ['', Validators.required],
@@ -126,14 +126,11 @@ export class CreerCompteComponent {
         if (response.jwt) {
           const dataToSend = true; 
       
-          localStorage.setItem('token', response.jwt);
-          window.location.reload();
 
-          // Display an alert after the page reloads
           setTimeout(() => {
             alert('Form submitted successfully!');
           }, 100);
-
+          this.router.navigate(['/comptes']);
         }
       },
       (error:any) => {
@@ -153,7 +150,7 @@ export class CreerCompteComponent {
     if(this.id){
       this.authService.updateUser(this.id ,formData).subscribe(
       (response:any) => {    
-          localStorage.setItem('token', response.jwt);
+          
          
           setTimeout(() => {
             alert('Form Upadte successfully!');

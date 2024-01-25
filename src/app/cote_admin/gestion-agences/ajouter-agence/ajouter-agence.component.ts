@@ -92,8 +92,9 @@ export class AjouterAgenceComponent {
   formSubmitted = false;
   onSubmit() {
     console.log("jdjdhrfhrfr")
-    console.log(this.ajouterAgence.value)
+   console.log(this.ajouterAgence.valid)
     if(this.ajouterAgence.valid){
+     
       this.AgenceService.AddAgence(this.ajouterAgence.value).subscribe(
       (response:any) => {
           window.location.reload();
@@ -102,9 +103,7 @@ export class AjouterAgenceComponent {
           }, 100);
       },
       (error:any) => {
-        if(error.jwt="Email is already taken"){
-     
-        }
+        console.error(error)
       }
     );
     this.formSubmitted=true 
@@ -113,6 +112,7 @@ export class AjouterAgenceComponent {
   }
 
   onSubmitNotEmpty(){
+    
     this.formSubmitted=true 
     if(this.id){
       if(this.ajouterAgence.valid){
@@ -121,6 +121,10 @@ export class AjouterAgenceComponent {
         console.log(response)    
           this.router.navigateByUrl('/agences');  
       },
+      (error:any) => {
+        console.error(error)
+      }
+      
       
     );         
       }
