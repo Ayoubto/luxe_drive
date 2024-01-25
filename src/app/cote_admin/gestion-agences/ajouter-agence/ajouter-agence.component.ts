@@ -101,6 +101,7 @@ export class AjouterAgenceComponent {
           setTimeout(() => {
             alert('Agence ajoutée avec succès');
           }, 100);
+          this.router.navigateByUrl('/agences');  
       },
       (error:any) => {
         console.error(error)

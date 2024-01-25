@@ -86,6 +86,7 @@ console.log(this.responseData)
     this.getUser_count()
     this.getreservation()
     this.getrevenu()
+    console.log(this.user_count , this.revenue, this.reservations_count)
     this.getData()
    
    
