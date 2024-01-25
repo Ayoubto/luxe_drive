@@ -36,10 +36,13 @@ export class ReservationsComponent {
   getData() {
     this.ReservationService.getAllreservation().subscribe(
       (data) => {
-        this.responseData = data ;      
+        this.responseData = data ;
+        console.log(data)      
         this.responseData = this.responseData.filter((reservation) => reservation.status === 'confirmée') .map((element, index) => ({ ...element, sequentialNumber: index + 1 ,id: element.id.toString() }));
         
         this.responseData.forEach(element => {
+            element.prix = element.prix_Total;
+
           this.AuthService.getDataById(element.user_id).subscribe(managerDetails => {
             element.user_id = managerDetails.prenom +" "+ managerDetails.nom; 
             element.tele = managerDetails.telephone; 
