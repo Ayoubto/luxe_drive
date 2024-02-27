@@ -1,4 +1,4 @@
-<div class="w-full py-5 lg:px-10 px-4 mx-auto  flex items-center justify-between bg-black">
+<div class="w-full py-5 lg:px-10 px-4 mx-auto  flex items-center justify-between ">
   <div>
     <img routerLink="/accueil" src="assets/images/Heading.svg" alt="" class="w-[10rem] flex-shrink-0 cursor-pointer">
   </div>
@@ -6,11 +6,11 @@
   <div class="md:flex justify-center space-x-8 font-semibold hidden">
     <a routerLink="/accueil" class="text-white hover:text-gray-300">Accueil</a>
     <a routerLink="/nos-voitures" class="text-white hover:text-gray-300">Réservation</a>
-    <a routerLink="/nos-agences" class="text-white hover:text-gray-300">Agences</a>
+    <a routerLink="/apropos" class="text-white hover:text-gray-300">A propos</a>
     <a routerLink="/contact" class="text-white hover:text-gray-300">Contact</a>
   </div>
 
-  <button  *ngIf="!isLoggedIn" (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-black text-white font-semibold py-[8px] rounded-3xl px-[20px] hidden md:flex ">Se connecter / S’inscrire</button>
+  <button  *ngIf="!isLoggedIn" (click)="openPopup()" class="border-2 border-opacity-50 border-white bg-[#587257]  text-white font-semibold py-[8px] rounded-3xl px-[20px] hidden md:flex ">Se connecter / S’inscrire</button>
   
     <div *ngIf="isLoggedIn" class="relative inline-block">
       <div class="flex items-center space-x-2 cursor-pointer" (click)="toggleDropdown()">

@@ -44,6 +44,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { ConfirmerReservationComponent } from './voitures/confirmer-reservation/confirmer-reservation.component';
 import { DatePipe } from '@angular/common';
 import { ProfilAdminComponent } from './cote_admin/profil-admin/profil-admin.component';
+import { AproposComponent } from './apropos/apropos.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ProfilAdminComponent } from './cote_admin/profil-admin/profil-admin.com
     ConfirmationDialogComponent,
     ConfirmerReservationComponent,
     ProfilAdminComponent,
+    AproposComponent,
   ],
   
   imports: [

@@ -18,10 +18,11 @@ import { ProfilComponent } from './shared/components/profil/profil.component';
 import { AuthGuard } from './auth.guard';
 import { HistoriqueComponent } from './shared/components/historique/historique.component';
 import { ProfilAdminComponent } from './cote_admin/profil-admin/profil-admin.component';
-
+import { AproposComponent } from './apropos/apropos.component';
 
 const routes: Routes = [
   {path:"accueil",component:PageHomeComponent},
+  {path:"apropos",component:AproposComponent},
   {path:"profil/:id",component:ProfilComponent},
   {path:"historique/:id",component:HistoriqueComponent},
   {path:"contact",component:PageContactComponent},
