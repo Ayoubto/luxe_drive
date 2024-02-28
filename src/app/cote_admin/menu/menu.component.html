@@ -50,19 +50,19 @@
 
         <div class="relative">
             <a class="nav-link block px-8 py-2 my-4 hover:bg-white cursor-pointer" (click)="toggleSubMenu('gestionVoitures')">
-                <fa-icon [icon]="voitures" class="mr-2"></fa-icon>
-                Gestion des voitures
+                <fa-icon [icon]="'lamp'" class="mr-2"></fa-icon>
+                Gestion des  listings
                 <fa-icon [icon]="openSubMenus.includes('gestionVoitures') ? chevronDown : chevronRight" class="float-right"></fa-icon>
             </a>
             <!-- Submenu -->
             <div *ngIf="openSubMenus.includes('gestionVoitures')">
-                <a routerLink="../ajouter-voiture" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="../ajouter-listings" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
-                    Ajouter une voiture
+                    Ajouter  listings
                 </a>
-                <a routerLink="/voitures" class="nav-link block px-14 py-2 hover:bg-gray-300">
+                <a routerLink="/listings" class="nav-link block px-14 py-2 hover:bg-gray-300">
                     <fa-icon [icon]="circle" class="mr-2"></fa-icon>
-                    Voitures
+                    listings
                 </a>
             </div>
         </div>

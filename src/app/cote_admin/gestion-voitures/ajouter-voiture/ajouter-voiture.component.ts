@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 export class AjouterVoitureComponent {
   Page_Titre="Ajouter listings"
 
-
- // lire Id 
  hasIdParam: boolean=false;
   
  id: number | null=null;

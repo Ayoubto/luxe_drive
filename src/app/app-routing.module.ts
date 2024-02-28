@@ -37,11 +37,11 @@ const routes: Routes = [
   {path:"comptes",component:ComptesComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin'] }},
   {path:"ajouter-agence",component:AjouterAgenceComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin'] }},
   {path:"agences",component:AgencesComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin'] }},
-  {path:"ajouter-voiture",component:AjouterVoitureComponent},
-  {path:"voitures",component:VoituresComponent},
+  {path:"ajouter-listings",component:AjouterVoitureComponent},
+  {path:"listings",component:VoituresComponent},
   {path:"pre-reservations",component:PreReservationsComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin', 'manager'] }},
   {path:"reservations",component:ReservationsComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin', 'manager'] }},
-  {path:"inbox",component:InboxComponent,canActivate: [AuthGuard],data: { expectedRole: ['admin'] }},
+  {path:"inbox",component:InboxComponent},
   {path:"**",redirectTo:"accueil",pathMatch:"full"}
 ];
 
