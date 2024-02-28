@@ -20,7 +20,7 @@ export class AjouterVoitureComponent {
  responseData: any;
 
 
-defaultImage = '../../../../assets/images/voiture.png';
+defaultImage = '../../../../assets/images/image_upload.png';
 currentImage: string = this.defaultImage;
 
 onAddImage() {
@@ -49,28 +49,23 @@ creervoiture: FormGroup;
 
 constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private VoitureService: VoitureService,private router: Router) {
  this.creervoiture = this.formBuilder.group({
-   title: ['', Validators.required],
-   description: ['', Validators.required],
+   title: ['',[ Validators.required]],
+   description: ['', [Validators.required]],
    date : ['', [Validators.required]],
-   type: ['', [Validators.required]],
-
-
-  
-   prix: ['', Validators.required],
+   type: ['', [Validators.required]], 
+   price: ['', [Validators.required]],
+   price22: ['', [Validators.required]],
  }
  );
 }
 initializeFormValues() {
   if (this.responseData) {
     this.creervoiture.patchValue({
-      marque:this.responseData.marque || '',
-      modele:this.responseData.modele || '',
-      quantite:this.responseData.quantite || '',
-      carburant:this.responseData.carburant || '',
-      nb_personnes: this.responseData.nb_personnes || '', 
-      manual_gearbox: this.responseData.manual_gearbox || '', 
-      consommation: this.responseData.consommation || '', 
-      prix: this.responseData.prix || '', 
+      title:this.responseData.title || '',
+      description:this.responseData.description || '',
+      date:this.responseData.date || '',
+      type:this.responseData.type || '',
+      price: this.responseData.price || '', 
     });
   }
 }
@@ -116,7 +111,9 @@ fetchDataById(id: number): void {
 formSubmitted = false;
 onSubmit() {
   this.formSubmitted = true;
+  console.log(this.creervoiture.value)
   if(this.creervoiture.valid){
+    console.log(this.creervoiture.value)
     this.VoitureService.Addvoiture(this.creervoiture.value).subscribe(
       (response:any) => {             
           setTimeout(() => {
