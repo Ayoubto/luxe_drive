@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajouter-voiture.component.css']
 })
 export class AjouterVoitureComponent {
-  Page_Titre="Gestion des Voitures"
+  Page_Titre="Ajouter listings"
 
 
  // lire Id 
@@ -49,13 +49,13 @@ creervoiture: FormGroup;
 
 constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private VoitureService: VoitureService,private router: Router) {
  this.creervoiture = this.formBuilder.group({
-   marque: ['', Validators.required],
-   modele: ['', Validators.required],
-   quantite : ['', [Validators.required]],
-   carburant: ['', [Validators.required]],
-   nb_personnes: ['', [Validators.required,]],
-   manual_gearbox: ['', Validators.required],
-   consommation: ['', Validators.required],
+   title: ['', Validators.required],
+   description: ['', Validators.required],
+   date : ['', [Validators.required]],
+   type: ['', [Validators.required]],
+
+
+  
    prix: ['', Validators.required],
  }
  );
@@ -81,7 +81,7 @@ passwordMatchValidator(group: FormGroup): { [key: string]: any } | null {
 
  return password === confirmPwd ? null : { 'passwordMismatch': true };
 }
-form_Titre="Ajouter une voiture"
+form_Titre="Ajouter listings"
 ngOnInit() {
   this.route.params.subscribe(params => {
     const id = params['id'];
