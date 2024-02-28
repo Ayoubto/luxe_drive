@@ -95,19 +95,13 @@ export class HeaderComponent {
   }
 
   viewHistory() {
-    const token = localStorage.getItem('token'); 
-    if(!token){
-      return 
-    }
-    const decodetoken= this.helper.decodeToken(token);
-    if(decodetoken.id){
-      this.router.navigate(['../historique',decodetoken.id ]);
-    }
 
-    if(this.helper.isTokenExpired(token)){
-      return false;
-    }
-    return false;
+  
+   
+      this.router.navigate(['../dashboard']);
+    
+
+
   }
 
   isPopupOpen: boolean = false;
