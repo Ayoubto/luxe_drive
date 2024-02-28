@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { VoitureService } from 'src/app/services/voiture.service';
+import { ListingsService } from 'src/app/services-api/listings.service';
 @Component({
   selector: 'app-collections',
   templateUrl: './collections.component.html',
@@ -7,8 +8,23 @@ import { VoitureService } from 'src/app/services/voiture.service';
 })
 export class CollectionsComponent {
 
-  constructor(private VoitureService:VoitureService) {}
+  constructor(private VoitureService:VoitureService,private ListingsService:ListingsService) {}
   responseData: any;
+  getListing() {
+    this.ListingsService.getAllListing().subscribe(
+      (data) => {    
+        this.responseData = data ;
+        this.loadMoreCars();
+        
+
+       
+      },
+      (error) => {
+        console.error(error);
+        console.log("Hello word error here ")
+      }
+    );
+  }
 
   getVoituresData() {
     this.VoitureService.getAllAVoiture().subscribe(
@@ -24,7 +40,7 @@ export class CollectionsComponent {
   }
  
   displayedCars: any[] = [];
-  batchSize: number = 6;
+  batchSize: number = 3;
   lastIndex: number = 0;
   loadMoreCars() {
     const nextIndex = this.lastIndex + this.batchSize;
@@ -34,8 +50,25 @@ export class CollectionsComponent {
     }
   }
 
+  changeSelectedTypeText(collection:any){
+    this.selectedType=collection
+    this.loadMoreCars()
+    this.applyFilter()
+
+  }
+  selectedType="family"
+
+  
+  applyFilter() {
+    
+    if (this.selectedType) {
+      this.displayedCars = this.responseData.filter((item: any)=> item.category === this.selectedType);
+    }
+    this.loadMoreCars()
+  }
+
   ngOnInit() {
-    this.getVoituresData()
+    this.getListing()
   }
   Cars:Array<any>=[
     {img:"../../../assets/images/Services-Picuters/1.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
@@ -47,5 +80,17 @@ export class CollectionsComponent {
 
 
   ]
-  Collections = ['Familial', 'coopérative', 'Autres'];
+  Collections = ['family', 'cooperative', 'autres'];
+
+  
+
+  
+  
+}
+
+interface Listing {
+  id: number;
+  name: string;
+  type: string;
+  // Add other properties as needed
 }

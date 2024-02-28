@@ -2,7 +2,7 @@
     <app-header></app-header>   
 </div>
 
-<div  class=" flex gap-x-10 w-full mt-10 px-24">
+<div  class=" flex gap-x-10 w-full mt-20 px-24">
     <div class= "w-1/2 ">
         <div class="font-bold text-5xl text-[#1A906B]">
             À propos de nous
@@ -33,4 +33,147 @@
     <div class=" w-1/2   float-right">
         <img src="../../assets/images/About Us Section.svg" alt="" class="w-[474px] float-right">     
     </div>
+    
 </div>
+<div class="flex justify-center mt-10">
+<div class="w-3/4 py-20 ">
+    <div class="flex justify-center text-2xl font-semibold "style="font-weight: 500;">
+        <p><span class="text-[#22B286]">Besoin d'aide ?</span> Consultez notre FAQ !</p>
+    </div>
+    <mat-accordion class="custom-font-accordion">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p  class="text-lg font-semibold">Comment puis-je réserver une expérience avec Yalla Bina </p> 
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Vous pouvez réserver une expérience avec Yalla Bina en parcourant notre site web et en sélectionnant l'activité qui vous intéresse. Suivez simplement les instructions de réservation pour sécuriser votre place.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p class="text-lg font-semibold">Quels types d'expériences propose Yalla Bina ?</p> 
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Yalla Bina propose une gamme variée d'expériences culturelles, culinaires et traditionnelles au Maroc. Cela inclut des repas cuisinés à la maison avec des habitants locaux, des visites de sites historiques, des cours de cuisine traditionnelle, et bien plus encore.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p  class="text-lg font-semibold">Est-ce que Yalla Bina propose des expériences adaptées aux enfants ?</p> 
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+                <p>Oui, nous proposons certaines expériences qui sont adaptées aux familles avec enfants. Veuillez consulter la description de chaque activité pour vérifier si elle convient aux enfants et aux familles.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p  class="text-lg font-semibold">Comment puis-je annuler ma réservation avec Yalla Bina ?</p>  
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>Pour annuler votre réservation, veuillez vous référer à l'e-mail de confirmation que vous avez reçu lors de la réservation. Les politiques d'annulation peuvent varier selon l'activité, alors assurez-vous de lire attentivement les conditions d'annulation.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p  class="text-lg font-semibold">Yalla Bina offre-t-il des services de guide touristique ?</p> 
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+                <p>Oui, certains de nos partenaires locaux peuvent agir en tant que guides touristiques lors de certaines expériences. Cela vous permettra de bénéficier d'informations détaillées sur les sites que vous visiterez et de mieux comprendre la culture marocaine.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p  class="text-lg font-semibold">Quels sont les moyens de paiement acceptés par Yalla Bina ?</p> 
+            </mat-panel-title>
+            </mat-expansion-panel-header>
+                 <p>Nous acceptons généralement les principales cartes de crédit et de débit, ainsi que d'autres méthodes de paiement en ligne sécurisées. Vous pouvez trouver les options de paiement disponibles au moment de la réservation sur notre site web.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+               <p  class="text-lg font-semibold">Yalla Bina propose-t-il des expériences pour les voyageurs à mobilité réduite ?</p> 
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+                <p>Nous nous efforçons de rendre nos expériences accessibles au plus grand nombre, cependant, la disponibilité d'activités adaptées aux personnes à mobilité réduite peut varier. Nous vous recommandons de nous contacter directement pour discuter de vos besoins spécifiques et de la disponibilité des activités adaptées.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p  class="text-lg font-semibold">Quelle est la politique de Yalla Bina concernant la sécurité des participants lors des expériences ?</p>  
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+            <p>La sécurité de nos participants est notre priorité absolue. Nous travaillons en étroite collaboration avec nos partenaires locaux pour garantir que toutes les expériences respectent les normes de sécurité les plus strictes. Les détails spécifiques sur les mesures de sécurité seront fournis lors de la réservation de chaque activité.</p>
+        </mat-expansion-panel>
+    </mat-accordion> 
+</div>    
+</div>
+
+<div class=" mt-15 py-14">
+    <div class="flex justify-center">
+        <p class="text-[#56DF25] text-3xl font-bold"> ~   Membres de l'équipe   ~</p>
+    </div>
+    <div class="flex justify-center mt-1 ">
+        <p class=" text-4xl font-bold w-1/2 text-center "> Notre membre de l'équipe est prêt à
+            aidez nos clients!</p>
+    </div>
+    <div class="flex justify-center mt-1 ">
+        <p class=" text-xl font-bold w-2/3 text-center "> Nous aimons ce que nous faisons et nous le faisons avec passion. Nous valorisons le
+            expérimentation du message et incitations intelligentes.</p>
+    </div>
+
+    <div class="mt-6 px-14 flex justify-between gap-5">
+        <div class="">
+            <img src="../../assets/images/Team/Ayoub.svg" alt="" class="relative">
+            <div class="bg-white -mt-11 z-50 absolute h-32 flex-row justify-start ml-4 py-4 px-9 rounded-lg shadow-sm border-t-8  border-[#22B286]">
+                <p class="font-semibold text-xl" style="font-weight: 600;"> Ayoub ET-Toubi</p>
+                <p class="text-lg">Front-end developer </p>
+            </div>
+        </div>
+
+        <div>
+            <img src="../../assets/images/Team/Abdo.svg" alt="" class="relative">
+            <div class="bg-white -mt-11 z-50 absolute h-32 flex-row justify-start ml-4 py-4 px-3 rounded-lg shadow-sm border-t-8  border-[#22B286]">
+                <p class="font-semibold text-xl" style="font-weight: 600;">Abderrazzak EL bourkadi</p>
+                <p class="text-lg"> UI/UX designer</p>
+            </div>
+        </div>
+
+        <div>
+            <img src="../../assets/images/Team/Hamza.svg" alt="" class="relative">
+            <div class="bg-white -mt-11 z-50 absolute h-32 flex-row justify-start ml-3 py-4 px-9 rounded-lg shadow-sm border-t-8  border-[#22B286]">
+                <p class="font-semibold text-xl" style="font-weight: 600;">Hamza chagane</p>
+                <p class="text-lg">DevOps engineering</p>
+            </div>
+        </div>
+
+        <div>
+            <img src="../../assets/images/Team/Mohamed.svg" alt="" class="relative">
+            <div class="bg-white -mt-11 z-50 absolute h-32 flex-row justify-start ml-3 py-4 px-9 rounded-lg shadow-sm border-t-8  border-[#22B286]">
+                <p class="font-semibold text-xl" style="font-weight: 600;">Mohamed el mrabet</p>
+                <p class="text-lg">back-end developer</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="mt-10">
+    <app-footer></app-footer> 
+</div>
+
+
+
+
+  
+
+

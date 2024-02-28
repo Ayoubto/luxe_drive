@@ -10,7 +10,7 @@
                 </svg>
             </div>  
         </div>
-        <div class="text-4xl font-bold text-center py-1">
+        <div class="text-4xl font-bold text-center py-1 text-[#557254]">
             Créez votre compte
         </div>
         <form [formGroup]="newCompte" (ngSubmit)="inscrire()">
@@ -115,11 +115,11 @@
               </div>
             </div>
 
-            <button class="bg-black text-white font-semibold py-2 mt-1 px-4  focus:outline-none focus:ring-2 w-full rounded-3xl">Enregistrer</button>
+            <button class="bg-[#557254] text-white font-semibold py-2 mt-1 px-4  focus:outline-none focus:ring-2 w-full rounded-3xl">Enregistrer</button>
         </form>
 
         <div>
-           <p class="text-center my-2">Vous avez déjà un compte ? <button class="font-bold" (click)="seatch()">Se connecter</button> </p>
+           <p class="text-center my-2">Vous avez déjà un compte ? <button class="font-bold text-[#5FB541]" (click)="seatch()">Se connecter</button> </p>
         </div>
     </div>
     
@@ -134,7 +134,7 @@
                 </svg>
             </div>      
         </div>
-        <div class="text-4xl font-bold text-center py-3">Connectez-vous</div>
+        <div class="text-4xl font-bold text-center py-3 text-[#557254]" >Connectez-vous</div>
         <form [formGroup]="se_connecter" (ngSubmit)="connecter()">
             <div class="text-red-700 text-base font-bold -mt-0.5 flex justify-center" *ngIf="(formSubmitted_connecter && erro_de_connecter)" >
               E-mail ou mot de passe incorrect.
@@ -169,13 +169,13 @@
                 <div class="text-red-700 text-xs font-normal -mt-2.5" *ngIf="(formSubmitted_connecter || se_connecter.controls['password'].touched) && se_connecter.controls['password'].errors?.['required']">
                   Mot de passe est obligatoire
                 </div>
-                <div class="flex justify-end font-bold text-sm">Mot de passe oublié?</div>
+                <div class="flex justify-end font-bold text-sm text-[#5FB541]">Mot de passe oublié?</div>
             </div>
             
-            <button class="bg-black text-white font-semibold py-2 mt-4 px-4  focus:outline-none focus:ring-2 w-full rounded-3xl" (click)="connecter()">Se connecter</button>            
+            <button class="bg-[#557254] text-white font-semibold py-2 mt-4 px-4  focus:outline-none focus:ring-2 w-full rounded-3xl" (click)="connecter()">Se connecter</button>            
         </form>
         <div>
-           <p class="text-center my-4">Vous n'avez pas de compte ? <button class="font-bold"(click)="seatch()" > S’inscrire</button> </p>
+           <p class="text-center my-4">Vous n'avez pas de compte ? <button class="font-bold text-[#5FB541]"(click)="seatch()" > S’inscrire</button> </p>
         </div>
     </div>    
   </div>

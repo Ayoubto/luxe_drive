@@ -45,7 +45,7 @@ import { ConfirmerReservationComponent } from './voitures/confirmer-reservation/
 import { DatePipe } from '@angular/common';
 import { ProfilAdminComponent } from './cote_admin/profil-admin/profil-admin.component';
 import { AproposComponent } from './apropos/apropos.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +94,7 @@ import { AproposComponent } from './apropos/apropos.component';
     MatSlideToggleModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule
   ],
 
   providers: [

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VoitureService } from '../services/voiture.service';
+import { ListingsService } from '../services-api/listings.service';
+
 @Component({
   selector: 'app-page-reservation',
   templateUrl: './page-reservation.component.html',
@@ -10,7 +12,19 @@ export class PageReservationComponent implements OnInit {
   filterForm!: FormGroup;
 
   responseData: any;
-
+  getListing() {
+    this.ListingsService.getAllListing().subscribe(
+      (data) => {    
+        this.responseData = data ;
+        this.loadMoreCars();
+       
+      },
+      (error) => {
+        console.error(error);
+        console.log("Hello word error here ")
+      }
+    );
+  }
   getVoituresData() {
     this.VoitureService.getAllAVoiture().subscribe(
       (data) => {    
@@ -35,18 +49,18 @@ export class PageReservationComponent implements OnInit {
     }
   }
   Cars:Array<any>=[
-    {img:"Audi A8 L 2022" , Name:"Audi A8 L 2022" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"},
-    {img:"Nissan Maxima Platinum" , Name:"Nissan Maxima Platinum 2022" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"},
-    {img:"Porsche Cayenne GTS 2022" , Name:"Porsche Cayenne GTS 2022" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"},
-    {img:"BMW M8 Coupe 2022" , Name:"BMW M8 Coupe 2022" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"},
-    {img:"BMW X7 M50i 2022" , Name:"BMW X7 M50i 2022" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"},
-    {img:"Porsche Cayenne GTS 2023" , Name:"Porsche Cayenne GTS 2023" , price:75.90 , speedometer:"4,00", manual_gearbox:"Auto",users:"4 Personne",gas_station:"Electrique"}
+    {img:"../../../assets/images/Services-Picuters/1.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
+    {img:"../../../assets/images/Services-Picuters/2.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
+    {img:"../../../assets/images/Services-Picuters/3.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
+    {img:"../../../assets/images/Services-Picuters/4.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
+    {img:"../../../assets/images/Services-Picuters/5.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"},
+    {img:"../../../assets/images/Services-Picuters/8.svg", Service :"Couscous pour dejeuner ",price:"79.90",description:"Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !"}
   ]
 
   Villes = ['Tanger','Casablanca','Marrakech','Agadir','Tétouan'];
   Collections = ['Populaire', 'Luxe', 'Sportive', 'Familiale', 'Tout-Terrain'];
 
-  constructor(private formBuilder: FormBuilder,private VoitureService:VoitureService) {}
+  constructor(private formBuilder: FormBuilder,private VoitureService:VoitureService,private ListingsService:ListingsService) {}
 
   ngOnInit() {
     this.getVoituresData()

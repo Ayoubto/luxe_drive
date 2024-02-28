@@ -1,12 +1,13 @@
 
         <div class="w-full h-full  flex flex-col  rounded-2xl p-1 pb-6 space-y-3 bg-white shadow-md hover:shadow-2xl  transition ease-in-out delay-150 hover:-translate-y-1 duration-100  hover:border-2 hover:border-[#557254] ">
-            <img src="{{Car.img}}" alt="" class="w-360">
+            <img src="../../../assets/images/photos-yallabina/{{Car.image}}.svg" alt="" class="w-360">
             <div class=" mx-10 space-y-3">
-                <p class="font-thin text-lg text-black/70">Couscous pour dejeuner </p>
-                <p class="text-2xl">78.90 /<span class="text-l text-slate-500">person</span> </p>
-                
+                <p class="font-thin text-lg text-black/70">{{Car.title}}</p>
+                <p class="text-2xl">{{Car.price}} /<span class="text-l text-slate-500">person</span> </p>
+                {{Car.category}}
                 <div class="flex flex-row text-lg justify-between rounded-xl">
-                    Rejoignez-nous pour un repas traditionnel où vous pourrez déguster des plats locaux préparés avec amour !
+                  
+                    {{Car.description}}
                 </div>
                 <button  *ngIf="isLoggedIn" (click)="openPopup(Car.id)" class="rounded-2xl border border-1 h-[40px] border-black w-full font-sans tetx-l text-slate-500 g px-4  hover:bg-[#557254] hover:text-white">Réservez Maintenant</button>
                 <button *ngIf="!isLoggedIn"  class="rounded-2xl border border-1 h-[40px] border-black w-full font-sans tetx-l text-slate-500 g px-4  hover:bg-[#557254] hover:text-white">Cree votre compte pour reservez Maintenant </button>
