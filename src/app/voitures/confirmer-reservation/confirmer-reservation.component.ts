@@ -84,7 +84,7 @@ export class ConfirmerReservationComponent {
     const startDate: Date | null = this.reservationForm.get('dateDebut')?.value;
     const endDate: Date | null = this.reservationForm.get('dateFin')?.value;
   
-    if (startDate && endDate) {
+    
       const start = this.datePipe.transform(startDate, 'yyyy-MM-dd') || '';
       const end = this.datePipe.transform(endDate, 'yyyy-MM-dd') || '';
   
@@ -93,19 +93,27 @@ export class ConfirmerReservationComponent {
   
       const millisecondsInDay = 24 * 60 * 60 * 1000;
       const differenceInDays = Math.floor((endMilliseconds - startMilliseconds) / millisecondsInDay);
+
+      const number: number | null = this.reservationForm.get("agence_retour_id")?.value;
+      if(number){
+             const sum=number*this.id.price
+      return sum; 
+      }
+      return 0;
+
+    
   
-      return differenceInDays;
-    }
-  
-    return 0;
+   
   }
 
   calculateTotalPrice(): number {
     const dailyPrice: number = this.voiture.prix;
     const numberOfDays: number = this.calculateNumberOfDays();
 
-    if (dailyPrice && numberOfDays) {
-      return dailyPrice * numberOfDays;
+    const number: number | null = this.reservationForm.get("agence_retour_id")?.value;
+    if(number){
+           const sum=number*this.id.price
+    return sum; 
     }
 
     return 0;

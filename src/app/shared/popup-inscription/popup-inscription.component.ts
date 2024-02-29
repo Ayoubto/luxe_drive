@@ -69,7 +69,12 @@ login:boolean=true
           const dataToSend = true; 
           this.Va=false
           this.login=false
-          this.confirmation=true
+
+          this.dataEvent.emit(dataToSend);
+          localStorage.setItem('token', response.jwt);
+          this.communicationService.triggerSubmitEvent();
+          this.closePopup()
+
         }
       },
       (error:any) => {

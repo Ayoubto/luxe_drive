@@ -44,7 +44,7 @@ export class AuthService {
     return false;
   }
 
-  private apiUrl = 'http://localhost:8093/api';
+  private apiUrl = 'http://localhost:8082/api';
   private authToken: string | null = null;
 
   setAuthToken(token: string | null): void {

@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 export class ListingsService {
 
   constructor(private http: HttpClient) { }
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'http://localhost:8082';
 
   getAllListing(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/listings`);
+    return this.http.get<any>(`${this.apiUrl}/getalllistings`);
   }
 }

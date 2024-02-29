@@ -11,7 +11,7 @@
             </div>
         
             <select type="text" name="Lieu_depart" formControlName="lieuDepart"  class="block  w-[314px] lg:w-[14.18rem] h-[50px] rounded-md border-0 py-1 pl-12 p-2.5  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-black/70 sm:text-sm sm:leading-6  " placeholder="Rechercher Agence">
-              <option value="" disabled selected hidden>Choisir une agence</option>
+              <option value="" disabled selected hidden>Choisir un lieu </option>
               <option *ngFor="let option of Agences" [value]="option">{{ option }}</option>
             </select>
           </div>
@@ -33,7 +33,7 @@
 
       <div>
           <div class=" mt-8">
-              <button type="submit" class=" basis-1/2 bg-[#557254] rounded-3xl p-4 flex items-center gap-0.5  w-full lg:w-[11.87rm] text-white ">Trouver une voiture
+              <button type="submit" class=" basis-1/2 bg-[#557254] rounded-3xl p-4 flex items-center gap-0.5  w-full lg:w-[11.87rm] text-white ">Trouver une experience
                <img src="../../../../assets/images/Search/arrow-right.svg" class="mt-1" alt="">   
               </button>                
           </div>

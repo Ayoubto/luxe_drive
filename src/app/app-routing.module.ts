@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:"historique/:id",component:HistoriqueComponent},
   {path:"contact",component:PageContactComponent},
   {path:"nos-agences",component:PageAgencesComponent},
-  {path:"nos-voitures",component:PageReservationComponent},
+  {path:"nos-experience",component:PageReservationComponent},
   {path:"profil-admin/:id",component:ProfilAdminComponent},
   {path:"dashboard",component:DashboardComponent },
   {path:"ajouter-compte",component:CreerCompteComponent},

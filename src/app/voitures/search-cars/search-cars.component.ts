@@ -9,15 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SearchCarsComponent implements OnInit {
   searchForm!: FormGroup;
   Agences = [
-    'Agence de Tanger Ville',
-    'Agence de Tanger Aéroport',
-    'Agence de Casablanca Ville',
-    'Agence de Casablanca Aéroport',
-    'Agence de Marrakech Ville',
-    'Agence de Marrakech Aéroport',
-    'Agence de Agadir Ville',
-    'Agence de Agadir Aéroport',
-    'Agence de Tétouan Ville'
+    ' Tanger ',
+    ' Tanger ',
+    ' Casablanca ',
+    ' Casablanca ',
+    ' Marrakech ',
+    ' Marrakech ',
+    ' Agadir ',
+    ' Agadir ',
+    ' Tétouan '
   ];
 
   constructor(private formBuilder: FormBuilder) {}

@@ -63,7 +63,7 @@ export class PageReservationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private VoitureService:VoitureService,private ListingsService:ListingsService) {}
 
   ngOnInit() {
-    this.getVoituresData()
+    this.getListing()
     this.filterForm = this.formBuilder.group({
       Collection: ['', Validators.required],
       Prix: ['', Validators.required],
